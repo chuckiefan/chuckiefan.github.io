@@ -61,3 +61,5 @@ RSS: false
 
 # Plugins
 gems: [jekyll-paginate]
+# 字符编码
+encoding: utf-8
