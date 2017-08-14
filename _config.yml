@@ -3,7 +3,7 @@ title: "Chuckiefan's Blog"
 description: '毕竟一生很短少有圆满'
 keyword: 'Chuckiefan, Android, Git, Gradle'
 url: 'http://chuckiefan.github.io' # your host
-baseurl: '/'
+baseurl: 'http://chuckiefan.github.io/'
 email: "chuckiefan@163.com"
 
 # Navigation links
