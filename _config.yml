@@ -17,7 +17,7 @@ url: "http://chuckiefan.github.io" # the base hostname & protocol for your site
 twitter_username: jekyllrb
 github_username:  jekyll
 # 主题设置
-theme: jekyll-theme-tactile
+theme: jekyll-theme-cayman
 
 # Build settings
 markdown: kramdown
