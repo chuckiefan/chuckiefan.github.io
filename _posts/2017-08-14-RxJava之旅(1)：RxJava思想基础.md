@@ -11,9 +11,13 @@ tags: RxJava Android
 因此，我决定写下这个系列文章，把RxJava的基础到进阶的内容进行讲解，如果能够帮助到和我一样在入门阶段感到困惑的人，我将感到非常荣幸。
 本系列文章将会从基础入门开始介绍，其目的是尽快让读者掌握RxJava的基本使用，后续的文章将会对RxJava的特性进行逐渐深入的介绍。但是本系列文章不会提供任何可以直接在实际开发中复制使用的样例代码，其侧重点更多的是对RxJava的理解，我相信对于真正要学习技术的人来说，从文章里复制代码直接使用只是快速应付工作而已，并不能对该技术有任何真正的了解。
 本人在学习RxJava时，主要通过扔物线，大头鬼等大牛的文章以及RxJava的源代码。以下是基础入门时所阅读的文章地址，希望能够对各位有所帮助：
+
 [《给Android开发者的RxJava详解》 by:扔物线](http://gank.io/post/560e15be2dca930e00da1083)
+
 [《深入浅出RxJava》 by:大头鬼](http://blog.csdn.net/lzyzsd/article/details/41833541)
+
 [《谜之RxJava》 by:Gemini](https://segmentfault.com/a/1190000004049490)
+
 
 # 1. 什么是RxJava
 
