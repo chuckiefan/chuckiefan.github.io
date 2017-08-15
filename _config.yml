@@ -2,8 +2,8 @@
 title: "Chuckiefan's Blog"
 description: '毕竟一生很短少有圆满'
 keyword: 'Chuckiefan, Android, Git, Gradle'
-# url: 'https://chuckiefan.github.io/' # your host
-url: 'http://localhost:4000/' # your host
+url: 'https://chuckiefan.github.io/' # your host
+# url: 'http://localhost:4000/' # your host
 baseurl: '/'
 email: "chuckiefan@163.com"
 
