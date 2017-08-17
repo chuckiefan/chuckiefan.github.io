@@ -127,6 +127,8 @@ tags: RxJava Android
 
 首先来看数据流A和数据流B的创建：
 
+```java
+
     final Observable<TextViewAfterTextChangeEvent> observableA = RxTextView.afterTextChangeEvents(editTextA).filter(new Predicate<TextViewAfterTextChangeEvent>() {
             @Override
             public boolean test(@NonNull TextViewAfterTextChangeEvent textViewAfterTextChangeEvent) throws Exception {
@@ -140,6 +142,7 @@ tags: RxJava Android
                 return null != textViewAfterTextChangeEvent.editable() && !TextUtils.isEmpty(textViewAfterTextChangeEvent.editable().toString());
             }
         });
+```
 
 这里用到了`RxTextView`，这是RxBinding库中的一个类，用于TextView相关事件的监听。而RxBinding是用于Android UI控件的响应式库，具体的内容我们会在后面的文章具体介绍。在这里我们所用到的`RxTextView.afterTextChangeEvents()`实际上对应着`TextWatcher::afterTextChanged（）`方法，这样相当于使用`editTextA.addTextChangedListener()`方法添加了一个`TextWatcher`，然后监听其`afterTextChanged()`方法，将每次变化后的数据作为新产生的数据项，以供我们后续的处理。
 
@@ -154,6 +157,7 @@ tags: RxJava Android
 
 让我们看一下数据流c是如何创建的：
 
+```java
     Observable.combineLatest(observableA, observableB, new BiFunction<TextViewAfterTextChangeEvent, TextViewAfterTextChangeEvent, String>() {
             @Override
             public String apply(@NonNull TextViewAfterTextChangeEvent textViewAfterTextChangeEvent, @NonNull TextViewAfterTextChangeEvent textViewAfterTextChangeEvent2) throws Exception {
@@ -163,6 +167,7 @@ tags: RxJava Android
 
             }
         });
+```
 
 这里我们第一次用到了RxJava中的操作符(operator)，操作符是RP中一个很重要的概念，往往用于数据流的转变。如果我们将数据流比作生产的流水线的话，操作符就是流水线上的某些仪器，可以对流水线上的物品进行转换，组合等操作。
 
@@ -178,6 +183,7 @@ tags: RxJava Android
 
 在得到新生成的数据流c后，我们对数据流c进行订阅，将c的每次变化都展示在界面，代码如下：
 
+```java
     Observable.combineLatest(observableA, observableB, new BiFunction<TextViewAfterTextChangeEvent, TextViewAfterTextChangeEvent, String>() {
             @Override
             public String apply(@NonNull TextViewAfterTextChangeEvent textViewAfterTextChangeEvent, @NonNull TextViewAfterTextChangeEvent textViewAfterTextChangeEvent2) throws Exception {
@@ -209,6 +215,7 @@ tags: RxJava Android
                 Log.d(TAG, "completed");
             }
         });
+```
 
 # 2.4.4 效果
 
@@ -223,6 +230,7 @@ tags: RxJava Android
 
 ##3.1 一段简单的代码
 
+```java
     rx.Observable.just("Hello world")
                 .subscribe(new rx.Observer<String>() {
                     @Override
@@ -240,6 +248,7 @@ tags: RxJava Android
                         Log.d(TAG,"next msg: " + s);
                     }
                 });
+```
 
 这是一段最简单的RxJava代码，我们的入门就从这里开始。
 
