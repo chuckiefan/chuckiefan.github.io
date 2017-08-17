@@ -1,5 +1,3 @@
-# RxJava之旅(2)：RxJava入门基础(1)
-
 ---
 layout: post
 title: 'RxJava之旅(2)：RxJava入门基础(1)'
