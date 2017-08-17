@@ -39,7 +39,7 @@ Gradle既是一个先进的构建系统，也是一个允许通过插件创建�
 buildscript {
     repositories { 
         jcenter()
-    }`
+    }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.3.1'
     }
@@ -47,7 +47,7 @@ buildscript {
 apply plugin: 'com.android.application'
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.1.0"`
+    buildToolsVersion "23.1.0"
 }
 ```
 在Android的构建文件中，有以下三个主要区域：
@@ -99,7 +99,7 @@ android {
             assets.srcDirs = ['assets']
         }
 
- androidTest.setRoot('tests')`
+ androidTest.setRoot('tests')
       }
 }
 ```
@@ -239,7 +239,8 @@ android {
             applicationIdSuffix ".jnidebug"
             jniDebuggable true
         }
-    }`}
+    }
+}
 ```
 
 上述片断实现了如下内容：
@@ -251,9 +252,13 @@ android {
 创建一个新的构建类型就和使用`buildTypes`容器下的一个新元素一样简单，要么调用`initWith()`要么将其完全配置结束。关于构建类型的完整属性清单，请查阅：[Android构建类型参考](http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.BuildType.html)
 另外，关于修改构建属性，构建类型可以用于添加指定的代码和资源文件。对每一种构建类型，新的相匹配资源集被创建，其默认位置为”src/构建类型名称”，例如`src/debug/java`目录能够用于添加仅仅在debug APK文件中所编译的代码或资源文件。这意味着构建类型的命名不能和`main`以及`androidTest`重复（，并且必须独一无二（这是插件所限制的）。
 就像其他任何的资源集一样，构建类型资源的位置能够重新指定：
-`android {`
-`    sourceSets.jnidebug.setRoot('foo/jnidebug')`
-`}`
+
+```groovy
+android {
+    sourceSets.jnidebug.setRoot('foo/jnidebug')
+}
+```
+
 此外，对于每一种构建类型，一个新的`assemble构建类型名称`任务被创建，例如`assembleDebug`。`assembleDebug`任务和`assembleRelease`任务在上文中已经被提及，这也就是他们为什么会存在的原因。当`debug`构建类型和`release`构建类型预创建时，这些任务(`assembleDebug`和`assembleRelease`)也会被自动创建。根据这个规则，上述的build.gradle片段也将会生成一个叫做`assembleJnidebug`的任务，该任务的依赖关系也和`assembleDebug`以及`assembleRelease`一样。
 > 提示：请记得你能够输入`aJ`来运行`assembleJnidebug `任务。
 
@@ -287,7 +292,7 @@ android {
 
         myConfig {
             storeFile file("other.keystore")
-            storePassword "android"`            keyAlias "androiddebugkey"
+            storePassword "android"            keyAlias "androiddebugkey"
             keyPassword "android"
         }
     }
@@ -296,7 +301,7 @@ android {
     buildTypes {
         foo {
             signingConfig signingConfigs.myConfig
-        }`
+        }
     }
 }
 ```
@@ -450,7 +455,7 @@ android {
 
 ```groovy
 android {
-    defaultPublishConfig "flavor1Debug"`
+    defaultPublishConfig "flavor1Debug"
 }
 ```
 
@@ -552,7 +557,7 @@ android {
 android {
     //...
     testOptions {
-        resultsDir = "${project.buildDir}/foo/results"`
+        resultsDir = "${project.buildDir}/foo/results"
     }
 }
 ```
@@ -734,7 +739,7 @@ dependencies {
 我们之前看到的，每一种构建类型创建自己的`assmble名字`任务，但是构建版本是构建类型和产品渠道的组合。
 当使用产品类型时，更多的任务会被创建，如：
 
-1.  `assemble构建版本名`
+1. `assemble构建版本名`
 2. `assemble构建类型名`
 3. `assemble产品渠道名`
 
