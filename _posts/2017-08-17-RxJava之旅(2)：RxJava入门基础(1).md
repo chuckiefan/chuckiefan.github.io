@@ -72,6 +72,7 @@ tags: RxJava Android
 
 首先让我们使用面向对象的方式来解决这个问题，很简单这里涉及到三个成员变量，分别是a，b和c，以及用于计算和返回结果的两个方法。我们定义了一个叫做`Plus`的类，代码如下：
 
+```java
     public class Plus {
         private int a;
         private int b;
@@ -102,7 +103,7 @@ tags: RxJava Android
         } 
     
     }
-
+```
     
 
 
