@@ -3,6 +3,7 @@ title: "Chuckiefan's Blog"
 description: '毕竟一生很短少有圆满'
 keyword: 'Chuckiefan, Android, Git, Gradle'
 url: 'https://chuckiefan.github.io/' # your host
+name: "Chuckiefan's Blog"
 # url: 'http://localhost:4000/' # your host
 baseurl: '/'
 email: "chuckiefan@163.com"
@@ -11,6 +12,7 @@ email: "chuckiefan@163.com"
 nav:
   "首页": '/'
   "标签": '/tags.html'
+  "订阅": 'http://chuckiefan.com/feed.xml' # RSS
 
 # Author 配置博主信息
 author: 'Chuckiefan'
