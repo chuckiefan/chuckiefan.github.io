@@ -1,0 +1,1442 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>  
+	  
+  	使用Android Architecture Component开发应用（附demo） - Chuckiefan's Blog
+  	
+	</title>
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="Chuckiefan's Blog" type="application/atom+xml">
+
+	<link href="asset/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="asset/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<script src="asset/javascripts/jquery.min.js"></script>
+	<script src="asset/highlightjs/highlight.pack.js"></script>
+	<link href="asset/highlightjs/styles/solarized_dark.css" media="screen, projection" rel="stylesheet" type="text/css">
+<script>hljs.initHighlightingOnLoad();</script>
+
+	<!--[if lt IE 9]><script src="asset/javascripts/html5.js"></script><![endif]-->
+	<!-- <link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'> -->
+	<style type="text/css">
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Nunito-Light'), url(asset/font/1TiHc9yag0wq3lDO9cw0voX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nunito-Regular'), url(asset/font/6TbRXKWJjpj6V2v_WyRbMX-_kf6ByYO6CLYdB4HQE-Y.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Nunito-Bold'), url(asset/font/TttUCfJ272GBgSKaOaD7KoX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+	</style>
+	
+	<style type="text/css">
+	.container .left-col{ opacity: 1;}
+	#pagenavi a{ font-size: 1.3em;}
+	#pagenavi .next:before{ top: 3px;}
+	#pagenavi .prev:before{ top: 3px;}
+	.container .mid-col .mid-col-container #content .archives .title{ font-size: 1.5em;}
+	.container .mid-col .mid-col-container #content article{ padding: 15px 0px;}
+	#header .subtitle {
+		line-height: 1.2em;
+		padding-top: 8px;
+	}
+	article pre{ background: none; border: none; padding: 0;}
+	article .entry-content{text-align: left;}
+	.share-comment{ padding: 25px 0px; clear: both;}
+	hr{ margin: 20px 0px;border: 0; border-top:solid 1px #ddd;}
+	</style>
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+				<header id="header" class="inner">
+				 
+					
+					<h1><a href="index.html">Chuckiefan's Blog</a></h1>
+					<p class="subtitle"></p>
+					<nav id="main-nav">
+						<ul class="main">
+						
+						  <li id=""><a target="self" href="index.html">Home</a></li>
+						
+						  <li id=""><a target="_self" href="archives.html">Archives</a></li>
+						
+						</ul>
+					</nav>
+
+					<nav id="sub-nav">
+						<div class="social">
+
+
+
+
+
+
+
+
+
+
+
+
+
+								
+
+								<a class="rss" href="atom.xml" title="RSS">RSS</a>
+							
+						</div>
+					</nav>
+				</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			<div class="mid-col-container"> <div id="content" class="inner">
+
+	<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+		<h1 class="title" itemprop="name">使用Android Architecture Component开发应用（附demo）</h1>
+		<div class="entry-content" itemprop="articleBody">
+			<p><img src="http://ourmc2t8i.bkt.clouddn.com/15117517537027.png" alt=""/></p>
+
+<p>相关文章：</p>
+
+<ul>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(1)-App%E6%9E%B6%E6%9E%84%E6%8C%87%E5%AF%BC.html">【翻译】安卓架构组件(1)-App架构指导</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(2)-%E6%B7%BB%E5%8A%A0%E7%BB%84%E4%BB%B6%E5%88%B0%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B8%AD.html">【翻译】安卓架构组件(2)-添加组件到你的项目中</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(3)-%E5%A4%84%E7%90%86%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">【翻译】安卓架构组件(3)-处理生命周期</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(4)-LiveData.html">【翻译】安卓架构组件(4)-LiveData</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(5)-ViewModel.html">【翻译】安卓架构组件(5)-ViewModel</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(6)-Room%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%BA%93.html">【翻译】安卓架构组件(6)-Room持久化类库</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(7)-%E5%88%86%E9%A1%B5%E5%BA%93.html">【翻译】安卓架构组件(7)-分页库</a></li>
+<li><a href="http://chuckiefan.com/2017/11/27/%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6Demo%E4%B8%8B%E8%BD%BD.html">安装包下载地址</a></li>
+</ul>
+
+<p>今年的Google I/O大会发布了一系列的类库，统称为架构组件（Architecture Component），旨在帮助开发者构建健壮、易于测试和易于维护的应用。从我目前掌握的情况来看，这一系列类库为开发者指明了比较清晰的架构思路，确实可以显著提高应用的开发效率且对质量有一定的保证。于是我尽快翻译了官方所有相关的文档（即上面的1-6篇）。我最初接触时这些类库还处于alpha-3版本，时至今日已经发布了1.0版本，趋于稳定。同时我发现Google又发布了分页的类库，于是有了第七篇翻译。在翻译的文章中，有朋友询问能否提供一份Demo，以提供一个较为清晰直观的印象，于是就有了这篇文章。在文章的最后我会提供app的演示，安装包下载以及将项目开源至github。</p>
+
+<p>本文并不会详细介绍每个类库，相关的内容还请在上面的文章中查阅。本文的主要目的是使用这些类库来开发一款应用，并介绍整个的开发过程，从而看到这一系列类库的用法以及特点。</p>
+
+<p>此外在整个应用的构建中我们不会涉及到所有的用法（根据我在实际项目的使用情况，本文所介绍的内容足以应付日常的需求），如果需要深入了解，请自行研究源码。</p>
+
+<p>先看一下演示：</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/yanshi.gif" alt="演示"/></p>
+
+<h2 id="toc_0">0.准备</h2>
+
+<p>要构建一款什么样的应用？阅读本文的大量读者都是Android应用的开发者，涉及服务端研发的并不多，为了避免增加不必要的学习曲线，我认为自行开发服务端接口是没有意义的。所以经过考虑，我选中了<a href="https://developers.douban.com/wiki/?title=guide">豆瓣的电影API</a>，因此该应用的所有数据源皆获取自豆瓣。</p>
+
+<p>所以本文会介绍一个电影信息app的开发过程。</p>
+
+<p>关于本文开发中所需要了解的技术如下：</p>
+
+<ul>
+<li>基本的Android开发经验，如RecyclerView之类控件的使用等</li>
+<li>RxJava</li>
+<li>Kotlin</li>
+<li>Retrofit2</li>
+</ul>
+
+<p>我相信对于阅读本文的读者，这些要求并不是什么问题。在响应式编程如此火热的现在，RxJava和Retrofit已经成了很多项目的必备基础技术，而Kotlin已经成为官方宣布支持的语言。</p>
+
+<p>好了，现在让我们开始。</p>
+
+<blockquote>
+<p>本文会分成两个阶段编写，在第一个阶段我们会使用Android架构组件编写三个电影列表，即下文中的正在上映，即将上映和Top250。为了整个demo的完善性，电影详情界面的编写会在后面完成，截止本文发布时，只完成了第一个阶段。</p>
+</blockquote>
+
+<h2 id="toc_1">1.基本的界面编写</h2>
+
+<p>这一部分没有什么可值得介绍的地方，但是需要说明一下我们的界面。我们会选取三个列表进行展示：</p>
+
+<ul>
+<li>正在上映</li>
+<li>即将上映</li>
+<li>Top250</li>
+</ul>
+
+<p>正在上映是正在院线上映的电影列表，即将上映是即将在院线上映的电影列表，Top250是指评分最高的250部电影。</p>
+
+<blockquote>
+<p>需要说明的是，“正在上映”和“即将上映”和具体的城市绑定，为了简化该部分对本文核心内容的影响，我们在接口数据的请求时会使用默认的城市，即北京。</p>
+</blockquote>
+
+<p>界面如下：</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15114277389366.jpg" alt="电影列表"/></p>
+
+<p>你可以使用任何你熟悉的类库来完成这三个Fragment,需要实现下拉加载和上拉更新等操作<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>。</p>
+
+<h2 id="toc_2">2.架构综述</h2>
+
+<p>界面的编写不是什么困难的工作，真正需要我们关心的是整个应用的架构是怎样的。回顾一下<a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(1)-App%E6%9E%B6%E6%9E%84%E6%8C%87%E5%AF%BC.html">第一篇文章</a>，我们在这里给出我们的架构图示。</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15114307258843.jpg" alt="架构图示"/></p>
+
+<p>三个Fragment会通过各自的ViewModel获取数据，而所有的ViewModel都会从MovieRepository拿到数据。在MovieRepository中，我们通过Retrofit从豆瓣API获得数据，存储在Room中，而MovieRepository则从Room获取数据。</p>
+
+<h2 id="toc_3">3.网络层</h2>
+
+<p>现在我们开始编写这个应用的主要部分，首先从网络请求入手，即架构图示中的Retrofit部分。</p>
+
+<h3 id="toc_4">3.1 豆瓣API</h3>
+
+<p>首先我们需要查阅豆瓣的API文档</p>
+
+<p>正在上映：</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15115052392897.jpg" alt="正在上映API"/></p>
+
+<p>即将上映：</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15115052786884.jpg" alt="即将上映API"/></p>
+
+<p>Top250:</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15115053137122.jpg" alt="Top250API"/></p>
+
+<h3 id="toc_5">3.2接口编写</h3>
+
+<p>于是有了API接口的编写：</p>
+
+<pre><code class="language-kotlin">interface DoubanApi {
+
+    /**
+     * @param city 表示院线所在城市，可为空，如果为空则默认为北京市
+     *
+     * @return [MoviesResp]
+     */
+    @GET(&quot;v2/movie/in_theaters&quot;)
+    fun retrieveInTheaters(@Query(&quot;city&quot;) city: String?): Observable&lt;MoviesResp&gt;
+
+    /**
+     * 即将上映的电影
+     * @param start 开始，默认为0
+     * @param count 每次请求数量，默认为20
+     *
+     * @return [MoviesResp]
+     */
+    @GET(&quot;v2/movie/coming_soon&quot;)
+    fun retrieveComingSoon(@Query(&quot;start&quot;) start: Int?, @Query(&quot;count&quot;) count: Int?): Observable&lt;MoviesResp&gt;
+
+    /**
+     * Top250 评分最高的电影
+     * @param start 开始，默认为0
+     * @param count 每次请求数量，默认为20
+     *
+     * @return [MoviesResp]
+     */
+    @GET(&quot;v2/movie/top250&quot;)
+    fun retrieveTop250(@Query(&quot;start&quot;) start: Int?, @Query(&quot;count&quot;) count: Int?): Observable&lt;MoviesResp&gt;
+
+
+}
+
+</code></pre>
+
+<p>需要说明的是，这里的<code>MoviesResp</code>是豆瓣API接口返回json数据所对应的实体类，详细的内容可在demo中查看。</p>
+
+<h3 id="toc_6">3.3 Retrofit编写</h3>
+
+<p>接下来是Retrofit的编写工作，由于本文不是讲解Retrofit的内容，因此在这里直接给出代码。</p>
+
+<pre><code class="language-kotlin">class DoubanRetrofit {
+    private val TAG: String = this.javaClass.simpleName
+    private val PAGESIZE = Constant.PAGESIZE//20
+    companion object {
+        private val API = buildAPI()
+
+        private fun buildAPI(): DoubanApi {
+            return Retrofit.Builder()
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addConverterFactory(JacksonConverterFactory.create())
+                    .baseUrl(Constant.url)// &quot;http://api.douban.com/&quot;
+                    .build()
+                    .create(DoubanApi::class.java)
+        }
+        private var instance: DoubanRetrofit? = null
+
+        @Synchronized
+        fun get(): DoubanRetrofit {
+            if (null == instance) {
+                instance = DoubanRetrofit()
+            }
+            return instance!!
+        }
+
+
+    }
+
+    /**
+     * 正在上映
+     */
+    fun inTheaterMovies():Observable&lt;MoviesResp&gt;{
+
+        return API.retrieveInTheaters(null)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+    }
+
+    /**
+     * 即将上映
+     * @param start 开始位置
+     */
+    fun commingSoonMovies(start:Int):Observable&lt;MoviesResp&gt;{
+
+        return API.retrieveComingSoon(start,PAGESIZE)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+
+    }
+
+    /**
+     * 评分top250电影
+     * @param start 开始位置
+     */
+    fun top250Movies(start:Int):Observable&lt;MoviesResp&gt;{
+        return API.retrieveTop250(start,PAGESIZE)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+    }
+
+
+}
+</code></pre>
+
+<blockquote>
+<p><em>上面的代码并不是最终版本，</em>我们会在后面进行修改</p>
+</blockquote>
+
+<p>正如在架构图示所描述的那样，网络请求层获取的数据会通过ROOM存储在本地数据库，所以接下来我们要先完成持久层的编写。</p>
+
+<h2 id="toc_7">4.持久层</h2>
+
+<p>我们已经完成了网络层的编写，接下来需要进行持久层的编写。</p>
+
+<h3 id="toc_8">4.1 实体类</h3>
+
+<p>我们需要定义电影的实体类。由于我们应用的当前版本只展示了电影列表，那么不妨先从这个角度来看看界面是怎样的：</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15116854472964.jpg" alt="列表项界面"/></p>
+
+<p>于是我们有了实体类：</p>
+
+<pre><code class="language-kotlin">/**
+ * 项目 ： ArchitectureComponentDemo
+ * 作者 ： Chuckifan
+ * 时间 ： 2017/11/26 16:40
+ * 内容 ： 电影列表项，用于持久化
+ * @param id 电影id
+ * @param avatar 电影图片
+ * @param title 电影名称
+ * @param rating 电影评分
+ * @param director 导演
+ * @param casts 主演
+ * @param genres 类型
+ * @param year 年份
+ * @param isInTheater true 正在上映
+ * @param isComming true 即将上映
+ * @param isTop250 true top250
+ */
+data class Movie(var id: Long = 0,
+                 var avatar:String?=&quot;&quot;,
+                 var title: String? = &quot;未知&quot;, var rating: Float? = 0f, var ratingStr: String? = &quot;(0.0)&quot;, var director: String? = &quot;未知&quot;,
+                 var casts: String? = &quot;未知&quot;, var genres: String? = &quot;未知&quot;, var year: String? = &quot;未知&quot;,
+                 var isInTheater: Boolean = false, var isComming:Boolean = false,var isTop250: Boolean = false)
+</code></pre>
+
+<p>上面的注释已经很清晰地说明了每个成员变量的用途。</p>
+
+<h3 id="toc_9">4.2 ROOM</h3>
+
+<h4 id="toc_10">4.2.1 实体类</h4>
+
+<p>如果仅仅是定义了这样的一个类，那么它和API返回数据所对应的实体类就没有任何区别了，我们接下来需要使用ROOM对这个实体类进行标记，使其可以映射为关系数据库中的数据元素：</p>
+
+<pre><code class="language-kotlin">/**
+ * 项目 ： ArchitectureComponentDemo
+ * 作者 ： Chuckifan
+ * 时间 ： 2017/11/26 16:40
+ * 内容 ： 电影列表项，用于持久化
+ * @param id 电影id
+ * @param avatar 电影图片
+ * @param title 电影名称
+ * @param rating 电影评分
+ * @param director 导演
+ * @param casts 主演
+ * @param genres 类型
+ * @param year 年份
+ * @param isInTheater true 正在上映
+ * @param isComming true 即将上映
+ * @param isTop250 true top250
+ */
+@Entity
+data class Movie(@PrimaryKey val id: Long = 0,
+                 var avatar:String?=&quot;&quot;,
+                 var title: String? = &quot;未知&quot;, var rating: Float? = 0f, var ratingStr: String? = &quot;(0.0)&quot;, var director: String? = &quot;未知&quot;,
+                 var casts: String? = &quot;未知&quot;, var genres: String? = &quot;未知&quot;, var year: String? = &quot;未知&quot;,
+                 var isInTheater: Boolean = false, var isComming:Boolean = false,val isTop250: Boolean = false)
+</code></pre>
+
+<p>这里插入一点和本应用编写无关的内容。我个人主张不直接使用远程服务所返回的数据直接持久化到数据库，这是为了将持久层与网络层解耦，如果我们不想使用豆瓣的数据接口还可以使用其他服务接口，比如IMDb。我们唯一需要做的工作是修改从接口数据实体类到持久化类的转化方法。</p>
+
+<p>但是本文最重要的目的是介绍一个用于熟悉安卓架构组件的demo。我在本文之前曾经用Java写过一个版本，在那个版本中为了熟悉这套类库以及节省时间，我直接使用了豆瓣返回的数据，那么就涉及到实体类的嵌套，以及列表数据的映射处理，关于这部分内容的介绍请参阅<a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(6)-Room%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%BA%93.html">这里</a>。在本文不会对这部分内容进行介绍，仅仅会给出相关代码，当然这部分代码不会在最后的应用出现：</p>
+
+<p>Subject:电影条目</p>
+
+<pre><code class="language-java">@Entity
+public class Subject {
+    @Embedded
+    private Rating rating;
+    private List&lt;String&gt; genres;
+    private String title;
+    private List&lt;Cast&gt; casts;
+    private int collect_count;
+    private String original_title;
+    private String subtype;
+    private List&lt;Director&gt; directors;
+    private String year;
+    @Embedded
+    private Image images;
+    private String alt;
+    @PrimaryKey
+    private String id;
+
+    public Rating getRating() {
+        return rating;
+    }
+
+    public void setRating(Rating rating) {
+        this.rating = rating;
+    }
+
+    public List&lt;String&gt; getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List&lt;String&gt; genres) {
+        this.genres = genres;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List&lt;Cast&gt; getCasts() {
+        return casts;
+    }
+
+    public void setCasts(List&lt;Cast&gt; casts) {
+        this.casts = casts;
+    }
+
+    public int getCollect_count() {
+        return collect_count;
+    }
+
+    public void setCollect_count(int collect_count) {
+        this.collect_count = collect_count;
+    }
+
+    public String getOriginal_title() {
+        return original_title;
+    }
+
+    public void setOriginal_title(String original_title) {
+        this.original_title = original_title;
+    }
+
+    public String getSubtype() {
+        return subtype;
+    }
+
+    public void setSubtype(String subtype) {
+        this.subtype = subtype;
+    }
+
+    public List&lt;Director&gt; getDirectors() {
+        return directors;
+    }
+
+    public void setDirectors(List&lt;Director&gt; directors) {
+        this.directors = directors;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public Image getImages() {
+        return images;
+    }
+
+    public void setImages(Image images) {
+        this.images = images;
+    }
+
+    public String getAlt() {
+        return alt;
+    }
+
+    public void setAlt(String alt) {
+        this.alt = alt;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+}
+</code></pre>
+
+<p>Rating:评分</p>
+
+<pre><code class="language-java">public class Rating {
+
+    private int max;
+    private double average;
+    private String stars;
+    private int min;
+    public void setMax(int max) {
+        this.max = max;
+    }
+    public int getMax() {
+        return max;
+    }
+
+    public void setAverage(double average) {
+        this.average = average;
+    }
+    public double getAverage() {
+        return average;
+    }
+
+    public void setStars(String stars) {
+        this.stars = stars;
+    }
+    public String getStars() {
+        return stars;
+    }
+
+    public void setMin(int min) {
+        this.min = min;
+    }
+    public int getMin() {
+        return min;
+    }
+
+}
+</code></pre>
+
+<p>Cast:主演，最多可获得4个，数据结构为影人的简化描述，</p>
+
+<pre><code class="language-java">public class Cast {
+
+    private String alt;
+    @Embedded
+    private Avatar avatars;
+    private String name;
+    private String id;
+    public void setAlt(String alt) {
+        this.alt = alt;
+    }
+    public String getAlt() {
+        return alt;
+    }
+
+    public Avatar getAvatars() {
+        return avatars;
+    }
+
+    public void setAvatars(Avatar avatars) {
+        this.avatars = avatars;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+}
+</code></pre>
+
+<p>Director:导演，数据结构为影人的简化描述</p>
+
+<pre><code class="language-java">public class Director {
+
+    private String alt;
+    @Embedded
+    private Avatar avatars;
+    private String name;
+    private String id;
+
+    public String getAlt() {
+        return alt;
+    }
+
+    public void setAlt(String alt) {
+        this.alt = alt;
+    }
+
+    public Avatar getAvatars() {
+        return avatars;
+    }
+
+    public void setAvatars(Avatar avatars) {
+        this.avatars = avatars;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+}
+</code></pre>
+
+<p>Image:电影海报图，分别提供288px x 465px(大)，96px x 155px(中) 64px x 103px(小)尺寸</p>
+
+<pre><code class="language-java">public class Image {
+
+    private String small;
+    private String large;
+    private String medium;
+    public void setSmall(String small) {
+        this.small = small;
+    }
+    public String getSmall() {
+        return small;
+    }
+
+    public void setLarge(String large) {
+        this.large = large;
+    }
+    public String getLarge() {
+        return large;
+    }
+
+    public void setMedium(String medium) {
+        this.medium = medium;
+    }
+    public String getMedium() {
+        return medium;
+    }
+
+}
+</code></pre>
+
+<p>Avatar:影人头像，分别提供420px x 600px(大)，140px x 200px(中) 70px x 100px(小)尺寸</p>
+
+<pre><code class="language-java">public class Avatar{
+
+    private String small;
+    private String large;
+    private String medium;
+    public void setSmall(String small) {
+        this.small = small;
+    }
+    public String getSmall() {
+        return small;
+    }
+
+    public void setLarge(String large) {
+        this.large = large;
+    }
+    public String getLarge() {
+        return large;
+    }
+
+    public void setMedium(String medium) {
+        this.medium = medium;
+    }
+    public String getMedium() {
+        return medium;
+    }
+
+}
+</code></pre>
+
+<p>以及Converter：</p>
+
+<pre><code class="language-java">public class ListConverter {
+
+    private static final ObjectMapper mapper = new ObjectMapper();
+
+    @TypeConverter
+    public static String strList2Json(List&lt;String&gt; value) {
+        String result = null;
+        try {
+            result = mapper.writeValueAsString(value);
+        } catch (IOException e) {
+            LogUtils.e(e);
+        }
+
+        return result;
+    }
+
+    @TypeConverter
+    public static List&lt;String&gt; json2StrList(String json) {
+        List&lt;String&gt; result = null;
+        try {
+
+            JavaType javaType = getCollectionType(ArrayList.class, String.class);
+            result = mapper.readValue(json, javaType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @TypeConverter
+    public static String castList2Json(List&lt;Cast&gt; value) {
+        String result = null;
+        try {
+            result = mapper.writeValueAsString(value);
+        } catch (IOException e) {
+            LogUtils.e(e);
+        }
+
+        return result;
+    }
+
+    @TypeConverter
+    public static List&lt;Cast&gt; json2CastList(String json) {
+        List&lt;Cast&gt; result = null;
+        try {
+
+            JavaType javaType = getCollectionType(ArrayList.class, Cast.class);
+            result = mapper.readValue(json, javaType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @TypeConverter
+    public static String directorList2Json(List&lt;Director&gt; value) {
+        String result = null;
+        try {
+            result = mapper.writeValueAsString(value);
+        } catch (IOException e) {
+            LogUtils.e(e);
+        }
+
+        return result;
+    }
+
+    @TypeConverter
+    public static List&lt;Director&gt; json2DirectorList(String json) {
+        List&lt;Director&gt; result = null;
+        try {
+
+            JavaType javaType = getCollectionType(ArrayList.class, Director.class);
+            result = mapper.readValue(json, javaType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    private static JavaType getCollectionType(Class&lt;?&gt; collectionClass, Class&lt;?&gt;... elementClasses) {
+        return mapper.getTypeFactory().constructParametricType(collectionClass, elementClasses);
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>转换类的使用在<a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(6)-Room%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%BA%93.html">文章</a>中有介绍，这里不再赘述。</p>
+</blockquote>
+
+<h4 id="toc_11">4.2.2 DAO</h4>
+
+<p>在使用分页库之前我们无法完整的介绍DAO的代码，这里暂时只给出写入和删除的方法：</p>
+
+<pre><code class="language-kotlin">@Dao
+interface MovieDao {
+
+    /**
+     * 保存电影，冲突时替换
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun save(movies: List&lt;Movie&gt;)
+
+    /**
+     * 删除正在上映的电影
+     */
+    @Query(&quot;DELETE FROM Movie WHERE isInTheater&quot;)
+    fun removeIntheaterMovies()
+
+    /**
+     * 删除即将上映的电影
+     */
+    @Query(&quot;DELETE FROM Movie WHERE isComming&quot;)
+    fun removeCommingSoonMovies()
+
+    /**
+     * 删除TOP250的电影
+     */
+    @Query(&quot;DELETE FROM Movie WHERE isTop250&quot;)
+    fun removeTop250Movies()
+}
+</code></pre>
+
+<h4 id="toc_12">4.2.3 Database</h4>
+
+<p>接下来是数据库类的编写：</p>
+
+<pre><code class="language-kotlin">@Database(entities = arrayOf(Movie::class),version = BuildConfig.VERSION_CODE)
+abstract class MovieDatabse : RoomDatabase(){
+    
+    abstract fun movieDao():MovieDao
+
+    companion object {
+        private var instance: MovieDatabse? = null
+        @Synchronized
+        fun get(context: Context): MovieDatabse {
+            if (instance == null) {
+                instance = Room.databaseBuilder(context.applicationContext,
+                        MovieDatabse::class.java, &quot;MovieDB&quot;)
+                        .build()
+            }
+            return instance!!
+        }
+
+
+    }
+}
+</code></pre>
+
+<p>至此，持久层的编写可以暂时告一段落。</p>
+
+<h2 id="toc_13">5. Repository和分页</h2>
+
+<p>在这一部分，我们要完成Repository的编写。正如架构图示多描述的那样，Repository层的数量往往和DAO相对应。我们需要在Repository层完成接口数据的获取以及转换为持久化数据，同时需要完成持久化数据的完成。</p>
+
+<h3 id="toc_14">5.1 完善DAO</h3>
+
+<p>首先完善DAO中获取电影数据的部分：</p>
+
+<pre><code class="language-kotlin">@Dao
+interface MovieDao {
+
+    /**
+     * 保存电影，冲突时替换
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun save(movies: List&lt;Movie&gt;)
+
+    /**
+     * 删除正在上映的电影
+     */
+    @Query(&quot;DELETE FROM Movie WHERE isInTheater&quot;)
+    fun removeIntheaterMovies()
+
+    /**
+     * 删除即将上映的电影
+     */
+    @Query(&quot;DELETE FROM Movie WHERE isComming&quot;)
+    fun removeCommingSoonMovies()
+
+    /**
+     * 删除TOP250的电影
+     */
+    @Query(&quot;DELETE FROM Movie WHERE isTop250&quot;)
+    fun removeTop250Movies()
+
+    /**
+     * 获取正在上映的电影
+     */
+    @Query(&quot;SELECT * FROM Movie WHERE isInTheater&quot;)
+    fun queryIntheaterMovies():LivePagedListProvider&lt;Int,Movie&gt;
+
+    /**
+     * 获取正在上映的电影
+     */
+    @Query(&quot;SELECT * FROM Movie WHERE isComming&quot;)
+    fun queryCommingsoonMovies():LivePagedListProvider&lt;Int,Movie&gt;
+
+    /**
+     * 获取top250的电影
+     */
+    @Query(&quot;SELECT * FROM Movie WHERE isTop250 ORDER BY rating DESC&quot;)
+    fun queryTOP250Movies():LivePagedListProvider&lt;Int,Movie&gt;
+}
+</code></pre>
+
+<blockquote>
+<p>截止目前，这篇文章不会涉及到LiveData的使用，我会尽快完善电影详情部分，到时候会补充LiveData的内容。</p>
+</blockquote>
+
+<h3 id="toc_15">5.2完善Retrofit</h3>
+
+<p>接下来我们可以完善Retrofit的部分，使得从豆瓣获取的数据可以转化为我们持久层的实体类：</p>
+
+<pre><code class="language-kotlin">class DoubanRetrofit {
+    private val TAG: String = this.javaClass.simpleName
+    private val PAGESIZE = Constant.PAGESIZE//20
+
+    companion object {
+        private val API = buildAPI()
+
+        private fun buildAPI(): DoubanApi {
+            return Retrofit.Builder()
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addConverterFactory(JacksonConverterFactory.create())
+                    .baseUrl(Constant.url)// &quot;http://api.douban.com/&quot;
+                    .build()
+                    .create(DoubanApi::class.java)
+        }
+
+        private var instance: DoubanRetrofit? = null
+
+        @Synchronized
+        fun get(): DoubanRetrofit {
+            if (null == instance) {
+                instance = DoubanRetrofit()
+            }
+            return instance!!
+        }
+
+
+    }
+
+    /**
+     * 正在上映
+     */
+    fun inTheaterMovies(): Observable&lt;List&lt;Movie&gt;&gt; {
+
+        return API.retrieveInTheaters(null)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .concatMap({ origin -&gt;
+                    Observable.just(origin.subjects)
+                }).map({ subjects -&gt;
+            convert(subjects, true, false, false)
+        })
+    }
+
+
+    /**
+     * 即将上映
+     * @param start 开始位置
+     */
+    fun commingSoonMovies(start: Int): Observable&lt;List&lt;Movie&gt;&gt; {
+
+        return API.retrieveComingSoon(start, PAGESIZE)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .concatMap({ origin -&gt;
+                    Observable.just(origin.subjects)
+                }).map({ subjects -&gt;
+            convert(subjects, false, true, false)
+        })
+
+    }
+
+    /**
+     * 评分top250电影
+     * @param start 开始位置
+     */
+    fun top250Movies(start: Int): Observable&lt;List&lt;Movie&gt;&gt; {
+        return API.retrieveTop250(start, PAGESIZE)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .concatMap({ origin -&gt;
+                    Observable.just(origin.subjects)
+                }).map({ subjects -&gt;
+            convert(subjects, false, false, true)
+        })
+    }
+
+    /**
+     * [Subject]列表转为[Movie]列表
+     */
+    private fun convert(subjects: List&lt;Subject&gt;, isInTheater: Boolean, isComming: Boolean, isTop250: Boolean): List&lt;Movie&gt; {
+        val movies: List&lt;Movie&gt; = subjects.map { item -&gt;
+            //评分
+            val rating: Float
+            val ratingStr: String
+            if (null == item.rating) {
+                ratingStr = &quot;(0.0)&quot;
+                rating = 0.0f
+
+            } else {
+                rating = (item.rating.average / 2).toFloat()
+                ratingStr = &quot;(${item.rating.average})&quot;
+            }
+
+            //导演
+            val directors: String = if (null == item.directors) {
+                &quot;&quot;
+            } else {
+                item.directors.joinToString(&quot;/&quot;,&quot;&quot;,&quot;&quot;,-1,&quot;...&quot;,{it -&gt;
+                    it.name
+                })
+            }
+
+            //主演
+            val casts = if (null == item.casts) {
+                &quot;&quot;
+            } else {
+                item.casts.joinToString(&quot;/&quot;,&quot;&quot;,&quot;&quot;,-1,&quot;...&quot;,{it -&gt;
+                    it.name
+                })
+            }
+
+            //类型
+            val genres = if (null == item.genres) {
+                &quot;&quot;
+            } else {
+                item.genres.joinToString(&quot;/&quot;,&quot;&quot;,&quot;&quot;,-1,&quot;...&quot;)
+            }
+
+
+            val movie = Movie(item.id.toLong()
+                    , item.images.medium, item.title, rating, ratingStr, directors, casts, genres,
+                    item.year, isInTheater, isComming, isTop250)
+            movie
+
+        }
+        return movies
+    }
+
+
+}
+</code></pre>
+
+<h3 id="toc_16">5.4 Repository</h3>
+
+<p>完善了DAO和Retrofit的编写以后，我们就可以开始编写Repository层的代码。在Repository层，我们需要完成以下两个内容：</p>
+
+<ol>
+<li>将Retrofit层获取到的数据持久化在数据库中</li>
+<li>从数据库中获取数据</li>
+</ol>
+
+<p>就是说，Repository层连接了Retrofit和ROOM，就像架构图示所描述的那样。</p>
+
+<pre><code class="language-kotlin">class MovieRepository(context: Context) {
+    private val dao: MovieDao = MovieDatabse.get(context).movieDao()
+    private val inTheaterMovies = dao.queryIntheaterMovies()
+    private val commingsoonMovies = dao.queryCommingsoonMovies()
+    private val top250Movies = dao.queryTOP250Movies()
+
+    private val retrofit = DoubanRetrofit.get()
+
+
+    /**
+     * 获取正在上映的电影
+     */
+    fun getInTheaterMovies() = inTheaterMovies
+
+    /**
+     * 获取即将上映的电影
+     */
+    fun getCommingsoonMovies() = commingsoonMovies
+
+    /**
+     * 获取TOP250的电影
+     */
+    fun getTop250Movies() = top250Movies
+
+    /**
+     * 刷新正在上映的电影，并删除之前的数据
+     */
+    fun refreshInTheaterMovies(view: RefreshView){
+        retrofit.inTheaterMovies()
+                .subscribe({movies-&gt;
+                    ioThread {
+                        dao.removeIntheaterMovies()
+                        dao.save(movies)
+                    }
+                }, { error -&gt;
+                    view.onError(error)
+                    view.onRefreshCompleted()
+                }, {
+
+                    view.onRefreshCompleted()
+                })
+    }
+
+    /**
+     * 刷新即将上映的电影，并删除之前的数据
+     */
+    fun refreshCommingsoonMovies(view: RefreshView){
+        retrofit.commingSoonMovies(0)
+                .subscribe({movies-&gt;
+                    ioThread {
+                        dao.removeCommingSoonMovies()
+                        dao.save(movies)
+                    }
+                }, { error -&gt;
+                    view.onError(error)
+                    view.onRefreshCompleted()
+                }, {
+
+                    view.onRefreshCompleted()
+                })
+    }
+
+    /**
+     * 刷新TOP250的电影，并删除之前的数据
+     */
+    fun refreshTop250Movies(view:RefreshView){
+        retrofit.top250Movies(0)
+                .subscribe({movies-&gt;
+                    ioThread {
+                        dao.removeTop250Movies()
+                        dao.save(movies)
+                    }
+                }, { error -&gt;
+                    view.onError(error)
+                    view.onRefreshCompleted()
+                }, {
+
+                    view.onRefreshCompleted()
+                })
+    }
+
+    /**
+     * 加载更多即将上映的电影
+     */
+    fun loadMoreCommingsoonMovies(start:Int, view: RefreshView){
+        retrofit.commingSoonMovies(start)
+                .subscribe({movies-&gt;
+                    ioThread {
+                        dao.save(movies)
+                    }
+                }, { error -&gt;
+                    view.onError(error)
+                    view.onLoadMoreCompleted()
+                }, {
+
+                    view.onLoadMoreCompleted()
+                })
+    }
+
+    /**
+     * 加载更多TOP250的电影
+     */
+    fun loadMoreTop250Movies(start: Int, view:RefreshView){
+        retrofit.top250Movies(start)
+                .subscribe({movies-&gt;
+                    ioThread {
+                        dao.save(movies)
+                    }
+                }, { error -&gt;
+                    view.onError(error)
+                    view.onLoadMoreCompleted()
+                }, {
+
+                    view.onLoadMoreCompleted()
+                })
+    }
+
+
+}
+</code></pre>
+
+<p>至此，Repository完成。</p>
+
+<h2 id="toc_17">6. ViewModel</h2>
+
+<p>三个ViewModel层的编写比较相似，区别在于正在上映的ViewModel没有分页加载、每个ViewModel所调用Repository的方法不同。这里我们选取即将上映的ViewModel进行介绍：</p>
+
+<pre><code class="language-kotlin">class CommingsoonViewModel(app: Application) : AndroidViewModel(app) {
+    private val repo = MovieRepository(app)
+    private val datas = repo.getCommingsoonMovies()
+
+    private var start:Int = 0
+
+    fun getData() = datas.create(0, PagedList.Config.Builder()
+            .setPageSize(Constant.PAGESIZE)
+            .setEnablePlaceholders(Constant.ENABLE_PLACEHOLDERS)
+            .build())
+
+    fun refresh(view: RefreshView){
+        start = 0
+        repo.refreshCommingsoonMovies(view)
+    }
+
+    fun loadmore(view:RefreshView){
+        start += Constant.PAGESIZE
+
+        repo.loadMoreCommingsoonMovies(start,view)
+    }
+}
+</code></pre>
+
+<p>回顾一下架构图示，ViewModel层调用Repository的方法。我们在这里使用PagedList对分页数据进行配置。</p>
+
+<h2 id="toc_18">7. UI补遗</h2>
+
+<p>最后我们再来看看UI方面有哪些需要补充的地方。</p>
+
+<h3 id="toc_19">7.1 item_movie</h3>
+
+<p>首先是列表项的layout，item_movie:</p>
+
+<pre><code class="language-markup">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+              xmlns:tools=&quot;http://schemas.android.com/tools&quot; android:layout_width=&quot;match_parent&quot;
+              android:layout_height=&quot;wrap_content&quot;
+              android:layout_marginEnd=&quot;16dp&quot;
+              android:layout_marginRight=&quot;16dp&quot;
+              android:orientation=&quot;horizontal&quot;
+&gt;
+
+
+    &lt;ImageView android:id=&quot;@+id/picture&quot; android:layout_width=&quot;80dp&quot;
+               android:layout_height=&quot;80dp&quot;
+               android:layout_gravity=&quot;center_vertical&quot;
+
+               android:layout_marginLeft=&quot;16dp&quot;
+
+               android:layout_marginRight=&quot;16dp&quot;
+               android:contentDescription=&quot;@string/movie_face&quot;
+               android:src=&quot;@mipmap/ic_launcher&quot;/&gt;
+
+    &lt;LinearLayout android:layout_width=&quot;match_parent&quot;
+                  android:layout_height=&quot;wrap_content&quot;
+                  android:gravity=&quot;center_vertical&quot;
+                  android:orientation=&quot;vertical&quot;
+    &gt;
+        &lt;TextView android:id=&quot;@+id/title&quot;
+                  android:layout_width=&quot;wrap_content&quot;
+                  android:layout_height=&quot;wrap_content&quot;
+                  android:textSize=&quot;@dimen/title_text_size&quot;
+                  tools:text=&quot;肖申克的救赎 The Shawshank Redemption&quot;/&gt;
+        &lt;LinearLayout android:layout_width=&quot;match_parent&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      android:orientation=&quot;horizontal&quot;
+        &gt;
+            &lt;RatingBar android:id=&quot;@+id/rating_bar&quot;
+                       style=&quot;@style/Base.Widget.AppCompat.RatingBar.Small&quot;
+                       android:layout_width=&quot;wrap_content&quot;
+                       android:layout_height=&quot;wrap_content&quot;
+                       android:layout_gravity=&quot;center_vertical&quot;
+                       android:numStars=&quot;5&quot;
+
+            /&gt;
+            &lt;TextView android:id=&quot;@+id/rating_des&quot; android:layout_width=&quot;wrap_content&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      android:layout_gravity=&quot;center_vertical&quot;
+                      tools:text=&quot; (5.2)&quot;/&gt;
+        &lt;/LinearLayout&gt;
+
+        &lt;LinearLayout android:layout_width=&quot;match_parent&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      android:orientation=&quot;horizontal&quot;
+        &gt;
+            &lt;TextView android:id=&quot;@+id/textView&quot; android:layout_width=&quot;wrap_content&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      android:text=&quot;@string/director&quot;/&gt;
+
+            &lt;TextView android:id=&quot;@+id/director&quot; android:layout_width=&quot;wrap_content&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      tools:text=&quot;弗兰克·德拉邦特&quot;/&gt;
+        &lt;/LinearLayout&gt;
+
+        &lt;LinearLayout android:layout_width=&quot;match_parent&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      android:orientation=&quot;horizontal&quot;
+        &gt;
+            &lt;TextView android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot;
+                      android:text=&quot;@string/actor&quot;
+            /&gt;
+
+            &lt;TextView android:id=&quot;@+id/actors&quot; android:layout_width=&quot;wrap_content&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      tools:text=&quot;蒂姆·罗宾斯 / 摩根·弗里曼 / 鲍勃·冈顿 &quot;/&gt;
+        &lt;/LinearLayout&gt;
+
+        &lt;LinearLayout android:layout_width=&quot;match_parent&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      android:orientation=&quot;horizontal&quot;
+        &gt;
+            &lt;TextView android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot;
+                      android:text=&quot;@string/type&quot;
+            /&gt;
+
+            &lt;TextView android:id=&quot;@+id/type&quot; android:layout_width=&quot;wrap_content&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      tools:text=&quot;犯罪/剧情 &quot;/&gt;
+        &lt;/LinearLayout&gt;
+
+        &lt;LinearLayout android:layout_width=&quot;match_parent&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      android:orientation=&quot;horizontal&quot;
+        &gt;
+            &lt;TextView android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot;
+                      android:text=&quot;@string/year&quot;
+            /&gt;
+
+            &lt;TextView android:id=&quot;@+id/year&quot; android:layout_width=&quot;wrap_content&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      tools:text=&quot;1994&quot;/&gt;
+        &lt;/LinearLayout&gt;
+
+
+    &lt;/LinearLayout&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<h3 id="toc_20">7.2 MovieAdapter</h3>
+
+<p>其次是用于RecyclerView的MovieAdapter：</p>
+
+<pre><code class="language-kotlin">class MovieAdapter : PagedListAdapter&lt;Movie, MovieViewHolder&gt;(diffCallback) {
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+        holder.bindTo(getItem(position))
+    }
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder =
+            MovieViewHolder(parent)
+
+    companion object {
+        /**
+         * This diff callback informs the PagedListAdapter how to compute list differences when new
+         * PagedLists arrive.
+         * &lt;p&gt;
+         * When you add a Cheese with the &#39;Add&#39; button, the PagedListAdapter uses diffCallback to
+         * detect there&#39;s only a single item difference from before, so it only needs to animate and
+         * rebind a single view.
+         *
+         * @see android.support.v7.util.DiffUtil
+         */
+        private val diffCallback = object : DiffCallback&lt;Movie&gt;() {
+            override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean =
+                    oldItem.id == newItem.id
+
+            /**
+             * Note that in kotlin, == checking on data classes compares all contents, but in Java,
+             * typically you&#39;ll implement Object#equals, and use it to compare object contents.
+             */
+            override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean =
+                    oldItem == newItem
+        }
+    }
+}
+</code></pre>
+
+<h3 id="toc_21">7.3 Fragment</h3>
+
+<p>最后是我们Fragment中的关键代码片段：</p>
+
+<pre><code class="language-kotlin"> override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        viewModel = ViewModelProviders.of(this).get(CommingsoonViewModel::class.java)
+        viewModel.getData().observeForever(Observer(adapter::setList))
+        onRefresh()
+
+
+    }
+</code></pre>
+
+<h2 id="toc_22">8. 总结（附demo）</h2>
+
+<p>app的演示：<a href="http://player.youku.com/embed/XMzE4NzM2MDcyOA==">点击跳转</a></p>
+
+<p>安装包下载地址以及开源代码地址：<a href="http://chuckiefan.com/2017/11/27/%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6Demo%E4%B8%8B%E8%BD%BD.html">点击跳转</a></p>
+
+<p>本文介绍了使用安卓架构组件构建一个简单应用的过程。诚然，目前为止我们没有介绍到所有相关类库的基本使用，我会在后面尽量补充LiveData等相关内容的介绍。</p>
+
+<p>但是从另一个角度来看，正如谷歌自己所说，这套类库只是提供一个架构设计的思路和参考，如果我们有更好的选择，完全可以不用关心这套组件。而这套组件中的类库也是可选择的，比如，你在持久层有更好的选择，就不需要使用Room。</p>
+
+<p>本文书写以及代码的编写是在业余时间完成的，难免仓促和疏忽。如果您有任何问题和建议欢迎在文章下方评论，或者在github上提issue，我会及时回复并定期整理在文章中。</p>
+
+<p>另外，欢迎您为文章点赞以及在github项目中点击star，这些是对我最大的回报和动力，谢谢。</p>
+
+<div class="footnotes">
+<hr/>
+<ol>
+
+<li id="fn1">
+<p>这里的下拉是指手指从下向上滑动，相反上拉是指从上向下滑动。&nbsp;<a href="#fnref1" rev="footnote">&#8617;</a></p>
+</li>
+
+</ol>
+</div>
+
+		</div>
+	</article>
+	<div class="share-comment">
+	 
+
+	  
+
+	  
+
+	</div>
+</div>        </div>
+			<footer id="footer" class="inner">Copyright &copy; 2014
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; 
+Theme by <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a>
+      </footer>
+		</div>
+	</div>
+
+  
+    
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+</body>
+</html>

@@ -1,0 +1,5141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>  
+	  
+  	Chuckiefan's Blog
+  	
+	</title>
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="Chuckiefan's Blog" type="application/atom+xml">
+
+	<link href="asset/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="asset/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<script src="asset/javascripts/jquery.min.js"></script>
+	<script src="asset/highlightjs/highlight.pack.js"></script>
+	<link href="asset/highlightjs/styles/solarized_dark.css" media="screen, projection" rel="stylesheet" type="text/css">
+<script>hljs.initHighlightingOnLoad();</script>
+
+	<!--[if lt IE 9]><script src="asset/javascripts/html5.js"></script><![endif]-->
+	<!-- <link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'> -->
+	<style type="text/css">
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Nunito-Light'), url(asset/font/1TiHc9yag0wq3lDO9cw0voX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nunito-Regular'), url(asset/font/6TbRXKWJjpj6V2v_WyRbMX-_kf6ByYO6CLYdB4HQE-Y.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Nunito-Bold'), url(asset/font/TttUCfJ272GBgSKaOaD7KoX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+	</style>
+	
+	<style type="text/css">
+	.container .left-col{ opacity: 1;}
+	#pagenavi a{ font-size: 1.3em;}
+	#pagenavi .next:before{ top: 3px;}
+	#pagenavi .prev:before{ top: 3px;}
+	.container .mid-col .mid-col-container #content .archives .title{ font-size: 1.5em;}
+	.container .mid-col .mid-col-container #content article{ padding: 15px 0px;}
+	#header .subtitle {
+		line-height: 1.2em;
+		padding-top: 8px;
+	}
+	article pre{ background: none; border: none; padding: 0;}
+	article .entry-content{text-align: left;}
+	.share-comment{ padding: 25px 0px; clear: both;}
+	hr{ margin: 20px 0px;border: 0; border-top:solid 1px #ddd;}
+	</style>
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+				<header id="header" class="inner">
+				 
+					
+					<h1><a href="index.html">Chuckiefan's Blog</a></h1>
+					<p class="subtitle"></p>
+					<nav id="main-nav">
+						<ul class="main">
+						
+						  <li id=""><a target="self" href="index.html">Home</a></li>
+						
+						  <li id=""><a target="_self" href="archives.html">Archives</a></li>
+						
+						</ul>
+					</nav>
+
+					<nav id="sub-nav">
+						<div class="social">
+
+
+
+
+
+
+
+
+
+
+
+
+
+								
+
+								<a class="rss" href="atom.xml" title="RSS">RSS</a>
+							
+						</div>
+					</nav>
+				</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			<div class="mid-col-container"> <div id="content" class="inner">
+<div itemscope itemtype="http://schema.org/Blog">
+
+
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2018-06-22T09:42:33+08:00" itemprop="datePublished">2018/6/22 9:42 上午</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15296317538168.html" itemprop="url">
+		git-merge完全解析</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<blockquote>
+<p>Git的git-merge是在Git中频繁使用的一个命令，很多人都觉得git合并是一个非常麻烦的事情，一不小心就会遇到丢失代码的问题，从而对git望而却步。本文基于Git 2.8.2对git-merge命令进行完整详细的介绍，特别是关于交叉合并所带来的代码遗失问题，在文末给出自己的建议，希望能够帮助到git的使用者。本文所介绍的内容基于Git 2.8.2</p>
+</blockquote>
+
+<p>git-merge命令是用于将两个或两个以上的开发历史合并在一起的操作，通常也可写作：git merge。</p>
+
+<h1 id="toc_0">1.git-merge相关的选项参数</h1>
+
+<h2 id="toc_1">1.1摘要</h2>
+
+<p>在git-merge命令中，有以下三种使用参数：</p>
+
+<ul>
+<li><code>git merge [-n] [--stat] [--no-commit] [--squash] [--[no-]edit]               [-s &lt;strategy&gt;] [-X &lt;strategy-option&gt;] [-S[&lt;keyid&gt;]]               [--[no-]rerere-autoupdate] [-m &lt;msg&gt;] [&lt;commit&gt;...]</code></li>
+<li><code>git merge &lt;msg&gt; HEAD &lt;commit&gt;...</code></li>
+<li><code>git merge --abort</code>
+##1.2git-merge简介<br/>
+git-merge命令是用于从指定的commit(s)合并到当前分支的操作。<br/>
+&gt;注：这里的指定commit(s)是指从这些历史commit节点开始，一直到当前分开的时候。<br/>
+git-merge命令有以下两种用途：</li>
+<li>用于git-pull中，来整合另一代码仓库中的变化（即：git pull = git fetch + git merge）</li>
+<li>用于从一个分支到另一个分支的合并<br/>
+假设下面的历史节点存在，并且当前所在的分支为“master”：<br/>
+(img)<br/>
+那么<code>git merge topic</code>命令将会把在master分支上二者共同的节点（E节点）之后分离的节点（即topic分支的A B C节点）重现在master分支上，直到topic分支当前的commit节点（C节点），并位于master分支的顶部。并且沿着master分支和topic分支创建一个记录合并结果的新节点，该节点带有用户描述合并变化的信息。<br/>
+&gt;即下图中的H节点，C节点和G节点都是H节点的父节点。<br/>
+(img)<br/>
+##1.3<code>git merge &lt;msg&gt; HEAD &lt;commit&gt;...</code>命令<br/>
+该命令的存在是由于历史原因，在新版本中不应该使用它，应该使用<code>git merge -m &lt;msg&gt; &lt;commit&gt;....</code>进行替代<br/>
+##1.4<code>git merge --abort</code>命令<br/>
+该命令仅仅在合并后导致冲突时才使用。<code>git merge --abort</code>将会抛弃合并过程并且尝试重建合并前的状态。但是，当合并开始时如果存在未commit的文件，<code>git merge --abort</code>在某些情况下将无法重现合并前的状态。（特别是这些未commit的文件在合并的过程中将会被修改时）<br/>
+&gt;警告：运行<code>git-merge</code>时含有大量的未commit文件很容易让你陷入困境，这将使你在冲突中难以回退。因此非常不鼓励在使用<code>git-merge</code>时存在未commit的文件，建议使用<code>git-stash</code>命令将这些未commit文件暂存起来，并在解决冲突以后使用<code>git stash pop</code>把这些未commit文件还原出来。<br/>
+#2.参数<br/>
+本部分用于介绍<code>git-merge</code>命令中使用的参数<br/>
+##2.1<code>--commit</code>和<code>--no-commit</code>
+<code>--commit</code>参数使得合并后产生一个合并结果的commit节点。该参数可以覆盖<code>--no-commit</code>。
+<code>--no-commit</code>参数使得合并后，为了防止合并失败并不自动提交，能够给使用者一个机会在提交前审视和修改合并结果。
+##2.2<code>--edit</code>和<code>-e</code>以及<code>--no-edit</code>
+<code>--edit</code>和<code>-e</code>用于在成功合并、提交前调用编辑器来进一步编辑自动生成的合并信息。因此使用者能够进一步解释和判断合并的结果。
+<code>--no-edit</code>参数能够用于接受自动合并的信息（通常情况下并不鼓励这样做）。
+&gt;如果你在合并时已经给定了<code>-m</code>参数（下文介绍），使用 <code>--edit</code>（或<code>-e</code>）依然是有用的，这将在编辑器中进一步编辑<code>-m</code>所含的内容。<br/>
+&gt;旧版本的节点可能并不允许用户去编辑合并日志信息。<br/>
+##2.3<code>--ff</code>命令
+<code>--ff</code>是指fast-forward命令。当使用fast-forward模式进行合并时，将不会创造一个新的commit节点。默认情况下，<code>git-merge</code>采用fast-forward模式。
+关于fast-forward模式的详细解释，请看我的另一篇文章：[一个成功的Git分支模型]的“关于fast forward”一节。<br/>
+##2.4<code>--no-ff</code>命令<br/>
+即使可以使用fast-forward模式，也要创建一个新的合并节点。这是当<code>git merge</code>在合并一个tag时的默认行为。<br/>
+##2.5<code>--ff-only</code>命令<br/>
+除非当前HEAD节点已经up-to-date（更新指向到最新节点）或者能够使用fast-forward模式进行合并，否则的话将拒绝合并，并返回一个失败状态。<br/>
+##2.5 <code>--log[=&lt;n&gt;]</code>和 <code>--no-log</code>
+<code>--log[=&lt;n&gt;]</code>将在合并提交时，除了含有分支名以外，还将含有最多n个被合并commit节点的日志信息。
+<code>--no-log</code>并不会列出该信息。
+##2.6 <code>--stat</code>, <code>-n</code>, <code>--no-stat</code>命令
+<code>--stat</code>参数将会在合并结果的末端显示文件差异的状态。文件差异的状态也可以在git配置文件中的merge.stat配置。
+相反，<code>-n</code>, <code>--no-stat</code>参数将不会显示该信息。<br/>
+##2.7<code>--squash</code> 和<code>--no-squash</code>
+<code>--squash</code> 当一个合并发生时，从当前分支和对方分支的共同祖先节点之后的对方分支节点，一直到对方分支的顶部节点将会压缩在一起，使用者可以经过审视后进行提交，产生一个新的节点。
+&gt;注意1:该参数和<code>--no-ff</code>冲突<br/>
+&gt;注意2:该参数使用后的结果类似于在当前分支提交一个新节点。在某些情况下这个参数非常有用，例如使用Git Flow时（关于Git Flow，请参考：[一个成功的Git分支模型]），功能分支在进行一个功能需求的研发时，开发者可能在本地提交了大量且无意义的节点，当需要合并到develop分支时，可能仅仅需要用一个新的节点来表示这一长串节点的修改内容，这时<code>--squash</code>命令将会发挥作用。此外，如果功能分支的多次提交并不是琐碎而都是有意义的，使用<code>--no-ff</code>命令更为合适。
+<code>--no-squash</code>的作用正好相反。
+##2.8 <code>-s &lt;strategy&gt;</code>和 <code>--strategy=&lt;strategy&gt;</code>
+<code>-s &lt;strategy&gt;</code>和 <code>--strategy=&lt;strategy&gt;</code>用于指定合并的策略。默认情况如果没有指定该参数，git将按照下列情况采用默认的合并策略：</li>
+<li>合并节点只含有单个父节点时（如采用fast-forward模式时），采用recursive策略（下文介绍）。</li>
+<li>合并节点含有多个父节点时(如采用no-fast-forward模式时)，采用octopus策略（下文介绍）。<br/>
+##2.9 <code>-X &lt;option&gt;</code>和 <code>--strategy-option=&lt;option&gt;</code><br/>
+在<code>-s &lt;strategy&gt;</code>时指定该策略的具体参数（下文介绍）。<br/>
+##2.10 <code>--verify-signatures</code>, <code>--no-verify-signatures</code><br/>
+用于验证被合并的节点是否带有GPG签名，并在合并中忽略那些不带有GPG签名验证的节点。<br/>
+(以下引用摘自一篇转载的文章，由于我没有找到原作者，因此无法提供原作者信息和原文链接，如果有所侵权请私信或者评论告知，我将删除以下引用内容。)<br/>
+&gt;GPG是加密软件，可以使用GPG生成的公钥在网上安全的传播你的文件、代码。<br/>
+&gt;为什么说安全的？以Google所开发的repo为例，repo即采用GPG验证的方式，每个里程碑tag都带有GPG加密验证，假如在里程碑v1.12.3处你想要做修改，修改完后将这个tag删除，然后又创建同名tag指向你的修改点，这必然是可以的。但是，在你再次clone你修改后的项目时，你会发现，你对此里程碑tag的改变不被认可，验证失败，导致你的修改在这里无法正常实现。这就是GPG验证的作用，这样就能够保证项目作者（私钥持有者）所制定的里程碑别人将无法修改。那么，就可以说，作者的代码是安全传播的。<br/>
+&gt;为什么会有这种需求？一个项目从开发到发布，再到后期的更新迭代，一定会存在若干的稳定版本与开发版本（存在不稳定因素）。作为项目发起者、持有者，有权定义他（们）所认可的稳定版本，这个稳定版本，将不允许其他开发者进行改动。还以Google的repo项目为例，项目所有者定义项目开发过程中的点A为稳定版v1.12.3，那么用户在下载v1.12.3版本后，使用的肯定是A点所生成的项目、产品，就算其他开发者能够在本地对v1.12.3进行重新指定，指定到他们修改后的B点，但是最终修改后的版本给用户用的时候，会出现GPG签名验证不通过的问题，也就是说这样的修改是不生效的。<br/>
+##2.11 <code>—summary</code>,<code>--no-summary</code><br/>
+和<code>--stat</code>与 <code>--no-stat</code>相似，并将在未来版本移除。<br/>
+##2.12 <code>-q</code>和 <code>--quiet</code><br/>
+静默操作，不显示合并进度信息。<br/>
+##2.13 <code>-v</code>和 <code>--verbose</code><br/>
+显示详细的合并结果信息。<br/>
+##2.14 <code>--progress</code>和 <code>--no-progress</code><br/>
+切换是否显示合并的进度信息。如果二者都没有指定，那么在标准错误发生时，将在连接的终端显示信息。请注意，并不是所有的合并策略都支持进度报告。<br/>
+##2.15<code>-S[&lt;keyid&gt;]</code>和 <code>--gpg-sign[=&lt;keyid&gt;]</code><br/>
+GPG签名。<br/>
+##2.16<code>-m &lt;msg&gt;</code><br/>
+设置用于创建合并节点时的提交信息。<br/>
+如果指定了<code>--log</code>参数，那么commit节点的短日志将会附加在提交信息里。<br/>
+##2.17<code>--[no-]rerere-autoupdate</code><br/>
+rerere即reuse recorded resolution，重复使用已经记录的解决方案。它允许你让 Git 记住解决一个块冲突的方法，这样在下一次看到相同冲突时，Git 可以为你自动地解决它。<br/>
+##2.18<code>--abort</code><br/>
+抛弃当前合并冲突的处理过程并尝试重建合并前的状态。<br/>
+#3.关于合并的其他概念<br/>
+##3.1合并前的检测<br/>
+在合并外部分支时，你应当保持自己分支的整洁，否则的话当存在合并冲突时将会带来很多麻烦。<br/>
+为了避免在合并提交时记录不相关的文件，如果有任何在index所指向的HEAD节点中登记的未提交文件，git-pull和git-merge命令将会停止。<br/>
+##3.2fast-forward合并<br/>
+通常情况下分支合并都会产生一个合并节点，但是在某些特殊情况下例外。例如调用git pull命令更新远端代码时，如果本地的分支没有任何的提交，那么没有必要产生一个合并节点。这种情况下将不会产生一个合并节点，HEAD直接指向更新后的顶端代码，这种合并的策略就是fast-forward合并。<br/>
+##3.3合并细节<br/>
+除了上文所提到的fast-forward合并模式以外，被合并的分支将会通过一个合并节点和当前分支绑在一起，该合并节点同时拥有合并前的当前分支顶部节点和对方分支顶部节点，共同作为父节点。<br/>
+一个合并了的版本将会使所有相关分支的变化一致，包括提交节点，HEAD节点和index指针以及节点树都会被更新。只要这些节点中的文件没有重叠的地方，那么这些文件的变化都会在节点树中改动并更新保存。<br/>
+如果无法明显地合并这些变化，将会发生以下的情况：</li>
+<li>HEAD指针所指向的节点保持不变</li>
+<li><code>MERGE_HEAD</code>指针被置于其他分支的顶部</li>
+<li>已经合并干净的路径在index文件和节点树中同时更新</li>
+<li>对于冲突路径，index文件记录了三个版本：版本1记录了二者共同的祖先节点，版本2记录了当前分支的顶部，即HEAD，版本3记录了<code>MERGE_HEAD</code>。节点树中的文件包含了合并程序运行后的结果。例如三路合并算法会产生冲突。</li>
+<li>其他方面没有任何变化。特别地，你之前进行的本地修改将继续保持原样。<br/>
+如果你尝试了一个导致非常复杂冲突的合并，并想重新开始，那么可以使用<code>git merge --abort</code><br/>
+&gt;关于三路合并算法：<br/>
+&gt;三路合并算法是用于解决冲突的一种方式，当产生冲突时，三路合并算法会获取三个节点：本地冲突的B节点，对方分支的C节点，B，C节点的共同最近祖先节点A。三路合并算法会根据这三个节点进行合并。具体过程是，B，C节点和A节点进行比较，如果B，C节点的某个文件和A节点中的相同，那么不产生冲突；如果B或C只有一个和A节点相比发生变化，那么该文件将会采用该变化了的版本；如果B和C和A相比都发生了变化，且变化不相同，那么则需要手动去合并;如果B，C都发生了变化，且变化相同，那么并不产生冲突，会自动采用该变化的版本。最终合并后会产生D节点，D节点有两个父节点，分别为B和C。<br/>
+##3.4合并tag<br/>
+当合并一个tag时，Git总是创建一个合并的提交，即使这时能够使用fast-forward模式。该提交信息的模板预设为该tag的信息。额外地，如果该tag被签名，那么签名的检测信息将会附加在提交信息模板中。<br/>
+##3.5冲突是如何表示的<br/>
+当产生合并冲突时，该部分会以<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>和 <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>表示。在<code>=======</code>之前的部分是当前分支这边的情况，在<code>=======</code>之后的部分是对方分支的情况。<br/>
+##3.6如何解决冲突<br/>
+在看到冲突以后，你可以选择以下两种方式：</li>
+<li>决定不合并。这时，唯一要做的就是重置index到HEAD节点。<code>git merge --abort</code>用于这种情况。</li>
+<li>解决冲突。Git会标记冲突的地方，解决完冲突的地方后使用<code>git add</code>加入到index中，然后使用<code>git commit</code>产生合并节点。<br/>
+你可以用以下工具来解决冲突:</li>
+<li>使用合并工具。<code>git mergetool</code>将会调用一个可视化的合并工具来处理冲突合并。</li>
+<li>查看差异。<code>git diff</code>将会显示三路差异（三路合并中所采用的三路比较算法）。</li>
+<li>查看每个分支的差异。<code>git log --merge -p &lt;path&gt;</code>将会显示<code>HEAD</code>版本和<code>MERGE_HEAD</code>版本的差异。</li>
+<li>查看合并前的版本。<code>git show :1:文件名</code>显示共同祖先的版本，<code>git show :2:文件名</code>显示当前分支的HEAD版本，<code>git show :3:文件名</code>显示对方分支的<code>MERGE_HEAD</code>版本。<br/>
+#4.合并策略<br/>
+Git可以通过添加-s参数来指定合并的策略。一些合并策略甚至含有自己的参数选项，通过<code>-X&lt;option&gt;</code>设置这些合并策略的参数选项。(不要忘记，合并可以在git merge和git pull命令中发生，因此该合并策略同样适用于git pull)。<br/>
+##4.1resolve<br/>
+仅仅使用三路合并算法合并两个分支的顶部节点（例如当前分支和你拉取下来的另一个分支）。这种合并策略遵循三路合并算法，由两个分支的HEAD节点以及共同子节点进行三路合并。<br/>
+当然，真正会困扰我们的其实是交叉合并（criss-cross merge）这种情况。所谓的交叉合并，是指共同祖先节点有多个的情况，例如在两个分支合并时，很有可能出现共同祖先节点有两个的情况发生，这时候无法按照三路合并算法进行合并（因为共同祖先节点不唯一）。resolve策略在解决交叉合并问题时是这样处理的，这里参考《Version Control with Git》：<br/>
+&gt;In criss-cross merge situations, where there is more than one possible merge basis, the resolve strategy works like this: pick one of the possible merge bases, and hope for the best. This is actually not as bad as it sounds. It often turns out that the users have been working on different parts of the code. In that case, Git detects that it&#39;s remerging some changes that are already in place and skips the duplicate changes, avoiding the conflict. Or, if these are slight changes that do cause conflict, at least the conflict should be easy for the developer to handle<br/>
+这里简单翻译一下：在交叉合并的情况时有一个以上的合并基准点（共同祖先节点），resolve策略是这样工作的：选择其中一个可能的合并基准点并期望这是合并最好的结果。实际上这并没有听起来的那么糟糕。通常情况下用户修改不同部分的代码，在这种情况下，很多的合并冲突其实是多余和重复的。而使用resolve进行合并时，产生的冲突也较易于处理，真正会遗失代码的情况很少。</li>
+</ul>
+
+<h2 id="toc_2">4.2recursive</h2>
+
+<p>仅仅使用三路合并算法合并两个分支。和resolve不同的是，在交叉合并的情况时，这种合并方式是递归调用的，从共同祖先节点之后两个分支的不同节点开始递归调用三路合并算法进行合并，如果产生冲突，那么该文件不再继续合并，直接抛出冲突；其他未产生冲突的文件将一直执行到顶部节点。额外地，这种方式也能够检测并处理涉及修改文件名的操作。这是git合并和拉取代码的默认合并操作。<br/>
+recursive合并策略有以下参数：</p>
+
+<h3 id="toc_3">4.2.1 ours</h3>
+
+<p>该参数将强迫冲突发生时，自动使用当前分支的版本。这种合并方式不会产生任何困扰情况，甚至git都不会去检查其他分支版本所包含的冲突内容这种方式会抛弃对方分支任何冲突内容。</p>
+
+<h3 id="toc_4">4.2.2 theirs</h3>
+
+<p>正好和ours相反。<br/>
+theirs和ours参数都适用于合并二进制文件冲突的情况。</p>
+
+<h3 id="toc_5">4.2.2 patience</h3>
+
+<p>在这种参数下，<code>git merge-recursive</code>花费一些额外的时间来避免错过合并一些不重要的行（如函数的括号）。如果当前分支和对方分支的版本分支分离非常大时，建议采用这种合并方式。</p>
+
+<h3 id="toc_6">4.2.3<code>diff-algorithm=[patience|minimal|histogram|myers]</code></h3>
+
+<p>告知<code>git merge-recursive</code>使用不同的比较算法。</p>
+
+<h3 id="toc_7">4.2.4 <code>ignore-space-change</code>, <code>ignore-all-space</code>, <code>ignore-space-at-eol</code></h3>
+
+<p>根据指定的参数来对待空格冲突。</p>
+
+<ul>
+<li>如果对方的版本仅仅添加了空格的变化，那么冲突合并时采用我们自己的版本</li>
+<li>如果我们的版本含有空格，但是对方的版本包含大量的变化，那么冲突合并时采用对方的版本</li>
+<li>采用正常的处理过程<br/>
+###4.2.5 <code>no-renames</code><br/>
+关闭重命名检测。<br/>
+###4.2.6<code>subtree[=&lt;path&gt;]</code><br/>
+该选项是subtree合并策略的高级形式，将会猜测两颗节点树在合并的过程中如何移动。不同的是，指定的路径将在合并开始时除去，以使得其他路径能够在寻找子树的时候进行匹配。（关于subtree合并策略详见下文）<br/>
+##4.3octopus<br/>
+这种合并方式用于两个以上的分支，但是在遇到冲突需要手动合并时会拒绝合并。这种合并方式更适合于将多个分支捆绑在一起的情况，也是多分支合并的默认合并策略。<br/>
+##4.4ours<br/>
+这种方式可以合并任意数量的分支，但是节点树的合并结果总是当前分支所冲突的部分。这种方式能够在替代旧版本时具有很高的效率。请注意，这种方式和recursive策略下的ours参数是不同的。<br/>
+##4.5subtree<br/>
+subtree是修改版的recursive策略。当合并树A和树B时，如果B是A的子树，B首先调整至匹配A的树结构，而不是读取相同的节点。<br/>
+##4.5总结<br/>
+在使用三路合并的策略时（指默认的recursive策略），如果一个文件（或一行代码）在当前分支和对方分支都产生变化，但是稍后又在其中一个分支回退，<em>那么这种回退的变化将会在结果中体现</em>。这一点可能会使一些人感到困惑。这是由于在合并的过程中，git仅仅关注共同祖先节点以及两个分支的HEAD节点，而不是两个分支的所有节点。因此，合并算法将会把被回退的部分认为成<em>没有变化</em>，这样，合并后的结果就会变为另一个分支中变化的部分。<br/>
+#5.关于Git使用的一些个人看法<br/>
+本人一直认为Git是一款非常优秀的版本控制工具，但是在公司中很多人觉得Git很难使用。这种情况很大一部分原因是之前使用subversion时带来的使用惯性对接受新技术造成了影响；另一方面，很多人仅仅通过GUI客户端去使用Git。很久以来，大部分人认为使用GUI是一种较为便捷的入门方式，其实这是值得商榷的。依我个人的经验来说，使用GUI会形成惰性，往往点击几个按钮就能完成操作，使得很多人认为学习Git的命令是一种浪费时间和精力的行为。但是事实上，在没有理解清楚Git命令和思想的情况下，使用那些简单的按钮其实会带来很大的困扰：很多人根本不知道点击按钮后会发生什么，GUI的过于智能让同一个按钮的点击事件可能对应着不同参数的命令。最后真正受到伤害的是可怜的使用者们，因为他们根本不知道问题出在哪里。<br/>
+综合全文的内容，这里总结一些个人使用Git时所遵守的约定。所谓约定，即非强迫性的，自愿的行为。不遵守这些约定并不会带来什么缺陷，但是遵守这些约定可能会减轻在使用Git时带来的困难，提高效率。</li>
+<li>多提交，少推送。多人协作时，推送会频繁地带来合并冲突的问题，影响效率。因此，尽量多使用提交命令，减少合并的使用，这样会节省很多时间。</li>
+<li>使用Git流（Git Flow），详见我的另一篇文章：[一个成功的Git分支模型]</li>
+<li>使用分支，<em>保持主分支的整洁</em>。这是我强烈推荐的一点，在分支进行提交，然后切到主分支更新(git pull —rebase)，再合并分支、推送。这样的流程会避免交叉合并的情况出现（不会出现共同祖先节点为多个的情况）。事实上，git合并操作让很多人感到不知所措的原因就是各种原因所产生的交叉合并问题，从而造成在合并的过程中丢失某些代码。保持主分支的整洁能够避免交叉合并的情况出现。</li>
+<li>禁用fast-forward模式。在拉取代码的时候使用rebase参数（前提是保持主分支的整洁）、合并的时候使用—no-ff参数禁用fast-forward模式，这样做既能保证节点的清晰，又避免了交叉合并的情况出现。</li>
+</ul>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2017-11-23T16:23:25+08:00" itemprop="datePublished">2017/11/23 16:23 下午</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15114254051538.html" itemprop="url">
+		使用Android Architecture Component开发应用（附demo）</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p><img src="http://ourmc2t8i.bkt.clouddn.com/15117517537027.png" alt=""/></p>
+
+<p>相关文章：</p>
+
+<ul>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(1)-App%E6%9E%B6%E6%9E%84%E6%8C%87%E5%AF%BC.html">【翻译】安卓架构组件(1)-App架构指导</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(2)-%E6%B7%BB%E5%8A%A0%E7%BB%84%E4%BB%B6%E5%88%B0%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B8%AD.html">【翻译】安卓架构组件(2)-添加组件到你的项目中</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(3)-%E5%A4%84%E7%90%86%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">【翻译】安卓架构组件(3)-处理生命周期</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(4)-LiveData.html">【翻译】安卓架构组件(4)-LiveData</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(5)-ViewModel.html">【翻译】安卓架构组件(5)-ViewModel</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(6)-Room%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%BA%93.html">【翻译】安卓架构组件(6)-Room持久化类库</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(7)-%E5%88%86%E9%A1%B5%E5%BA%93.html">【翻译】安卓架构组件(7)-分页库</a></li>
+<li><a href="http://chuckiefan.com/2017/11/27/%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6Demo%E4%B8%8B%E8%BD%BD.html">安装包下载地址</a></li>
+</ul>
+
+<p>今年的Google I/O大会发布了一系列的类库，统称为架构组件（Architecture Component），旨在帮助开发者构建健壮、易于测试和易于维护的应用。从我目前掌握的情况来看，这一系列类库为开发者指明了比较清晰的架构思路，确实可以显著提高应用的开发效率且对质量有一定的保证。于是我尽快翻译了官方所有相关的文档（即上面的1-6篇）。我最初接触时这些类库还处于alpha-3版本，时至今日已经发布了1.0版本，趋于稳定。同时我发现Google又发布了分页的类库，于是有了第七篇翻译。在翻译的文章中，有朋友询问能否提供一份Demo，以提供一个较为清晰直观的印象，于是就有了这篇文章。在文章的最后我会提供app的演示，安装包下载以及将项目开源至github。</p>
+
+<p>本文并不会详细介绍每个类库，相关的内容还请在上面的文章中查阅。本文的主要目的是使用这些类库来开发一款应用，并介绍整个的开发过程，从而看到这一系列类库的用法以及特点。</p>
+
+<p>此外在整个应用的构建中我们不会涉及到所有的用法（根据我在实际项目的使用情况，本文所介绍的内容足以应付日常的需求），如果需要深入了解，请自行研究源码。</p>
+
+<p>先看一下演示：</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/yanshi.gif" alt="演示"/></p>
+
+<h2 id="toc_0">0.准备</h2>
+
+<p>要构建一款什么样的应用？阅读本文的大量读者都是Android应用的开发者，涉及服务端研发的并不多，为了避免增加不必要的学习曲线，我认为自行开发服务端接口是没有意义的。所以经过考虑，我选中了<a href="https://developers.douban.com/wiki/?title=guide">豆瓣的电影API</a>，因此该应用的所有数据源皆获取自豆瓣。</p>
+
+<p>所以本文会介绍一个电影信息app的开发过程。</p>
+
+<p>关于本文开发中所需要了解的技术如下：</p>
+
+<ul>
+<li>基本的Android开发经验，如RecyclerView之类控件的使用等</li>
+<li>RxJava</li>
+<li>Kotlin</li>
+<li>Retrofit2</li>
+</ul>
+
+<p>我相信对于阅读本文的读者，这些要求并不是什么问题。在响应式编程如此火热的现在，RxJava和Retrofit已经成了很多项目的必备基础技术，而Kotlin已经成为官方宣布支持的语言。</p>
+
+<p>好了，现在让我们开始。</p>
+
+<blockquote>
+<p>本文会分成两个阶段编写，在第一个阶段我们会使用Android架构组件编写三个电影列表，即下文中的正在上映，即将上映和Top250。为了整个demo的完善性，电影详情界面的编写会在后面完成，截止本文发布时，只完成了第一个阶段。</p>
+</blockquote>
+
+<h2 id="toc_1">1.基本的界面编写</h2>
+
+<p>这一部分没有什么可值得介绍的地方，但是需要说明一下我们的界面。我们会选取三个列表进行展示：</p>
+
+<ul>
+<li>正在上映</li>
+<li>即将上映</li>
+<li>Top250</li>
+</ul>
+
+<p>正在上映是正在院线上映的电影列表，即将上映是即将在院线上映的电影列表，Top250是指评分最高的250部电影。</p>
+
+<blockquote>
+<p>需要说明的是，“正在上映”和“即将上映”和具体的城市绑定，为了简化该部分对本文核心内容的影响，我们在接口数据的请求时会使用默认的城市，即北京。</p>
+</blockquote>
+
+<p>界面如下：</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15114277389366.jpg" alt="电影列表"/></p>
+
+<p>你可以使用任何你熟悉的类库来完成这三个Fragment,需要实现下拉加载和上拉更新等操作<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>。</p>
+
+<h2 id="toc_2">2.架构综述</h2>
+
+<p>界面的编写不是什么困难的工作，真正需要我们关心的是整个应用的架构是怎样的。回顾一下<a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(1)-App%E6%9E%B6%E6%9E%84%E6%8C%87%E5%AF%BC.html">第一篇文章</a>，我们在这里给出我们的架构图示。</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15114307258843.jpg" alt="架构图示"/></p>
+
+<p>三个Fragment会通过各自的ViewModel获取数据，而所有的ViewModel都会从MovieRepository拿到数据。在MovieRepository中，我们通过Retrofit从豆瓣API获得数据，存储在Room中，而MovieRepository则从Room获取数据。</p>
+
+<h2 id="toc_3">3.网络层</h2>
+
+<p>现在我们开始编写这个应用的主要部分，首先从网络请求入手，即架构图示中的Retrofit部分。</p>
+
+<h3 id="toc_4">3.1 豆瓣API</h3>
+
+<p>首先我们需要查阅豆瓣的API文档</p>
+
+<p>正在上映：</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15115052392897.jpg" alt="正在上映API"/></p>
+
+<p>即将上映：</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15115052786884.jpg" alt="即将上映API"/></p>
+
+<p>Top250:</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15115053137122.jpg" alt="Top250API"/></p>
+
+<h3 id="toc_5">3.2接口编写</h3>
+
+<p>于是有了API接口的编写：</p>
+
+<pre><code class="language-kotlin">interface DoubanApi {
+
+    /**
+     * @param city 表示院线所在城市，可为空，如果为空则默认为北京市
+     *
+     * @return [MoviesResp]
+     */
+    @GET(&quot;v2/movie/in_theaters&quot;)
+    fun retrieveInTheaters(@Query(&quot;city&quot;) city: String?): Observable&lt;MoviesResp&gt;
+
+    /**
+     * 即将上映的电影
+     * @param start 开始，默认为0
+     * @param count 每次请求数量，默认为20
+     *
+     * @return [MoviesResp]
+     */
+    @GET(&quot;v2/movie/coming_soon&quot;)
+    fun retrieveComingSoon(@Query(&quot;start&quot;) start: Int?, @Query(&quot;count&quot;) count: Int?): Observable&lt;MoviesResp&gt;
+
+    /**
+     * Top250 评分最高的电影
+     * @param start 开始，默认为0
+     * @param count 每次请求数量，默认为20
+     *
+     * @return [MoviesResp]
+     */
+    @GET(&quot;v2/movie/top250&quot;)
+    fun retrieveTop250(@Query(&quot;start&quot;) start: Int?, @Query(&quot;count&quot;) count: Int?): Observable&lt;MoviesResp&gt;
+
+
+}
+
+</code></pre>
+
+<p>需要说明的是，这里的<code>MoviesResp</code>是豆瓣API接口返回json数据所对应的实体类，详细的内容可在demo中查看。</p>
+
+<h3 id="toc_6">3.3 Retrofit编写</h3>
+
+<p>接下来是Retrofit的编写工作，由于本文不是讲解Retrofit的内容，因此在这里直接给出代码。</p>
+
+<pre><code class="language-kotlin">class DoubanRetrofit {
+    private val TAG: String = this.javaClass.simpleName
+    private val PAGESIZE = Constant.PAGESIZE//20
+    companion object {
+        private val API = buildAPI()
+
+        private fun buildAPI(): DoubanApi {
+            return Retrofit.Builder()
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addConverterFactory(JacksonConverterFactory.create())
+                    .baseUrl(Constant.url)// &quot;http://api.douban.com/&quot;
+                    .build()
+                    .create(DoubanApi::class.java)
+        }
+        private var instance: DoubanRetrofit? = null
+
+        @Synchronized
+        fun get(): DoubanRetrofit {
+            if (null == instance) {
+                instance = DoubanRetrofit()
+            }
+            return instance!!
+        }
+
+
+    }
+
+    /**
+     * 正在上映
+     */
+    fun inTheaterMovies():Observable&lt;MoviesResp&gt;{
+
+        return API.retrieveInTheaters(null)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+    }
+
+    /**
+     * 即将上映
+     * @param start 开始位置
+     */
+    fun commingSoonMovies(start:Int):Observable&lt;MoviesResp&gt;{
+
+        return API.retrieveComingSoon(start,PAGESIZE)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+
+    }
+
+    /**
+     * 评分top250电影
+     * @param start 开始位置
+     */
+    fun top250Movies(start:Int):Observable&lt;MoviesResp&gt;{
+        return API.retrieveTop250(start,PAGESIZE)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+    }
+
+
+}
+</code></pre>
+
+<blockquote>
+<p><em>上面的代码并不是最终版本，</em>我们会在后面进行修改</p>
+</blockquote>
+
+<p>正如在架构图示所描述的那样，网络请求层获取的数据会通过ROOM存储在本地数据库，所以接下来我们要先完成持久层的编写。</p>
+
+<h2 id="toc_7">4.持久层</h2>
+
+<p>我们已经完成了网络层的编写，接下来需要进行持久层的编写。</p>
+
+<h3 id="toc_8">4.1 实体类</h3>
+
+<p>我们需要定义电影的实体类。由于我们应用的当前版本只展示了电影列表，那么不妨先从这个角度来看看界面是怎样的：</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15116854472964.jpg" alt="列表项界面"/></p>
+
+<p>于是我们有了实体类：</p>
+
+<pre><code class="language-kotlin">/**
+ * 项目 ： ArchitectureComponentDemo
+ * 作者 ： Chuckifan
+ * 时间 ： 2017/11/26 16:40
+ * 内容 ： 电影列表项，用于持久化
+ * @param id 电影id
+ * @param avatar 电影图片
+ * @param title 电影名称
+ * @param rating 电影评分
+ * @param director 导演
+ * @param casts 主演
+ * @param genres 类型
+ * @param year 年份
+ * @param isInTheater true 正在上映
+ * @param isComming true 即将上映
+ * @param isTop250 true top250
+ */
+data class Movie(var id: Long = 0,
+                 var avatar:String?=&quot;&quot;,
+                 var title: String? = &quot;未知&quot;, var rating: Float? = 0f, var ratingStr: String? = &quot;(0.0)&quot;, var director: String? = &quot;未知&quot;,
+                 var casts: String? = &quot;未知&quot;, var genres: String? = &quot;未知&quot;, var year: String? = &quot;未知&quot;,
+                 var isInTheater: Boolean = false, var isComming:Boolean = false,var isTop250: Boolean = false)
+</code></pre>
+
+<p>上面的注释已经很清晰地说明了每个成员变量的用途。</p>
+
+<h3 id="toc_9">4.2 ROOM</h3>
+
+<h4 id="toc_10">4.2.1 实体类</h4>
+
+<p>如果仅仅是定义了这样的一个类，那么它和API返回数据所对应的实体类就没有任何区别了，我们接下来需要使用ROOM对这个实体类进行标记，使其可以映射为关系数据库中的数据元素：</p>
+
+<pre><code class="language-kotlin">/**
+ * 项目 ： ArchitectureComponentDemo
+ * 作者 ： Chuckifan
+ * 时间 ： 2017/11/26 16:40
+ * 内容 ： 电影列表项，用于持久化
+ * @param id 电影id
+ * @param avatar 电影图片
+ * @param title 电影名称
+ * @param rating 电影评分
+ * @param director 导演
+ * @param casts 主演
+ * @param genres 类型
+ * @param year 年份
+ * @param isInTheater true 正在上映
+ * @param isComming true 即将上映
+ * @param isTop250 true top250
+ */
+@Entity
+data class Movie(@PrimaryKey val id: Long = 0,
+                 var avatar:String?=&quot;&quot;,
+                 var title: String? = &quot;未知&quot;, var rating: Float? = 0f, var ratingStr: String? = &quot;(0.0)&quot;, var director: String? = &quot;未知&quot;,
+                 var casts: String? = &quot;未知&quot;, var genres: String? = &quot;未知&quot;, var year: String? = &quot;未知&quot;,
+                 var isInTheater: Boolean = false, var isComming:Boolean = false,val isTop250: Boolean = false)
+</code></pre>
+
+<p>这里插入一点和本应用编写无关的内容。我个人主张不直接使用远程服务所返回的数据直接持久化到数据库，这是为了将持久层与网络层解耦，如果我们不想使用豆瓣的数据接口还可以使用其他服务接口，比如IMDb。我们唯一需要做的工作是修改从接口数据实体类到持久化类的转化方法。</p>
+
+<p>但是本文最重要的目的是介绍一个用于熟悉安卓架构组件的demo。我在本文之前曾经用Java写过一个版本，在那个版本中为了熟悉这套类库以及节省时间，我直接使用了豆瓣返回的数据，那么就涉及到实体类的嵌套，以及列表数据的映射处理，关于这部分内容的介绍请参阅<a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(6)-Room%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%BA%93.html">这里</a>。在本文不会对这部分内容进行介绍，仅仅会给出相关代码，当然这部分代码不会在最后的应用出现：</p>
+
+<p>Subject:电影条目</p>
+
+<pre><code class="language-java">@Entity
+public class Subject {
+    @Embedded
+    private Rating rating;
+    private List&lt;String&gt; genres;
+    private String title;
+    private List&lt;Cast&gt; casts;
+    private int collect_count;
+    private String original_title;
+    private String subtype;
+    private List&lt;Director&gt; directors;
+    private String year;
+    @Embedded
+    private Image images;
+    private String alt;
+    @PrimaryKey
+    private String id;
+
+    public Rating getRating() {
+        return rating;
+    }
+
+    public void setRating(Rating rating) {
+        this.rating = rating;
+    }
+
+    public List&lt;String&gt; getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List&lt;String&gt; genres) {
+        this.genres = genres;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List&lt;Cast&gt; getCasts() {
+        return casts;
+    }
+
+    public void setCasts(List&lt;Cast&gt; casts) {
+        this.casts = casts;
+    }
+
+    public int getCollect_count() {
+        return collect_count;
+    }
+
+    public void setCollect_count(int collect_count) {
+        this.collect_count = collect_count;
+    }
+
+    public String getOriginal_title() {
+        return original_title;
+    }
+
+    public void setOriginal_title(String original_title) {
+        this.original_title = original_title;
+    }
+
+    public String getSubtype() {
+        return subtype;
+    }
+
+    public void setSubtype(String subtype) {
+        this.subtype = subtype;
+    }
+
+    public List&lt;Director&gt; getDirectors() {
+        return directors;
+    }
+
+    public void setDirectors(List&lt;Director&gt; directors) {
+        this.directors = directors;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public Image getImages() {
+        return images;
+    }
+
+    public void setImages(Image images) {
+        this.images = images;
+    }
+
+    public String getAlt() {
+        return alt;
+    }
+
+    public void setAlt(String alt) {
+        this.alt = alt;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+}
+</code></pre>
+
+<p>Rating:评分</p>
+
+<pre><code class="language-java">public class Rating {
+
+    private int max;
+    private double average;
+    private String stars;
+    private int min;
+    public void setMax(int max) {
+        this.max = max;
+    }
+    public int getMax() {
+        return max;
+    }
+
+    public void setAverage(double average) {
+        this.average = average;
+    }
+    public double getAverage() {
+        return average;
+    }
+
+    public void setStars(String stars) {
+        this.stars = stars;
+    }
+    public String getStars() {
+        return stars;
+    }
+
+    public void setMin(int min) {
+        this.min = min;
+    }
+    public int getMin() {
+        return min;
+    }
+
+}
+</code></pre>
+
+<p>Cast:主演，最多可获得4个，数据结构为影人的简化描述，</p>
+
+<pre><code class="language-java">public class Cast {
+
+    private String alt;
+    @Embedded
+    private Avatar avatars;
+    private String name;
+    private String id;
+    public void setAlt(String alt) {
+        this.alt = alt;
+    }
+    public String getAlt() {
+        return alt;
+    }
+
+    public Avatar getAvatars() {
+        return avatars;
+    }
+
+    public void setAvatars(Avatar avatars) {
+        this.avatars = avatars;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+}
+</code></pre>
+
+<p>Director:导演，数据结构为影人的简化描述</p>
+
+<pre><code class="language-java">public class Director {
+
+    private String alt;
+    @Embedded
+    private Avatar avatars;
+    private String name;
+    private String id;
+
+    public String getAlt() {
+        return alt;
+    }
+
+    public void setAlt(String alt) {
+        this.alt = alt;
+    }
+
+    public Avatar getAvatars() {
+        return avatars;
+    }
+
+    public void setAvatars(Avatar avatars) {
+        this.avatars = avatars;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+}
+</code></pre>
+
+<p>Image:电影海报图，分别提供288px x 465px(大)，96px x 155px(中) 64px x 103px(小)尺寸</p>
+
+<pre><code class="language-java">public class Image {
+
+    private String small;
+    private String large;
+    private String medium;
+    public void setSmall(String small) {
+        this.small = small;
+    }
+    public String getSmall() {
+        return small;
+    }
+
+    public void setLarge(String large) {
+        this.large = large;
+    }
+    public String getLarge() {
+        return large;
+    }
+
+    public void setMedium(String medium) {
+        this.medium = medium;
+    }
+    public String getMedium() {
+        return medium;
+    }
+
+}
+</code></pre>
+
+<p>Avatar:影人头像，分别提供420px x 600px(大)，140px x 200px(中) 70px x 100px(小)尺寸</p>
+
+<pre><code class="language-java">public class Avatar{
+
+    private String small;
+    private String large;
+    private String medium;
+    public void setSmall(String small) {
+        this.small = small;
+    }
+    public String getSmall() {
+        return small;
+    }
+
+    public void setLarge(String large) {
+        this.large = large;
+    }
+    public String getLarge() {
+        return large;
+    }
+
+    public void setMedium(String medium) {
+        this.medium = medium;
+    }
+    public String getMedium() {
+        return medium;
+    }
+
+}
+</code></pre>
+
+<p>以及Converter：</p>
+
+<pre><code class="language-java">public class ListConverter {
+
+    private static final ObjectMapper mapper = new ObjectMapper();
+
+    @TypeConverter
+    public static String strList2Json(List&lt;String&gt; value) {
+        String result = null;
+        try {
+            result = mapper.writeValueAsString(value);
+        } catch (IOException e) {
+            LogUtils.e(e);
+        }
+
+        return result;
+    }
+
+    @TypeConverter
+    public static List&lt;String&gt; json2StrList(String json) {
+        List&lt;String&gt; result = null;
+        try {
+
+            JavaType javaType = getCollectionType(ArrayList.class, String.class);
+            result = mapper.readValue(json, javaType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @TypeConverter
+    public static String castList2Json(List&lt;Cast&gt; value) {
+        String result = null;
+        try {
+            result = mapper.writeValueAsString(value);
+        } catch (IOException e) {
+            LogUtils.e(e);
+        }
+
+        return result;
+    }
+
+    @TypeConverter
+    public static List&lt;Cast&gt; json2CastList(String json) {
+        List&lt;Cast&gt; result = null;
+        try {
+
+            JavaType javaType = getCollectionType(ArrayList.class, Cast.class);
+            result = mapper.readValue(json, javaType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @TypeConverter
+    public static String directorList2Json(List&lt;Director&gt; value) {
+        String result = null;
+        try {
+            result = mapper.writeValueAsString(value);
+        } catch (IOException e) {
+            LogUtils.e(e);
+        }
+
+        return result;
+    }
+
+    @TypeConverter
+    public static List&lt;Director&gt; json2DirectorList(String json) {
+        List&lt;Director&gt; result = null;
+        try {
+
+            JavaType javaType = getCollectionType(ArrayList.class, Director.class);
+            result = mapper.readValue(json, javaType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    private static JavaType getCollectionType(Class&lt;?&gt; collectionClass, Class&lt;?&gt;... elementClasses) {
+        return mapper.getTypeFactory().constructParametricType(collectionClass, elementClasses);
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>转换类的使用在<a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(6)-Room%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%BA%93.html">文章</a>中有介绍，这里不再赘述。</p>
+</blockquote>
+
+<h4 id="toc_11">4.2.2 DAO</h4>
+
+<p>在使用分页库之前我们无法完整的介绍DAO的代码，这里暂时只给出写入和删除的方法：</p>
+
+<pre><code class="language-kotlin">@Dao
+interface MovieDao {
+
+    /**
+     * 保存电影，冲突时替换
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun save(movies: List&lt;Movie&gt;)
+
+    /**
+     * 删除正在上映的电影
+     */
+    @Query(&quot;DELETE FROM Movie WHERE isInTheater&quot;)
+    fun removeIntheaterMovies()
+
+    /**
+     * 删除即将上映的电影
+     */
+    @Query(&quot;DELETE FROM Movie WHERE isComming&quot;)
+    fun removeCommingSoonMovies()
+
+    /**
+     * 删除TOP250的电影
+     */
+    @Query(&quot;DELETE FROM Movie WHERE isTop250&quot;)
+    fun removeTop250Movies()
+}
+</code></pre>
+
+<h4 id="toc_12">4.2.3 Database</h4>
+
+<p>接下来是数据库类的编写：</p>
+
+<pre><code class="language-kotlin">@Database(entities = arrayOf(Movie::class),version = BuildConfig.VERSION_CODE)
+abstract class MovieDatabse : RoomDatabase(){
+    
+    abstract fun movieDao():MovieDao
+
+    companion object {
+        private var instance: MovieDatabse? = null
+        @Synchronized
+        fun get(context: Context): MovieDatabse {
+            if (instance == null) {
+                instance = Room.databaseBuilder(context.applicationContext,
+                        MovieDatabse::class.java, &quot;MovieDB&quot;)
+                        .build()
+            }
+            return instance!!
+        }
+
+
+    }
+}
+</code></pre>
+
+<p>至此，持久层的编写可以暂时告一段落。</p>
+
+<h2 id="toc_13">5. Repository和分页</h2>
+
+<p>在这一部分，我们要完成Repository的编写。正如架构图示多描述的那样，Repository层的数量往往和DAO相对应。我们需要在Repository层完成接口数据的获取以及转换为持久化数据，同时需要完成持久化数据的完成。</p>
+
+<h3 id="toc_14">5.1 完善DAO</h3>
+
+<p>首先完善DAO中获取电影数据的部分：</p>
+
+<pre><code class="language-kotlin">@Dao
+interface MovieDao {
+
+    /**
+     * 保存电影，冲突时替换
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun save(movies: List&lt;Movie&gt;)
+
+    /**
+     * 删除正在上映的电影
+     */
+    @Query(&quot;DELETE FROM Movie WHERE isInTheater&quot;)
+    fun removeIntheaterMovies()
+
+    /**
+     * 删除即将上映的电影
+     */
+    @Query(&quot;DELETE FROM Movie WHERE isComming&quot;)
+    fun removeCommingSoonMovies()
+
+    /**
+     * 删除TOP250的电影
+     */
+    @Query(&quot;DELETE FROM Movie WHERE isTop250&quot;)
+    fun removeTop250Movies()
+
+    /**
+     * 获取正在上映的电影
+     */
+    @Query(&quot;SELECT * FROM Movie WHERE isInTheater&quot;)
+    fun queryIntheaterMovies():LivePagedListProvider&lt;Int,Movie&gt;
+
+    /**
+     * 获取正在上映的电影
+     */
+    @Query(&quot;SELECT * FROM Movie WHERE isComming&quot;)
+    fun queryCommingsoonMovies():LivePagedListProvider&lt;Int,Movie&gt;
+
+    /**
+     * 获取top250的电影
+     */
+    @Query(&quot;SELECT * FROM Movie WHERE isTop250 ORDER BY rating DESC&quot;)
+    fun queryTOP250Movies():LivePagedListProvider&lt;Int,Movie&gt;
+}
+</code></pre>
+
+<blockquote>
+<p>截止目前，这篇文章不会涉及到LiveData的使用，我会尽快完善电影详情部分，到时候会补充LiveData的内容。</p>
+</blockquote>
+
+<h3 id="toc_15">5.2完善Retrofit</h3>
+
+<p>接下来我们可以完善Retrofit的部分，使得从豆瓣获取的数据可以转化为我们持久层的实体类：</p>
+
+<pre><code class="language-kotlin">class DoubanRetrofit {
+    private val TAG: String = this.javaClass.simpleName
+    private val PAGESIZE = Constant.PAGESIZE//20
+
+    companion object {
+        private val API = buildAPI()
+
+        private fun buildAPI(): DoubanApi {
+            return Retrofit.Builder()
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addConverterFactory(JacksonConverterFactory.create())
+                    .baseUrl(Constant.url)// &quot;http://api.douban.com/&quot;
+                    .build()
+                    .create(DoubanApi::class.java)
+        }
+
+        private var instance: DoubanRetrofit? = null
+
+        @Synchronized
+        fun get(): DoubanRetrofit {
+            if (null == instance) {
+                instance = DoubanRetrofit()
+            }
+            return instance!!
+        }
+
+
+    }
+
+    /**
+     * 正在上映
+     */
+    fun inTheaterMovies(): Observable&lt;List&lt;Movie&gt;&gt; {
+
+        return API.retrieveInTheaters(null)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .concatMap({ origin -&gt;
+                    Observable.just(origin.subjects)
+                }).map({ subjects -&gt;
+            convert(subjects, true, false, false)
+        })
+    }
+
+
+    /**
+     * 即将上映
+     * @param start 开始位置
+     */
+    fun commingSoonMovies(start: Int): Observable&lt;List&lt;Movie&gt;&gt; {
+
+        return API.retrieveComingSoon(start, PAGESIZE)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .concatMap({ origin -&gt;
+                    Observable.just(origin.subjects)
+                }).map({ subjects -&gt;
+            convert(subjects, false, true, false)
+        })
+
+    }
+
+    /**
+     * 评分top250电影
+     * @param start 开始位置
+     */
+    fun top250Movies(start: Int): Observable&lt;List&lt;Movie&gt;&gt; {
+        return API.retrieveTop250(start, PAGESIZE)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .concatMap({ origin -&gt;
+                    Observable.just(origin.subjects)
+                }).map({ subjects -&gt;
+            convert(subjects, false, false, true)
+        })
+    }
+
+    /**
+     * [Subject]列表转为[Movie]列表
+     */
+    private fun convert(subjects: List&lt;Subject&gt;, isInTheater: Boolean, isComming: Boolean, isTop250: Boolean): List&lt;Movie&gt; {
+        val movies: List&lt;Movie&gt; = subjects.map { item -&gt;
+            //评分
+            val rating: Float
+            val ratingStr: String
+            if (null == item.rating) {
+                ratingStr = &quot;(0.0)&quot;
+                rating = 0.0f
+
+            } else {
+                rating = (item.rating.average / 2).toFloat()
+                ratingStr = &quot;(${item.rating.average})&quot;
+            }
+
+            //导演
+            val directors: String = if (null == item.directors) {
+                &quot;&quot;
+            } else {
+                item.directors.joinToString(&quot;/&quot;,&quot;&quot;,&quot;&quot;,-1,&quot;...&quot;,{it -&gt;
+                    it.name
+                })
+            }
+
+            //主演
+            val casts = if (null == item.casts) {
+                &quot;&quot;
+            } else {
+                item.casts.joinToString(&quot;/&quot;,&quot;&quot;,&quot;&quot;,-1,&quot;...&quot;,{it -&gt;
+                    it.name
+                })
+            }
+
+            //类型
+            val genres = if (null == item.genres) {
+                &quot;&quot;
+            } else {
+                item.genres.joinToString(&quot;/&quot;,&quot;&quot;,&quot;&quot;,-1,&quot;...&quot;)
+            }
+
+
+            val movie = Movie(item.id.toLong()
+                    , item.images.medium, item.title, rating, ratingStr, directors, casts, genres,
+                    item.year, isInTheater, isComming, isTop250)
+            movie
+
+        }
+        return movies
+    }
+
+
+}
+</code></pre>
+
+<h3 id="toc_16">5.4 Repository</h3>
+
+<p>完善了DAO和Retrofit的编写以后，我们就可以开始编写Repository层的代码。在Repository层，我们需要完成以下两个内容：</p>
+
+<ol>
+<li>将Retrofit层获取到的数据持久化在数据库中</li>
+<li>从数据库中获取数据</li>
+</ol>
+
+<p>就是说，Repository层连接了Retrofit和ROOM，就像架构图示所描述的那样。</p>
+
+<pre><code class="language-kotlin">class MovieRepository(context: Context) {
+    private val dao: MovieDao = MovieDatabse.get(context).movieDao()
+    private val inTheaterMovies = dao.queryIntheaterMovies()
+    private val commingsoonMovies = dao.queryCommingsoonMovies()
+    private val top250Movies = dao.queryTOP250Movies()
+
+    private val retrofit = DoubanRetrofit.get()
+
+
+    /**
+     * 获取正在上映的电影
+     */
+    fun getInTheaterMovies() = inTheaterMovies
+
+    /**
+     * 获取即将上映的电影
+     */
+    fun getCommingsoonMovies() = commingsoonMovies
+
+    /**
+     * 获取TOP250的电影
+     */
+    fun getTop250Movies() = top250Movies
+
+    /**
+     * 刷新正在上映的电影，并删除之前的数据
+     */
+    fun refreshInTheaterMovies(view: RefreshView){
+        retrofit.inTheaterMovies()
+                .subscribe({movies-&gt;
+                    ioThread {
+                        dao.removeIntheaterMovies()
+                        dao.save(movies)
+                    }
+                }, { error -&gt;
+                    view.onError(error)
+                    view.onRefreshCompleted()
+                }, {
+
+                    view.onRefreshCompleted()
+                })
+    }
+
+    /**
+     * 刷新即将上映的电影，并删除之前的数据
+     */
+    fun refreshCommingsoonMovies(view: RefreshView){
+        retrofit.commingSoonMovies(0)
+                .subscribe({movies-&gt;
+                    ioThread {
+                        dao.removeCommingSoonMovies()
+                        dao.save(movies)
+                    }
+                }, { error -&gt;
+                    view.onError(error)
+                    view.onRefreshCompleted()
+                }, {
+
+                    view.onRefreshCompleted()
+                })
+    }
+
+    /**
+     * 刷新TOP250的电影，并删除之前的数据
+     */
+    fun refreshTop250Movies(view:RefreshView){
+        retrofit.top250Movies(0)
+                .subscribe({movies-&gt;
+                    ioThread {
+                        dao.removeTop250Movies()
+                        dao.save(movies)
+                    }
+                }, { error -&gt;
+                    view.onError(error)
+                    view.onRefreshCompleted()
+                }, {
+
+                    view.onRefreshCompleted()
+                })
+    }
+
+    /**
+     * 加载更多即将上映的电影
+     */
+    fun loadMoreCommingsoonMovies(start:Int, view: RefreshView){
+        retrofit.commingSoonMovies(start)
+                .subscribe({movies-&gt;
+                    ioThread {
+                        dao.save(movies)
+                    }
+                }, { error -&gt;
+                    view.onError(error)
+                    view.onLoadMoreCompleted()
+                }, {
+
+                    view.onLoadMoreCompleted()
+                })
+    }
+
+    /**
+     * 加载更多TOP250的电影
+     */
+    fun loadMoreTop250Movies(start: Int, view:RefreshView){
+        retrofit.top250Movies(start)
+                .subscribe({movies-&gt;
+                    ioThread {
+                        dao.save(movies)
+                    }
+                }, { error -&gt;
+                    view.onError(error)
+                    view.onLoadMoreCompleted()
+                }, {
+
+                    view.onLoadMoreCompleted()
+                })
+    }
+
+
+}
+</code></pre>
+
+<p>至此，Repository完成。</p>
+
+<h2 id="toc_17">6. ViewModel</h2>
+
+<p>三个ViewModel层的编写比较相似，区别在于正在上映的ViewModel没有分页加载、每个ViewModel所调用Repository的方法不同。这里我们选取即将上映的ViewModel进行介绍：</p>
+
+<pre><code class="language-kotlin">class CommingsoonViewModel(app: Application) : AndroidViewModel(app) {
+    private val repo = MovieRepository(app)
+    private val datas = repo.getCommingsoonMovies()
+
+    private var start:Int = 0
+
+    fun getData() = datas.create(0, PagedList.Config.Builder()
+            .setPageSize(Constant.PAGESIZE)
+            .setEnablePlaceholders(Constant.ENABLE_PLACEHOLDERS)
+            .build())
+
+    fun refresh(view: RefreshView){
+        start = 0
+        repo.refreshCommingsoonMovies(view)
+    }
+
+    fun loadmore(view:RefreshView){
+        start += Constant.PAGESIZE
+
+        repo.loadMoreCommingsoonMovies(start,view)
+    }
+}
+</code></pre>
+
+<p>回顾一下架构图示，ViewModel层调用Repository的方法。我们在这里使用PagedList对分页数据进行配置。</p>
+
+<h2 id="toc_18">7. UI补遗</h2>
+
+<p>最后我们再来看看UI方面有哪些需要补充的地方。</p>
+
+<h3 id="toc_19">7.1 item_movie</h3>
+
+<p>首先是列表项的layout，item_movie:</p>
+
+<pre><code class="language-markup">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+              xmlns:tools=&quot;http://schemas.android.com/tools&quot; android:layout_width=&quot;match_parent&quot;
+              android:layout_height=&quot;wrap_content&quot;
+              android:layout_marginEnd=&quot;16dp&quot;
+              android:layout_marginRight=&quot;16dp&quot;
+              android:orientation=&quot;horizontal&quot;
+&gt;
+
+
+    &lt;ImageView android:id=&quot;@+id/picture&quot; android:layout_width=&quot;80dp&quot;
+               android:layout_height=&quot;80dp&quot;
+               android:layout_gravity=&quot;center_vertical&quot;
+
+               android:layout_marginLeft=&quot;16dp&quot;
+
+               android:layout_marginRight=&quot;16dp&quot;
+               android:contentDescription=&quot;@string/movie_face&quot;
+               android:src=&quot;@mipmap/ic_launcher&quot;/&gt;
+
+    &lt;LinearLayout android:layout_width=&quot;match_parent&quot;
+                  android:layout_height=&quot;wrap_content&quot;
+                  android:gravity=&quot;center_vertical&quot;
+                  android:orientation=&quot;vertical&quot;
+    &gt;
+        &lt;TextView android:id=&quot;@+id/title&quot;
+                  android:layout_width=&quot;wrap_content&quot;
+                  android:layout_height=&quot;wrap_content&quot;
+                  android:textSize=&quot;@dimen/title_text_size&quot;
+                  tools:text=&quot;肖申克的救赎 The Shawshank Redemption&quot;/&gt;
+        &lt;LinearLayout android:layout_width=&quot;match_parent&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      android:orientation=&quot;horizontal&quot;
+        &gt;
+            &lt;RatingBar android:id=&quot;@+id/rating_bar&quot;
+                       style=&quot;@style/Base.Widget.AppCompat.RatingBar.Small&quot;
+                       android:layout_width=&quot;wrap_content&quot;
+                       android:layout_height=&quot;wrap_content&quot;
+                       android:layout_gravity=&quot;center_vertical&quot;
+                       android:numStars=&quot;5&quot;
+
+            /&gt;
+            &lt;TextView android:id=&quot;@+id/rating_des&quot; android:layout_width=&quot;wrap_content&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      android:layout_gravity=&quot;center_vertical&quot;
+                      tools:text=&quot; (5.2)&quot;/&gt;
+        &lt;/LinearLayout&gt;
+
+        &lt;LinearLayout android:layout_width=&quot;match_parent&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      android:orientation=&quot;horizontal&quot;
+        &gt;
+            &lt;TextView android:id=&quot;@+id/textView&quot; android:layout_width=&quot;wrap_content&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      android:text=&quot;@string/director&quot;/&gt;
+
+            &lt;TextView android:id=&quot;@+id/director&quot; android:layout_width=&quot;wrap_content&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      tools:text=&quot;弗兰克·德拉邦特&quot;/&gt;
+        &lt;/LinearLayout&gt;
+
+        &lt;LinearLayout android:layout_width=&quot;match_parent&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      android:orientation=&quot;horizontal&quot;
+        &gt;
+            &lt;TextView android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot;
+                      android:text=&quot;@string/actor&quot;
+            /&gt;
+
+            &lt;TextView android:id=&quot;@+id/actors&quot; android:layout_width=&quot;wrap_content&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      tools:text=&quot;蒂姆·罗宾斯 / 摩根·弗里曼 / 鲍勃·冈顿 &quot;/&gt;
+        &lt;/LinearLayout&gt;
+
+        &lt;LinearLayout android:layout_width=&quot;match_parent&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      android:orientation=&quot;horizontal&quot;
+        &gt;
+            &lt;TextView android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot;
+                      android:text=&quot;@string/type&quot;
+            /&gt;
+
+            &lt;TextView android:id=&quot;@+id/type&quot; android:layout_width=&quot;wrap_content&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      tools:text=&quot;犯罪/剧情 &quot;/&gt;
+        &lt;/LinearLayout&gt;
+
+        &lt;LinearLayout android:layout_width=&quot;match_parent&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      android:orientation=&quot;horizontal&quot;
+        &gt;
+            &lt;TextView android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot;
+                      android:text=&quot;@string/year&quot;
+            /&gt;
+
+            &lt;TextView android:id=&quot;@+id/year&quot; android:layout_width=&quot;wrap_content&quot;
+                      android:layout_height=&quot;wrap_content&quot;
+                      tools:text=&quot;1994&quot;/&gt;
+        &lt;/LinearLayout&gt;
+
+
+    &lt;/LinearLayout&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<h3 id="toc_20">7.2 MovieAdapter</h3>
+
+<p>其次是用于RecyclerView的MovieAdapter：</p>
+
+<pre><code class="language-kotlin">class MovieAdapter : PagedListAdapter&lt;Movie, MovieViewHolder&gt;(diffCallback) {
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+        holder.bindTo(getItem(position))
+    }
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder =
+            MovieViewHolder(parent)
+
+    companion object {
+        /**
+         * This diff callback informs the PagedListAdapter how to compute list differences when new
+         * PagedLists arrive.
+         * &lt;p&gt;
+         * When you add a Cheese with the &#39;Add&#39; button, the PagedListAdapter uses diffCallback to
+         * detect there&#39;s only a single item difference from before, so it only needs to animate and
+         * rebind a single view.
+         *
+         * @see android.support.v7.util.DiffUtil
+         */
+        private val diffCallback = object : DiffCallback&lt;Movie&gt;() {
+            override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean =
+                    oldItem.id == newItem.id
+
+            /**
+             * Note that in kotlin, == checking on data classes compares all contents, but in Java,
+             * typically you&#39;ll implement Object#equals, and use it to compare object contents.
+             */
+            override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean =
+                    oldItem == newItem
+        }
+    }
+}
+</code></pre>
+
+<h3 id="toc_21">7.3 Fragment</h3>
+
+<p>最后是我们Fragment中的关键代码片段：</p>
+
+<pre><code class="language-kotlin"> override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        viewModel = ViewModelProviders.of(this).get(CommingsoonViewModel::class.java)
+        viewModel.getData().observeForever(Observer(adapter::setList))
+        onRefresh()
+
+
+    }
+</code></pre>
+
+<h2 id="toc_22">8. 总结（附demo）</h2>
+
+<p>app的演示：<a href="http://player.youku.com/embed/XMzE4NzM2MDcyOA==">点击跳转</a></p>
+
+<p>安装包下载地址以及开源代码地址：<a href="http://chuckiefan.com/2017/11/27/%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6Demo%E4%B8%8B%E8%BD%BD.html">点击跳转</a></p>
+
+<p>本文介绍了使用安卓架构组件构建一个简单应用的过程。诚然，目前为止我们没有介绍到所有相关类库的基本使用，我会在后面尽量补充LiveData等相关内容的介绍。</p>
+
+<p>但是从另一个角度来看，正如谷歌自己所说，这套类库只是提供一个架构设计的思路和参考，如果我们有更好的选择，完全可以不用关心这套组件。而这套组件中的类库也是可选择的，比如，你在持久层有更好的选择，就不需要使用Room。</p>
+
+<p>本文书写以及代码的编写是在业余时间完成的，难免仓促和疏忽。如果您有任何问题和建议欢迎在文章下方评论，或者在github上提issue，我会及时回复并定期整理在文章中。</p>
+
+<p>另外，欢迎您为文章点赞以及在github项目中点击star，这些是对我最大的回报和动力，谢谢。</p>
+
+<div class="footnotes">
+<hr/>
+<ol>
+
+<li id="fn1">
+<p>这里的下拉是指手指从下向上滑动，相反上拉是指从上向下滑动。&nbsp;<a href="#fnref1" rev="footnote">&#8617;</a></p>
+</li>
+
+</ol>
+</div>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2017-11-13T10:02:40+08:00" itemprop="datePublished">2017/11/13 10:2 上午</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15105385603995.html" itemprop="url">
+		Android Gradle 使用教程</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<hr/>
+
+<p>layout: post<br/>
+title: &#39;Android Gradle 使用教程&#39;<br/>
+date: 2016-07-01<br/>
+author: Chuckiefan</p>
+
+<h2 id="toc_0">tags: Android Gradle</h2>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1226129-31f15c4c81dba08e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="gradle"/></p>
+
+<h1 id="toc_1">1.介绍</h1>
+
+<blockquote>
+<p>如果你正在查阅build.gradle文件的所有可选项，请点击这里进行查阅：<a href="http://google.github.io/android-gradle-dsl/current/">DSL参考</a></p>
+</blockquote>
+
+<h2 id="toc_2">1.1新构建系统的特性</h2>
+
+<p>gradle构建系统具有如下的特点：</p>
+
+<ul>
+<li>易于代码和资源复用</li>
+<li>易于创建应用的版本，例如发布多apk以及应用的不同渠道版本</li>
+<li>构建过程易于配置，扩展和优化</li>
+<li>良好的IDE整合</li>
+</ul>
+
+<h2 id="toc_3">1.2为什么使用Gradle？</h2>
+
+<p>Gradle既是一个先进的构建系统，也是一个允许通过插件创建自定义构建逻辑的构建工具集。以下是一些我们为什么选择Gradle的原因：</p>
+
+<ul>
+<li>用于描述和操作构建逻辑的，基于Groovy的特定领域语言(DSL)</li>
+<li>基于Groovy的构建文件，允许混合通过使用DSL的声明式元素以及使用代码去操作DSL元素来提供自定义逻辑。</li>
+<li>通过Maven或者Ivy的内置依赖管理</li>
+<li>非常灵活。</li>
+<li>插件能够导出自己的DSL以及自己的API，用于使用构建文件</li>
+<li>支持IDE整合的良好工具API</li>
+</ul>
+
+<h2 id="toc_4">1.3要求</h2>
+
+<ul>
+<li>Gradle 2.2</li>
+<li>SDK版本19.0.0及以上，一些特性可能会需要更新的版本</li>
+</ul>
+
+<h1 id="toc_5">2.基础项目搭建</h1>
+
+<p>一个Gradle项目在一个文件中描述了该项目的构建情况，该文件被称为build.gradle，位于项目的根目录。(<a href="https://docs.gradle.org/current/userguide/userguide_single.html" title="点击这里查看构建系统的概述">点击这里查看构建系统概述</a>)</p>
+
+<h2 id="toc_6">2.1简单的构建文件</h2>
+
+<p>大多数简单的Android项目拥有如下的build.gradle文件:</p>
+
+<pre><code class="language-groovy">buildscript {
+    repositories { 
+        jcenter()
+    }
+    dependencies {
+        classpath &#39;com.android.tools.build:gradle:1.3.1&#39;
+    }
+}
+apply plugin: &#39;com.android.application&#39;
+android {
+    compileSdkVersion 23
+    buildToolsVersion &quot;23.1.0&quot;
+}
+</code></pre>
+
+<p>在Android的构建文件中，有以下三个主要区域：<br/>
+<code>buildscript{…} </code>用于配置用于构建的代码。在上面的例子中，声明使用jCenter库，并且有一个依赖于Maven类路径的Maven Artifact。该Artifact是包含包含Android构建插件的1.3.1版本Gradle。</p>
+
+<blockquote>
+<p>上例中的Artifact仅仅影响到构建代码的运行，并不作用于代码项目。至于项目本身需要声明自己的库和依赖关系，该部分将会在下文介绍。</p>
+</blockquote>
+
+<p>之后，该构建文件应用了com.android.application插件。该插件用于构建Android应用。<br/>
+最后<code>android{…}</code>中配置了所有用于Android应用构建的参数。这里是Android特定领域语言(DSL)的入口点。默认情况下，仅仅编译目标(compilation target)和构建工具版本(version of the build-tool)是必备的。也就是上例中的compileSdkVersion属性和buildtoolsVersion属性。该编译目标和旧版本的project.properties文件中的target属性是相同的。新版本中既可以指定一个整型(即API level)，也可以使用表示相同值的字符串对compileSdkVersion进行指定。</p>
+
+<blockquote>
+<p>重点：你应当使用com.android.application插件，使用java插件会导致错误。<br/>
+注意1：另外，你也需要一个local.properties文件，设置sdk.dir去配置本地的SDK路径位置。<br/>
+注意2：另外，你也可以设置名为<code>ANDROID_HOME</code>的环境变量。 这两者并没有什么区别，你可以选择任意一种。例如：<code>sdk.dir=/path/to/Android/Sdk</code></p>
+</blockquote>
+
+<h2 id="toc_7">2.2项目结构</h2>
+
+<p>上面例子的基本构建文件预期了一个默认的文件夹结构。Gradle遵循“约定优于配置”的概念，尽可能提供良好的默认项值。基本项目由两个被称为代码集(source sets)的部分构成，一个是主要的源代码，另一个是测试代码。它们各自位于：</p>
+
+<ul>
+<li><code>src/main</code></li>
+<li><code>src/androidTest</code></li>
+</ul>
+
+<p>在这些目录里，每一个资源组件都有各自的子目录。对于Java和Android插件，java源代码和java资源的路径位置为：</p>
+
+<ul>
+<li><code>java/</code></li>
+<li><code>resources/</code></li>
+</ul>
+
+<p>对于Android插件而言，有如下特定的文件和目录：</p>
+
+<ul>
+<li><code>AndroidManifest.xml</code></li>
+<li><code>res/</code></li>
+<li><code>assets</code></li>
+<li><code>aidl/</code></li>
+<li><code>rs/</code></li>
+<li><code>jni/</code></li>
+<li><code>jniLibs/</code></li>
+</ul>
+
+<p>这意味着主资源集中的所有<code>*.java</code>文件位于<code>src/main.java</code>中，主清单文件(main manifest)位于<code>src/main/AndroidManifest.xml</code>。</p>
+
+<blockquote>
+<p>注意：<br/>
+<code>src/androidTest/AndroidManifest.xml</code>由于会自动创建，因此并不是必须手动编写的。</p>
+</blockquote>
+
+<h3 id="toc_8">2.2.1配置结构</h3>
+
+<p>当默认的项目结构并不完善时，可能需要进行配置。本部分只介绍Android项目结构的配置，关于纯java项目的项目结构配置，请参阅：<a href="https://docs.gradle.org/current/userguide/java_plugin.html#N12394" title="gradle documentation">gradle documentation</a>。<br/>
+Android插件使用和纯java项目相同的语法，但是由于其使用自己的资源集，项目的配置由<code>android{...}</code>代码块完成。例如，旧的项目结构(Eclipse)中对主代码和测试代码进行映射：</p>
+
+<pre><code class="language-groovy">android {
+    sourceSets {
+        main {
+            manifest.srcFile &#39;AndroidManifest.xml&#39;
+            java.srcDirs = [&#39;src&#39;]
+            resources.srcDirs = [&#39;src&#39;]
+            aidl.srcDirs = [&#39;src&#39;]
+            renderscript.srcDirs = [&#39;src&#39;]
+            res.srcDirs = [&#39;res&#39;]
+            assets.srcDirs = [&#39;assets&#39;]
+        }
+
+ androidTest.setRoot(&#39;tests&#39;)
+      }
+}
+</code></pre>
+
+<blockquote>
+<p>注1： 因为旧的结构中在同一个文件夹中放入所有的资源文件，我们需要对这些资源集重新进行映射,将java代码，资源文件等等放入src文件夹。<br/>
+注2： <code>setRoot()</code>移动整个资源集和其子文件夹到一个新的文件夹中，上例将<code>src/androidTest/*</code>移动到<code>tests/*</code> 中，当然此处的语句<code>androidTest.setRoot(&#39;tests&#39;) </code>只是Android的特性，并不适用于Java的资源集。</p>
+</blockquote>
+
+<h2 id="toc_9">2.3构建的任务</h2>
+
+<h3 id="toc_10">2.3.1通用任务</h3>
+
+<p>在构建文件中应用插件会自动创建一系列构建任务的集合。Java插件和Android插件都是如此。关于任务的约定如下：</p>
+
+<ul>
+<li>assemble 该任务用于组合项目的输出 
+<ul>
+<li>check 该任务用于运行所有的的检测</li>
+<li>build 该任务执行assemble和check任务</li>
+<li>clean该任务清除项目的输出</li>
+</ul></li>
+</ul>
+
+<p>任务assemble，check以及build并不真正做任何事。这些插件中的“祖先”任务用于添加在任务中真正执行的任务。<br/>
+这样，不论当前的任务类型是什么以及何种插件被应用，都将会允许你使用执行相同的任务。例如，findbugs插件将会创建一个一个新的任务，并通过check任务进行依赖，无论什么时候执行调用该任务，都可以直接使用check任务。<br/>
+在命令行中，你可以通过下面的命令得到高级别任务：<br/>
+<code>gradle tasks </code><br/>
+查看所有依赖任务列表可以使用下面的命令：<br/>
+<code>gradle tasks —all</code></p>
+
+<blockquote>
+<p>注意：gradle自动显示任务已经声明任务的输入和输出情况。</p>
+</blockquote>
+
+<p>当你在没有变更项目内容的情况下再次运行构建任务时，Gradle将会报告所有的任务已经UP-TO-DATE，意味着没有需要运行的任务。这样会使得任务彼此正确的依赖，而不需要没必要的构建操作。</p>
+
+<h3 id="toc_11">2.3.2Java项目任务</h3>
+
+<p>以下是由Java插件所创建的，依赖于祖先任务的最重要的两个任务：</p>
+
+<ul>
+<li><code>assemble</code> jar：创建输出的任务</li>
+<li><code>check</code> test:运行测试的任务</li>
+</ul>
+
+<p>jar任务本身直接或间接依赖于其他任务：例如classes任务将会编译Java代码。测试代码被任务testClasses所编译，但是就像classes任务一样，几乎很少有人会去调用，因为执行test任务即可。<br/>
+总的来说，你可能应当仅仅调用assemble任务或者check任务并忽略其他的任务。你可以点击这里查看Java插件所有的任务集合及其描述信息：<a href="https://docs.gradle.org/current/userguide/java_plugin.html" title="Java插件的任务集">Java插件的任务集合</a></p>
+
+<h3 id="toc_12">2.3.3Android的任务</h3>
+
+<p>Android插件使用相同的概念来保持和其他插件之间的兼容性，并且，Android插件还添加了额外的祖先任务：</p>
+
+<ul>
+<li>assemble </li>
+<li>check</li>
+<li>connectedCheck 运行check任务需要一个连接的设备或者模拟器，在所有的连接设备中，该任务将并行执行。</li>
+<li>deviceCheck 使用API去连接远程设备，用于CI服务器(持续集成服务器)。</li>
+<li>build</li>
+<li>clean</li>
+</ul>
+
+<p>新的祖先任务是必备的，这是为了能够在不需要连接设备的情况下进行规则检查。请注意，build任务并不依赖deviceCheck任务或者connectedCheck任务。<br/>
+一个Android的项目有至少两个输出文件：一个debug apk文件以及一个release apk文件。它们中的每一个都有其自己的祖先任务来优化构建：</p>
+
+<ul>
+<li>assemble
+<ul>
+<li>assembleDebug</li>
+<li>assembleRelease</li>
+</ul></li>
+</ul>
+
+<p>assembleDebug和assembleRelease两者都依赖于其他的多步任务执行来构建app文件。assemble任务依赖于assembleDebug和assembleRelease，可调用assemble任务构建上述两种apk。</p>
+
+<blockquote>
+<p>提示： gradle支持骆驼命名法缩写的形式在命令行中为任务命名。例如：<br/>
+<code>gradle aR</code><br/>
+和下面的命令相同：<br/>
+<code>gradle assembleRelease</code><br/>
+除非有其他任务和’aR’重复。</p>
+</blockquote>
+
+<p>check任务有自己的依赖项：</p>
+
+<ul>
+<li><code>check</code>
+<ul>
+<li><code>lint</code></li>
+</ul></li>
+<li><code>connectedCheck</code>
+<ul>
+<li><code>connectedAndroidTest</code></li>
+</ul></li>
+<li><code>deviceCheck</code>
+<ul>
+<li>这取决于当任务创建时，其他插件什么时候实现测试拓展点。</li>
+</ul></li>
+</ul>
+
+<p>最后，插件创建了安装了卸载所有构建类型的任务（包括debug，release和test），只要能够被安装（需要签名）。例如：</p>
+
+<ul>
+<li><code>installDebug</code></li>
+<li><code>installRelease</code></li>
+<li><code>uninstallAll</code>
+<ul>
+<li><code>uninstallDebug</code></li>
+<li><code>uninstallRelease</code></li>
+<li><code>uninstallDebugAndroidTest</code></li>
+</ul></li>
+</ul>
+
+<h2 id="toc_13">2.4构建自定义基础</h2>
+
+<p>Android插件提供了一个宽泛的领域定制语言（DSL）在构建系统中对大多数内容进行自定义。</p>
+
+<h3 id="toc_14">2.4.1Manifest条目</h3>
+
+<p>通过DSL，能够配置最重要的manifest条目，例如：</p>
+
+<ul>
+<li><code>minSdkVersion</code></li>
+<li><code>targetSdkVersion</code></li>
+<li><code>versionCode</code></li>
+<li><code>versionName</code></li>
+<li><code>applicationId</code> 关于包名，详情请点击：<a href="http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename">应用ID VS 包名</a> </li>
+<li><code>testApplicationId</code> (用于测试apk)</li>
+<li><code>testInstrumentationRunner</code></li>
+</ul>
+
+<p>例如：</p>
+
+<pre><code class="language-groovy">android {
+    compileSdkVersion 23
+    buildToolsVersion &quot;23.0.1&quot;
+
+
+    defaultConfig { 
+        versionCode 12
+        versionName &quot;2.0&quot;
+        minSdkVersion 16
+        targetSdkVersion 23
+    }
+}
+</code></pre>
+
+<p>关于完整的构建属性清单以及其默认值，请查看<a href="http://google.github.io/android-gradle-dsl/current/">Android插件特定领域语言参考</a>。<br/>
+把这些清单属性放入构建文件中的好处是，这些值可以动态获取。例如，别人可以从文件中阅读版本名称或者使用自定义逻辑：</p>
+
+<pre><code class="language-groovy">def computeVersionName() {
+    //...
+}
+android {
+    compileSdkVersion 23
+    buildToolsVersion &quot;23.0.1&quot;
+    defaultConfig {
+        versionCode 12 
+        versionName computeVersionName()
+        minSdkVersion 16
+        targetSdkVersion 23
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>注意：不要使用当前域中可能和getters冲突的文件名。例如<code>defaultConfig{...}</code>调用<code>getVersionName()</code>会自动使用<code>defaultConfig.getVersion()</code>而不是自定义的方法。</p>
+</blockquote>
+
+<h3 id="toc_15">2.4.2构建类型</h3>
+
+<p>默认情况下，Android插件自动建立了debug版和release版应用。二者最大的不同是在安全设备（非开发设备）上的调试能力，以及APK文件被签名的详情信息。debug版本是由已知用户名/密码（防止在构建过程中的提示）所自动创建的key/证书所签名。release版本在构建过程中并不被签名，这将会在后面发生。<br/>
+这项配置通过一个叫做<code>BuildType</code>的对象完成。默认情况下,有两个实例被创建，分别是debug版和release版。Android插件运行自定义这两个实例，就像其他构建类型一样。这是由<code>buildTypes</code>特定领域语言容器所完成的：</p>
+
+<pre><code class="language-groovy">android {
+    buildTypes {
+        debug {
+            applicationIdSuffix &quot;.debug&quot;
+        }
+
+
+        jnidebug {
+            initWith(buildTypes.debug)
+            applicationIdSuffix &quot;.jnidebug&quot;
+            jniDebuggable true
+        }
+    }
+}
+</code></pre>
+
+<p>上述片断实现了如下内容：</p>
+
+<ul>
+<li>配置默认的debug构建类型
+<ul>
+<li>设置包为”应用ID.debug”，使得应用的debug版和release版都能在同一个设备上安装。</li>
+</ul></li>
+<li>创建了一个新的叫作<code>jnidebug</code>的构建类型，并对其使用<code>debug</code>构建类型进行复制。</li>
+<li>继续配置<code>jnidebug</code>，开启JNI组件调试功能，并添加一个不同的包名后缀。</li>
+</ul>
+
+<p>创建一个新的构建类型就和使用<code>buildTypes</code>容器下的一个新元素一样简单，要么调用<code>initWith()</code>要么将其完全配置结束。关于构建类型的完整属性清单，请查阅：<a href="http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.BuildType.html">Android构建类型参考</a><br/>
+另外，关于修改构建属性，构建类型可以用于添加指定的代码和资源文件。对每一种构建类型，新的相匹配资源集被创建，其默认位置为”src/构建类型名称”，例如<code>src/debug/java</code>目录能够用于添加仅仅在debug APK文件中所编译的代码或资源文件。这意味着构建类型的命名不能和<code>main</code>以及<code>androidTest</code>重复（，并且必须独一无二（这是插件所限制的）。<br/>
+就像其他任何的资源集一样，构建类型资源的位置能够重新指定：</p>
+
+<pre><code class="language-groovy">android {
+    sourceSets.jnidebug.setRoot(&#39;foo/jnidebug&#39;)
+}
+</code></pre>
+
+<p>此外，对于每一种构建类型，一个新的<code>assemble构建类型名称</code>任务被创建，例如<code>assembleDebug</code>。<code>assembleDebug</code>任务和<code>assembleRelease</code>任务在上文中已经被提及，这也就是他们为什么会存在的原因。当<code>debug</code>构建类型和<code>release</code>构建类型预创建时，这些任务(<code>assembleDebug</code>和<code>assembleRelease</code>)也会被自动创建。根据这个规则，上述的build.gradle片段也将会生成一个叫做<code>assembleJnidebug</code>的任务，该任务的依赖关系也和<code>assembleDebug</code>以及<code>assembleRelease</code>一样。</p>
+
+<blockquote>
+<p>提示：请记得你能够输入<code>aJ</code>来运行<code>assembleJnidebug </code>任务。</p>
+</blockquote>
+
+<p>可能的使用情况：</p>
+
+<ul>
+<li>一些权限只在debug模式下开启，在release模式下禁用</li>
+<li>调试的自定义实现</li>
+<li>debug模式下的使用资源不同（例如当一个资源值与资源证书相挂钩时）<br/>
+不同构建类型的代码/资源被用于以下情况：</li>
+<li>Manifest清单被合并到app清单文件中</li>
+<li>作为其他资源文件夹的代码</li>
+<li>资源文件被主资源文件覆盖并替换现有的值</li>
+</ul>
+
+<h3 id="toc_16">2.4.3签名配置</h3>
+
+<p>对一个应用的签名需要以下内容(关于APK文件签名的详细信息，请查阅<a href="https://developer.android.com/studio/publish/app-signing.html">签名你的应用</a>)：</p>
+
+<ul>
+<li>keystore</li>
+<li>keystore密码</li>
+<li>keystore别名</li>
+<li>key密码</li>
+<li>商店类型</li>
+</ul>
+
+<p>位置，key名称以及密码和商店类型共同构成签名配置。默认情况下，<code>debug</code>配置使用debug keystore，其带有已知的密码和默认的key和key的密码。debug的keystore位于<code>$HOME/.android/debug.keystore</code>，如果不存在会被创建。<code>debug</code>构建类型被自动设成使用<code>debug</code>签名配置。<br/>
+创建其他配置信息或自定义默认的内置配置信息是可行的。这是通过<code>signingConfigs</code>特定领域语言容器完成的：</p>
+
+<pre><code class="language-groovy">android {
+    signingConfigs {
+        debug {
+                    storeFile file(&quot;debug.keystore&quot;)
+        }
+
+        myConfig {
+            storeFile file(&quot;other.keystore&quot;)
+            storePassword &quot;android&quot;            keyAlias &quot;androiddebugkey&quot;
+            keyPassword &quot;android&quot;
+        }
+    }
+
+
+    buildTypes {
+        foo {
+            signingConfig signingConfigs.myConfig
+        }
+    }
+}
+</code></pre>
+
+<p>上述片段改变了debug版本keystore文件的位置为项目的根目录。这将会自动影响到任何构建类型，任何构建类型都能够使用它。在上例中即为<code>debug</code>构建类型。这也将会创建一个新的签名配置，新的构建类型(<code>foot</code>)便可以使用这个新的签名配置。</p>
+
+<blockquote>
+<p>注意1：只有debug keystore文件自动创建并位于默认位置。改变debug keystore文件位置并不会按需创建。只有使用不同命名创建签名配置并使用默认的debug keystore位置的情况下才会自动创建。从另一方面来说，这是和keystore文件的位置挂钩的，而不是和配置信息的命名相对应的。<br/>
+注意2：keystore文件的位置通常情况下和项目的根目录相关，但是也能够是绝对目录，虽然这并不被推荐（除非是debug的，因为它会自动被创建）。<br/>
+注意3：如果你把这些文件纳入到版本控制系统中，你可能并不想要把密码放在其中。<a href="http://stackoverflow.com/questions/18328730/how-to-create-a-release-signed-apk-file-using-gradle">这里</a>介绍了从控制台或环境变量中读取值的方法。</p>
+</blockquote>
+
+<h1 id="toc_17">3.依赖，Android库以及多项目建立</h1>
+
+<h2 id="toc_18">3.1依赖二进制包</h2>
+
+<h3 id="toc_19">3.1.1本地包</h3>
+
+<p>要去配置一个依赖库或者额外的jar库，你需要在<code>compile</code>配置中添加一个依赖关系。下面的片段在libs文件夹中添加了所有jar文件的依赖关系：</p>
+
+<pre><code class="language-groovy">dependencies {
+    compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
+}
+
+
+android {
+    //...
+}
+</code></pre>
+
+<blockquote>
+<p>注意：<code>dependencies</code>特定领域语言元素是标准Gradle API中的一部分。在这里面的每一项都被加入到编译类路径中，并都在最终的APK文件中被打包进去。以下是可能的配置信息：</p>
+</blockquote>
+
+<ul>
+<li><code>compile</code> 主应用</li>
+<li><code>androidTestCompile</code> 测试应用</li>
+<li><code>debugCompile</code> debug构建类型</li>
+<li><code>releaseCompile</code> release构建类型</li>
+</ul>
+
+<p>由于在构建APK时并不可能没有关联的构建类型，因此APK总是被配置至少两个编译配置信息：<code>compile</code>以及<code>构建类型Compile</code>。创建一个新的构建类型将会自动创建一个基于该构建类型名称的编译配置。如果debug版本需要添加一个自定义的库（如报告程序崩溃情况）时，或者不同构建类型依赖于相同库的不同版本时这将是非常有用的（<a href="https://docs.gradle.org/current/userguide/dependency_management.html#sub:version_conflicts">点击这里</a>详见不同版本的冲突是如何处理的）。</p>
+
+<h3 id="toc_20">3.1.2远程依赖</h3>
+
+<p>Gradle支持从Maven和Ivy库中拉取依赖(artifact)。首先，该仓库必须被添加到列表中，其次依赖必须被声明。</p>
+
+<pre><code class="language-groovy">repositories {
+     jcenter()
+}
+
+
+dependencies {
+    compile &#39;com.google.guava:guava:18.0&#39;
+}
+
+
+android {
+    //...
+}
+</code></pre>
+
+<blockquote>
+<p>注意1：<code>jcenter()</code>是指定仓库的URL缩写。Gradle同时支持远程和本地的仓库。<br/>
+注意2：Gradle遵循依赖的传递性。这意味着，如果如果一个依赖，依赖于其本身，这也会被拉取。</p>
+</blockquote>
+
+<p>关于建立依赖的更多信息，请阅读<a href="https://docs.gradle.org/current/userguide/artifact_dependencies_tutorial.html">Gradle使用指南</a>和<a href="https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html">DSL文档</a></p>
+
+<h2 id="toc_21">3.2多项目的搭建</h2>
+
+<p>Gradle项目也能够通过多项目搭建依赖于其他Gradle项目。一个多项目的搭建通常为将所有项目作为已给项目根目录的子目录。例如，给出如下的结构：<br/>
+MyProject/<br/>
+ + app/<br/>
+ + libraries/<br/>
+    + lib1/<br/>
+    + lib2/<br/>
+我们能够识别出三个项目。Gradle会用下述的命名进行参考：<br/>
+:app<br/>
+:libraries:lib1<br/>
+:libraries:lib2<br/>
+每一个项目拥有其自己的build.gradle文件，声明了其如何得到其构建。额外的，将会有一个被命名为setting.gradle的文件位于根目录，用于声明所有项目。一下给出了结构：<br/>
+MyProject/<br/>
+ | settings.gradle<br/>
+ + app/<br/>
+    | build.gradle<br/>
+ + libraries/<br/>
+    + lib1/<br/>
+       | build.gradle<br/>
+    + lib2/<br/>
+       | build.gradle</p>
+
+<p>setting.gradle的内容非常简单。它定义了哪个文件夹是一个Gradle项目：</p>
+
+<pre><code class="language-groovy">include &#39;:app&#39;, &#39;:libraries:lib1&#39;, &#39;:libraries:lib2&#39;
+</code></pre>
+
+<p><code>:app</code>项目很可能依赖于其他的项目作为库，这是通过以下声明实现的：</p>
+
+<pre><code class="language-groovy">dependencies {
+     compile project(&#39;:libraries:lib1&#39;)
+}
+</code></pre>
+
+<p>关于多项目搭建的更多信息，请<a href="https://docs.gradle.org/current/userguide/multi_project_builds.html">点击这里</a>。</p>
+
+<h2 id="toc_22">3.3库项目</h2>
+
+<p>在上述的多项目搭建中<code>:libraries:lib1 </code>和<code> :libraries:lib2</code>作为Java项目，<code>:app</code>Android项目将会使用这两个项目的jar输出。但是，如果你想要通过Android API或使用Android风格的资源来共享代码，这些库就不能是常规的Java项目，它们必须是Android库项目。</p>
+
+<h3 id="toc_23">3.3.1创建一个库项目</h3>
+
+<p>一个库项目和一个常规的Android项目非常相似。因为构建库和构建应用是不同的，因此使用的插件也不同。本质上来说，两个插件大多数代码都是相似的，并且都由相同的<code>com.android.tools.build.gradle</code>jar文件提供。</p>
+
+<pre><code class="language-groovy">buildscript {
+    repositories {
+        jcenter()
+    }
+
+
+    dependencies {
+        classpath &#39;com.android.tools.build:gradle:1.3.1&#39;
+    }
+}
+
+
+apply plugin: &#39;com.android.library&#39;
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion &quot;23.0.1&quot;
+}
+</code></pre>
+
+<p>这将会创建一个使用API 23进行编译的库项目。资源集，构建类型以及依赖关系的使用都和应用项目相同，并可以通过相同的方式自定义。</p>
+
+<h3 id="toc_24">3.3.2项目和项目库的区别</h3>
+
+<p>库项目的主要输出是一个.arr包（表示Android archive），是编译代码（就像jar文件或者原生的.so文件一样）和资源文件（清单，res文件以及assets文件）的组合。一个库项目也可以生成一个测试apk文件用于测试库的独立性。对此使用的祖先任务也是相同的(<code>assembleDebug</code>和<code>assembleReleas</code>)。因此用命令去构建这样一个项目并没有什么区别。对于其他方面，库项目表现得和应用项目一样。库项目也拥有构建类型和产品渠道（product flavors，见下文），并且能够潜在地生成多个版本的aar文件。请注意，<em>构建类型的大多数配置并不能够用于库项目</em>。但是你可以使用自定义资源集来改变库的内容，这取决于当前库是否被用于一个项目，或者用于被测试。</p>
+
+<h3 id="toc_25">3.3.4引用一个库</h3>
+
+<p>引用一个库和二进制包被引用是一样的：</p>
+
+<pre><code class="language-groovy">dependencies {
+    compile project(&#39;:libraries:lib1&#39;)
+    compile project(&#39;:libraries:lib2&#39;)
+}
+</code></pre>
+
+<blockquote>
+<p>注意：如果你有多个库，那么引用的顺序就变得很重要。这和旧的构建系统中在project.properties文件中的依赖顺序一样重要。</p>
+</blockquote>
+
+<h3 id="toc_26">3.3.5库发布</h3>
+
+<p>默认情况下，一个库仅仅发布其release版本。该版本被用于所有项目对库的引用，不论这些项目本身使用怎样的的构建类型，而这是一个我们将要取消的临时限制。你可以控制要发布何种版本：</p>
+
+<pre><code class="language-groovy">android {
+    defaultPublishConfig &quot;debug&quot;
+}
+</code></pre>
+
+<p>注意，发布的配置名参考于版本的命名。Release和Debug版仅仅适合没有渠道的情况下。如果你想要使用渠道改变默认的发布版本，你可以这样写：</p>
+
+<pre><code class="language-groovy">android {
+    defaultPublishConfig &quot;flavor1Debug&quot;
+}
+</code></pre>
+
+<p>发布一个库的所有版本是可能的。我们计划允许使用一个标准的项目到项目的依赖，但是目前这是不可能的，这是因为Gradle中的一些限制（我们正在努力解决这些）。<br/>
+发布所有版本在默认情况下是不可以的。下面的片段展示了如何开启这项功能：</p>
+
+<pre><code class="language-groovy">android {
+    publishNonDefault true
+}
+</code></pre>
+
+<p>很重要的一点是，你需要意识到发布多版本的arr文件而不是包含多个版本的arr文件。每一个arr包包含单个版本。发布一个版本意味着使得这个arr文件和Gradle项目输出的依赖一样可用。这能够被用于当发布到maven库时，或者当另一个项目依赖于该库时。<br/>
+Gradle有一个默认依赖的概念。这是当我们这样写时：</p>
+
+<pre><code class="language-groovy">dependencies {
+    compile project(&#39;:libraries:lib2&#39;)
+}
+</code></pre>
+
+<p>创建一个依赖于另一个发布类库的类库时，你需要指定使用哪一个：</p>
+
+<pre><code class="language-groovy">dependencies {
+    flavor1Compile project(path: &#39;:lib1&#39;, configuration: &#39;flavor1Release&#39;)
+    flavor2Compile project(path: &#39;:lib1&#39;, configuration: &#39;flavor2Release&#39;)
+}
+</code></pre>
+
+<blockquote>
+<p>重点1：请注意到已发布的配置是全版本的，包括所有的构建类型，并且需要被引用。<br/>
+重点2：当开启非默认发布时，maven发布插件将会发布这些额外的版本作为额外的包（带有classifier）。这意味着发布到maven库并不能真正地兼容。你应该发布一个单版本，或者开启所有的配置用于发布内部项目依赖。</p>
+</blockquote>
+
+<h1 id="toc_27">4.测试</h1>
+
+<p>应用项目中整合了测试应用的构建。因此不需要再有一个独立的测试项目。</p>
+
+<h2 id="toc_28">4.1单元测试</h2>
+
+<p>在1.1中所提到的单元测试支持，请<a href="http://tools.android.com/tech-docs/unit-testing-support">点击这里</a>。本章节的剩下部分介绍了“工具测试(instrumentation tests)”，能够运行在真机或者模拟机上，其要求是要构建一个测试APK文件。</p>
+
+<h2 id="toc_29">4.2基础配置</h2>
+
+<p>如之前所提到的，<code>main</code>资源集后面就是<code>androidTest</code>资源集，默认情况下位于<code>src/androidTest</code>，使用这个资源集使得测试APK被构建并能够安装到设备中，从而可以使用Android测试框架来测试应用，包括Android单元测试，instrumentation tests以及uiautomator tests。清单中的<code>&lt;instrumentation&gt;</code>节点是被生成的，但是你可以创建一个<code>src/androidTest/AndroidManifest.xml</code>文件来添加测试清单(manifest)的其他组件。<br/>
+还有一些值能够在instrumentation测试应用中配置。（详情请查阅<a href="http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.ProductFlavor.html">DSL参考</a>）</p>
+
+<ul>
+<li>testApplicationId</li>
+<li>testInstrumentationRunner</li>
+<li>testHandleProfiling</li>
+<li>testFunctionalTest</li>
+</ul>
+
+<p>如前所述，上述信息被配置在<code>defaultConfig</code>对象：</p>
+
+<pre><code class="language-groovy">android {
+    defaultConfig {
+        testApplicationId &quot;com.test.foo&quot;        testInstrumentationRunner &quot;android.test.InstrumentationTestRunner&quot;
+        testHandleProfiling true 
+        testFunctionalTest true
+    }
+}
+</code></pre>
+
+<p>测试应用清单文件的instrumentation节点中<code>targetPackage</code>属性的值自动化填充为测试应用的包名。即使在<code>defaultConfig</code>中或者在构建类型对象中自定义,该值并不会发生改变。这也就是清单文件被自动生成的部分原因。<br/>
+另外，<code>androidTest</code>资源集能够配置自己的依赖关系。默认情况下，应用和其自身的依赖被添加到测试app的类路径中，但是可以使用下面的片段进行扩展：</p>
+
+<pre><code class="language-groovy">dependencies {
+    androidTestCompile &#39;com.google.guava:guava:11.0.2&#39;
+}
+</code></pre>
+
+<p>测试app是由<code>assembleAndroidTest</code>任务构建的。这并不是对主<code>assemble</code>任务的依赖，而是当测试准备运行时自动调用的。<br/>
+当前只有一个构建类型能够被测试。默认情况下是<code>debug</code>构建类型。但是可以进行如下配置：</p>
+
+<pre><code class="language-groovy">android {
+    //...
+    testBuildType &quot;staging&quot;
+}
+</code></pre>
+
+<h2 id="toc_30">4.3解决主apk和测试apk之间的冲突</h2>
+
+<p>当instrumentation测试运行时，主APK和测试APK共享相同的类路径。如果主APK和测试APK使用相同的库（如Guava）的不同版本时，Gradle构建会失败。如果gradle并不捕获这一点，你的应用会在测试版和正常版表现地不同（包括任何会崩溃的情况）。<br/>
+为了让应用构建成功，请确保两个APK都使用相同版本的库。如果错误来自于间接依赖（在你自己的build.gradle中没有声明的库），仅仅在需要的地方(<code>compile</code>或者<code>androidTestCompile</code>)添加最新的依赖即可。你也可以使用<a href="https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.ResolutionStrategy.html">Gradle解决冲突机制</a>。你可以通过运行以下代码检查依赖树：<code>./gradlew :app:dependencies</code>和<code> ./gradlew :app:androidDependencies</code>。</p>
+
+<h2 id="toc_31">4.4运行测试</h2>
+
+<p>如前所述，<code>check</code>任务需要一个连接的设备，并通过祖先任务<code>connnectedCheck</code>启动。这个任务会依赖<code>connectedDebugAndroidTest</code>。这个任务做了以下几件事：</p>
+
+<ul>
+<li>确保app和测试app被构建(依赖于<code>assembleDebug</code>和<code>assembleDebugAndroidTest</code>)。</li>
+<li>安装两款应用</li>
+<li>运行测试</li>
+<li>卸载两款应用</li>
+</ul>
+
+<p>如果有多个设备连接，所有的测试都会平行运行在所有连接的设备上。如果其中一个测试失败，在任何设备中，构建都将会失败。</p>
+
+<h2 id="toc_32">4.5测试Android库</h2>
+
+<p>测试Android库项目和测试Android应用项目是完全相同的。唯一的区别在于，整个库以及依赖作为测试app的一个库被自动添加。结果是，测试APK不仅仅包括了自身的代码，也包含了库本身及其依赖。<code>androidTest</code>任务变成仅仅安装(卸载)测试APK（因为没有其他APK可供安装）。</p>
+
+<h2 id="toc_33">4.6测试报告</h2>
+
+<p>当运行单元测试时，Gradle输出一个HTML格式的报告可供轻松地查看结果。Android插件构建并拓展HTML报告用于从所有连接设备中汇集。所有的测试结果以xml文件的形式存储在<code>build/reports/androidTests/</code>中（和常规的jNnit存储在<code>build/reports/tests</code>相似）。该路径可配置如下：</p>
+
+<pre><code class="language-groovy">android {
+    //...
+    testOptions {
+        resultsDir = &quot;${project.buildDir}/foo/results&quot;
+    }
+}
+</code></pre>
+
+<p><code>android.testOptions.resultsDir</code>的值请参考：<a href="https://docs.gradle.org/current/javadoc/org/gradle/api/Project.html#file(java.lang.Object)">Project.file(String)</a>。</p>
+
+<h3 id="toc_34">4.6.1多项目报告</h3>
+
+<p>在带有多应用和多库的多项目的搭建中，当同时运行所有测试时，可能生成一个所有测试的测试报告是很有用的。<br/>
+为了做到这一点，可用一个不同的gradle插件：</p>
+
+<pre><code class="language-groovy">buildscript {
+    repositories {
+        jcenter()
+    }
+
+
+    dependencies {
+        classpath &#39;com.android.tools.build:gradle:0.5.6&#39;
+    }
+}
+
+
+apply plugin: &#39;android-reporting&#39;
+</code></pre>
+
+<p>这应该被用在根项目中，也就是setting.gradle旁边的build.gradle。<br/>
+之后，从根文件夹开，以下的命令将会运行所有的测试并汇集成报告：<br/>
+<code>gradle deviceCheck mergeAndroidReports --continue</code></p>
+
+<blockquote>
+<p>注意：<code>--continue</code>选项确保了所有子目录在内的所有测试都能够被运行，即使其中有失败的情况。</p>
+</blockquote>
+
+<h2 id="toc_35">4.7Lint支持</h2>
+
+<p>你可以在一个指定版本运行lint检查（如下），例如：<code>./gradlew lintRelease</code>或者全版本的lint检查(<code>./gradlew lint</code>)，在这种情况下会产生一个描述指定版本的报告。你可以通过添加lintOption部分来配置lint（如下）。你应该添加一些典型的部分：<a href="http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.LintOptions.html#com.android.build.gradle.internal.dsl.LintOptions">详见</a>。</p>
+
+<pre><code class="language-groovy">android {
+    lintOptions {
+        // turn off checking the given issue id&#39;s
+        disable &#39;TypographyFractions&#39;,&#39;TypographyQuotes&#39;
+
+        // turn on the given issue id&#39;s
+        enable &#39;RtlHardcoded&#39;,&#39;RtlCompat&#39;, &#39;RtlEnabled&#39;
+
+        // check *only* the given issue id&#39;s
+        check &#39;NewApi&#39;, &#39;InlinedApi&#39;
+    }
+}
+</code></pre>
+
+<h1 id="toc_36">5.构建版本</h1>
+
+<p>新构建系统的一个目标就是能够对同一个应用创建不同的版本。<br/>
+主要使用情况有两个：</p>
+
+<ol>
+<li>一个应用的不同版本。例如，一个免费/demo版本和一个专业版本</li>
+<li>同一个应用在Google Play商店打包分发多个详见：<a href="http://developer.android.com/google/play/publishing/multiple-apks.html">http://developer.android.com/google/play/publishing/multiple-apks.html</a></li>
+<li>前两者的组合</li>
+</ol>
+
+<p>目标是能够在同一个项目中生成不同的应用，而不是使用同一个库的不同应用项目。</p>
+
+<h2 id="toc_37">5.1产品渠道</h2>
+
+<p>产品渠道(product flavor)定义了一个项目应用构建的自定义版本。单个的项目可以有不同的渠道，从而生成的应用不同。<br/>
+这个新的概念被设计用于帮助版本差异非常小的情况下。如果当问到“这是否是同一个应用？”时，如果是，那么通过库项目去实现可能更适合一些。<br/>
+产品渠道通过一个叫做<code>productFlavors</code>的特定领域容器声明：</p>
+
+<pre><code class="language-groovy">android {
+    //....
+
+
+    productFlavors {
+        flavor1 {
+            //...         
+        }
+
+
+        flavor2 {
+            ...
+        }
+    }
+}
+</code></pre>
+
+<p>上例中将会创建两个渠道，分别是<code>flavor1</code>和<code>flavor2</code></p>
+
+<blockquote>
+<p>注意：渠道的名称不能喝已经存在的构建类型名称冲突，也不能使用<code>androidTest</code>和<code>test</code>资源集的名称。</p>
+</blockquote>
+
+<h2 id="toc_38">5.2构建类型+产品渠道=构建版本</h2>
+
+<p>正如我们前面所看到的，每一个构建类型生成一个新的APK文件。产品渠道也是相同的：项目的输出变成所有可能构建类型和产品渠道的组合。每一个（构建类型，产品渠道）组合被称为构建版本。例如，在默认的<code>debug</code>和<code>release</code>构建类型中，上面的例子可以生成四个构建版本：</p>
+
+<ul>
+<li>Flavor1 - debug</li>
+<li>Flavor1 - release</li>
+<li>Flavor2 - debug</li>
+<li>Flavor2 - release</li>
+</ul>
+
+<p>没有渠道的项目依然拥有构建版本，使用的是单个默认的<code>default</code>渠道/配置.</p>
+
+<h2 id="toc_39">5.3产品渠道配置</h2>
+
+<p>每一个渠道的完整配置如下：</p>
+
+<pre><code class="language-groovy">android {
+    //...
+
+
+    defaultConfig {
+        minSdkVersion 8
+        versionCode 10
+    }
+
+
+    productFlavors {
+        flavor1 {
+            applicationId &quot;com.example.flavor1&quot;
+            versionCode 20
+         }
+
+         flavor2 {
+             applicationId &quot;com.example.flavor2&quot;
+             minSdkVersion 14
+         }
+    }
+}
+</code></pre>
+
+<p>注意到<code>android.productFlavors.* </code>对象是<code>ProductFlavor</code>，其类型和<code>android.defaultConfig</code>对象类型相同。这意味着它们共享相同的属性。<br/>
+<code>defaultConfig</code>为所有的渠道提供了基础的配置，每一个种渠道能够覆盖它的任何值。在上述的例子中，配置信息以如下结尾：</p>
+
+<ul>
+<li>flavor1
+<ul>
+<li>applicationId: com.example.flavor1</li>
+<li>minSdkVersion: 8</li>
+<li>versionCode: 20</li>
+</ul></li>
+<li>flavor2
+<ul>
+<li>applicationId: com.example.flavor2</li>
+<li>minSdkVersion: 14</li>
+<li>versionCode: 10</li>
+</ul></li>
+</ul>
+
+<p>通常情况下，构建类型配置会覆盖其他配置。例如，构建类型的<code>applicationIdSuffix</code>追加在产品渠道的<code>applicationId</code>后面。有一些在构建类型和产品渠道都能够设置的情况。在这种情况下，例如<code>signingConfig</code>就是这种属性。这使得所有发布包共享这些签名配置。通过设置<code>android.buildTypes.release.signingConfig</code>或者对每一个包通过设置自己的<code>android.productFlavors.*.signingConfig</code>来分别使用签名配置。</p>
+
+<h2 id="toc_40">5.4资源集和依赖</h2>
+
+<p>和构建类型相似，产品渠道也是通过自己的资源集来贡献代码。上述的例子创建了四个资源集：</p>
+
+<ul>
+<li><code>android.sourceSets.flavor1</code> 位置为src/flavor1</li>
+<li> <code>android.sourceSets.flavor2</code>位置为src/flavor2/</li>
+<li><code>android.sourceSets.androidTestFlavor1</code>位置为 src/androidTestFlavor1/</li>
+<li><p><code>android.sourceSets.androidTestFlavor2</code>位置为 src/androidTestFlavor2/<br/>
+这些资源集通过构建类型和<code>android.sourceSets.main</code>被用于构建APK。下面的规则用于处理所有被用于构建单个APK的情况：</p></li>
+<li><p>所有的代码（<code>src/*/java</code>)共同用于多文件夹来生成单个输出。</p></li>
+<li><p>清单被共同合并到单个的清单中。这允许产品渠道拥有不同的组件、权限，和构建类型相似。</p></li>
+<li><p>所有的资源遵循覆盖的优先级。构建类型覆盖产品渠道，产品渠道覆盖<code>main</code>资源集。</p></li>
+<li><p>每个构建版本生成自己的R类。各个版本直接不存在共享。</p></li>
+</ul>
+
+<p>最后，和构建类型一样，产品渠道可以拥有自己的依赖。例如，如果渠道用于生成基于广告的app或者付费的app，每一个渠道拥有自己的广告sdk依赖。</p>
+
+<pre><code class="language-groovy">dependencies {
+    flavor1Compile &quot;...&quot;
+}
+</code></pre>
+
+<p>在这个例子中，文件<code>src/flavor1/AndroidManifest.xml</code>可能需要包含网络权限<br/>
+每个版本同样也创建了额外的资源集：</p>
+
+<ul>
+<li><code>android.sourceSets.flavor1Debug</code>位于<code>src/flavor1Debug</code></li>
+<li><code>android.sourceSets.flavor1Release</code>位于<code>src/flavor1Release</code></li>
+<li><code>android.sourceSets.flavor2Debug</code>位于<code>src/flavor2Debug</code></li>
+<li><code>android.sourceSets.flavor2Release</code>位于<code>src/flavor2Release</code></li>
+</ul>
+
+<p>他们比构建类型拥有更高的优先级，并且允许自定义版本等级。</p>
+
+<h2 id="toc_41">5.5构建和任务</h2>
+
+<p>我们之前看到的，每一种构建类型创建自己的<code>assmble名字</code>任务，但是构建版本是构建类型和产品渠道的组合。<br/>
+当使用产品类型时，更多的任务会被创建，如：</p>
+
+<ol>
+<li><code>assemble构建版本名</code></li>
+<li><code>assemble构建类型名</code></li>
+<li><code>assemble产品渠道名</code></li>
+</ol>
+
+<p>第1项允许你直接构建单个的版本，例如<code>aseembleFlavor1Debug</code>。</p>
+
+<p>第2项允许你构建所有已给构建类型的apk文件。例如<code>assembleDebug</code>将会构建<code>flavor1Debug</code>和<code>flavor2Debug</code>。</p>
+
+<p>第3项允许你构建给定渠道的所有APK文件。例如，<code>assembleFlavor1</code>将会构建<code>assembleFlavor1Debug</code>和<code>assembleFlavor1Release</code>。</p>
+
+<p>任务<code>assemble</code>会构建有可能的版本。</p>
+
+<h2 id="toc_42">5.6多渠道版本</h2>
+
+<p>在一些情况下，可能会想要基于多种条件下创建相同应用的多个版本。<br/>
+考虑一个游戏作为例子，该游戏有一个demo版本和一个付费版本并且想要使用多apk支持中的ABI过滤条件。3个ABI和2个版本需要生成6个APK文件（不考虑构建类型）。<br/>
+但是，支付版本的代码对于相对应的3个ABI版本是相同的，因此创建6个渠道并不是一个好方法。<br/>
+取而代之的是，配置两个渠道版本，所有的构建版本应该自动构建可能的组合。<br/>
+这个功能是通过渠道规格(flavor dimension)来实现的。渠道被设置到指定的规格：</p>
+
+<pre><code class="language-groovy">android {
+    //...
+
+
+    flavorDimensions &quot;abi&quot;, &quot;version&quot;
+
+
+    productFlavors {
+        freeapp {
+            dimension &quot;version&quot;
+            //...
+        }
+
+        paidapp {
+            dimension &quot;version&quot;
+            ...
+        }
+
+
+        arm {
+            dimension &quot;abi&quot;
+            ...
+        }
+        
+        mips {
+            dimension &quot;abi&quot;
+            ...
+        }
+
+       x86 {
+           dimension &quot;abi&quot;
+            ...
+        }
+    }
+}
+</code></pre>
+
+<p><code>android.flavorDimensions</code>数组定义了可能的规格。每一个产品渠道指定一个规格。<br/>
+从指定了规格的产品渠道(free app,paid app)以及构建类型（debug，release），能够创建如下的构建版本：</p>
+
+<ul>
+<li>x86-freeapp-debug</li>
+<li>x86-freeapp-release</li>
+<li>arm-freeapp-debug</li>
+<li>arm-freeapp-release</li>
+<li>mips-freeapp-debug</li>
+<li>mips-freeapp-release</li>
+<li>x86-paidapp-debug</li>
+<li>x86-paidapp-release</li>
+<li>arm-paidapp-debug</li>
+<li>arm-paidapp-release</li>
+<li>mips-paidapp-debug</li>
+<li>mips-paidapp-release</li>
+</ul>
+
+<p>规格的顺序是通过<code> android.flavorDimensions</code>定义的，这一点非常重要。<br/>
+每一个版本通过不同的产品渠道进行配置：</p>
+
+<ul>
+<li><code>android.defaultConfig</code></li>
+<li>abi规格</li>
+<li>版本规格</li>
+</ul>
+
+<p>规格的顺序驱动了是哪个渠道去覆盖哪个渠道，这对于渠道的哪个资源值去替代另一个渠道的资源值而言非常重要。<br/>
+渠道规格通过高优先级进行定义。在这种情况下：</p>
+
+<p><code>abi</code>&gt;<code>version</code>&gt;<code>defaultConfig</code><br/>
+多渠道项目也拥有额外的资源集，和构建版本资源集相似但是不包括构建类型：</p>
+
+<ul>
+<li><code>android.sourceSets.x86Freeapp</code>位于<code>src/x86Freeapp</code></li>
+<li><code>android.sourceSets.armPaidapp</code>位于<code>src/armPaidapp</code></li>
+</ul>
+
+<p>这样允许渠道组合级别的自定义。他们比基本的渠道资源集拥有更高的优先级，但是优先级低于构建类型资源集。</p>
+
+<h2 id="toc_43">5.7测试</h2>
+
+<p>多渠道项目测试和简单的项目测试非常相似。<br/>
+<code>androidTest</code>资源集用于所有渠道的通用测试，而每个渠道可以有自己的测试。<br/>
+如上所提及的，每个渠道的资源集按照如下形式被创建：</p>
+
+<ul>
+<li><code>android.sourceSets.androidTestFlavor1</code>位于<code>src/androidTestFlavor1</code></li>
+<li><code>android.sourceSets.androidTestFlavor2</code>位于<code> src/androidTestFlavor2/</code>
+相似地，它们可以有各自的依赖：</li>
+</ul>
+
+<pre><code class="language-groovy">dependencies {
+    androidTestFlavor1Compile &quot;...&quot;
+}
+</code></pre>
+
+<p>运行测试可以通过祖先任务<code>deviceCheck</code>完成，或者通过主<code>androidTest</code>任务。<br/>
+每一个渠道都有自己的测试任务：<code>androidTest版本名</code>，例如：</p>
+
+<ul>
+<li><code>androidTestFlavor1Debug</code></li>
+<li><code>androidTestFlavor2Debug</code></li>
+</ul>
+
+<p>相似地，测试APK的构建和卸载安装按照每个版本进行：</p>
+
+<ul>
+<li>assembleFlavor1Test</li>
+<li>installFlavor1Debug</li>
+<li>installFlavor1Test</li>
+<li>uninstallFlavor1Debug</li>
+</ul>
+
+<p>最后，HTML报告生成支持通过渠道的汇总。<br/>
+测试结果和报告的位置如下所示，首先是渠道版，其次是汇总版：</p>
+
+<ul>
+<li>build/androidTest-results/flavors/渠道名</li>
+<li>build/androidTest-results/all/</li>
+<li>build/reports/androidTests/flavors/渠道名</li>
+<li>build/reports/androidTests/all/</li>
+</ul>
+
+<p>或者可以自定义路径，但这仅仅改变了文件夹的根目录，但是仍然会对每个渠道创建子目录并汇集报告结果。</p>
+
+<h2 id="toc_44">5.8构建配置</h2>
+
+<p>Android Studio生成一个叫作<code>BuildConfig</code>的类，包含了用于构建一个特定版本的常量值。你可以指定这些常量值来改变不同版本，例如：</p>
+
+<pre><code class="language-java">private void javaCode() {
+    if (BuildConfig.FLAVOR.equals(&quot;paidapp&quot;)) {
+        doIt();
+    else {
+        showOnlyInPaidAppDialog();
+    }
+}
+
+</code></pre>
+
+<p>以下是构建配置中含有的值：</p>
+
+<ul>
+<li><code>boolean DEBUG</code> – if the build is debuggable.</li>
+<li><code>int VERSION_CODE</code></li>
+<li><code>String VERSION_NAME</code></li>
+<li><code>String APPLICATION_ID</code></li>
+<li><code>String BUILD_TYPE</code> - 构建类型的名字，例如”release”</li>
+<li><code>String FLAVOR</code> – 渠道名称，例如”paid app”</li>
+</ul>
+
+<p>如果项目使用渠道规格，将会生成额外的规格。使用上面的例子，会有如下的构建配置示例：</p>
+
+<ul>
+<li><code>String FLAVOR = &quot;armFreeapp&quot;</code></li>
+<li><code>String FLAVOR_abi = &quot;arm&quot;</code></li>
+<li><code>String FLAVOR_version = &quot;free app&quot;</code></li>
+</ul>
+
+<h2 id="toc_45">5.9过滤版本</h2>
+
+<p>当你添加规格和渠道时，你应该停止使用没有意义的版本。例如你可能为了更快的测试，会定义一个使用你的Web API的渠道，以及一个使用硬编码的假数据。第二个渠道仅仅在开发的时候有用，但是在发布版本的构建时却没有用处。你可以删除这个版本，改成使用<code>variantFilter</code>，例如：</p>
+
+<pre><code class="language-groovy">android {
+    productFlavors {
+        realData
+        fakeData
+    }
+
+    variantFilter { variant -&gt;
+        def names = variant.flavors*.name
+
+        if (names.contains(&quot;fakeData&quot;) &amp;&amp; variant.buildType.name == &quot;release&quot;) {
+            variant.ignore = true
+        }
+    }
+}
+</code></pre>
+
+<p>在上面的配置中，你的项目只有三个版本：</p>
+
+<ul>
+<li><code>realDataDebug</code></li>
+<li><code>realDataRelease</code></li>
+<li><code>fakeDataDebug</code></li>
+</ul>
+
+<h1 id="toc_46">6.高级构建自定义</h1>
+
+<h2 id="toc_47">6.1运行混淆</h2>
+
+<p>混淆插件在Android插件中被自动使用，如果构建类型通过<code>minifyEnabled</code>属性开启了混淆，那么任务会被自动创建。</p>
+
+<pre><code class="language-groovy">android {
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFile getDefaultProguardFile(&#39;proguard-android.txt&#39;)
+        }
+    }
+
+   productFlavors {
+        flavor1 {
+        }
+        flavor2 {            proguardFile &#39;some-other-rules.txt&#39;        
+        }
+
+    }
+}
+</code></pre>
+
+<p>版本使用所有在这个构建类型以及产品渠道中声明的规则文件。<br/>
+有两个默认规则文件：</p>
+
+<ul>
+<li>proguard-android.txt</li>
+<li>proguard-android-potimize.txt</li>
+</ul>
+
+<p>这些文件位于SDK中。使用<code>getDefaultProguardFile()</code>会返回文件的全路径。这些文件是相同的，除非开启了优化。</p>
+
+<h2 id="toc_48">6.2缩减资源</h2>
+
+<p>你可以在构建时自动移除所有未使用的资源。关于更多信息，请查阅<a href="http://tools.android.com/tech-docs/new-build-system/resource-shrinking">资源缩减</a>文档。</p>
+
+<h2 id="toc_49">6.3操作任务</h2>
+
+<p>基本的Java项目拥有有限的任务集共同创建输出。<br/>
+<code>classes</code>是编译java源代码的任务之一，缩写为：<code>project.tasks.classes</code>。<br/>
+在Android项目中有一些复杂。这是因为可能有大量相同的任务，并且它们的名字基于产品渠道和构建类型命名。<br/>
+为了去解决这一点，<code>android</code>对象有以下两个属性：</p>
+
+<ul>
+<li><code>applicationVariants</code>(只用于app插件)</li>
+<li><code>libraryVariants</code>(只用于库插件)</li>
+<li><code>testVariants</code>(同时适用于app和库插件)</li>
+</ul>
+
+<p>三者分别返回<code>ApplicationVariant</code>，<code>LibraryVariant</code>，<code>TestVariant</code>的<a href="https://docs.gradle.org/current/javadoc/org/gradle/api/DomainObjectCollection.html">领域对象集合</a>。</p>
+
+<p>注意到，访问以上三种集合的任意一种都会引发所有任务的创建。这意味着在访问集合后不会发生任何重新配置的情况。<br/>
+领域对象集合直接访问所有对象，或者通过更方便的过滤器。</p>
+
+<pre><code class="language-groovy">android.applicationVariants.all { variant -&gt;
+   ....
+}
+</code></pre>
+
+<p>所有版本类都含有以下属性：</p>
+
+<ol>
+<li>name 类型为String，表示版本名称，要求不重复。</li>
+<li>description 类型为String，人类可读的版本描述。</li>
+<li>dirName 类型为String，版本的子文件夹名称，要求不重复。可能会有多个文件夹，例如”debug/flavor”。</li>
+<li>baseName 类型为String，输出版本的基本名称，要求不重复。</li>
+<li>outputFile 类型为File，版本的输出。拥有读/写属性。</li>
+<li>processManifest 类型为ProcessManifest，用于处理清单的任务。</li>
+<li>aidlCompile 类型为AidlCompile，编译AIDL文件的任务。</li>
+<li>renderscriptCompile 类型为RenderscriptCompile，编译Renderscript的任务。</li>
+<li>mergeResources 类型为MergeResources，合并资源文件的任务。</li>
+<li>mergeAssets 类型为MergeAssets，合并assets的任务。</li>
+<li>processResources 类型为ProcessAndroidResources，用于处理和编译资源的任务。</li>
+<li>generateBuildConfig 类型为GenerateBuildConfig,生成BuildConfig类的任务</li>
+<li>javaCompile 类型为JavaCompile，编译Java代码的任务。</li>
+<li>processJavaResources 类型为Copy，处理Java资源的任务。</li>
+<li>assemble 类型为DefaultTask，对版本输出的祖先任务。<br/>
+ApplicationVariant类添加了如下内容：</li>
+<li>buildType 类型为BuildType，版本的构建类型。</li>
+<li>productFlavors 类型为List&lt;ProductFlavor&gt;,版本的产品渠道可以不设置但是永远不为空。</li>
+<li>mergedFlavor 类型为ProductFlavor,android.defaultConfig和variant.productFlavors的合并。</li>
+<li>signingConfig 类型为SigningConfig,该版本的签名配置。</li>
+<li>isSigningReady 类型为boolean。为真时该版本拥有签名的所有必需信息。</li>
+<li>testVariant 类型为BuildVariant。TestVariant会测试该版本。</li>
+<li>dex 类型为Dex，编译代码的任务。如果是个库项目可以为空。</li>
+<li>packageApplication 类型为PackageApplication，构建最终APK的任务。如果是个库项目可以为空。</li>
+<li>zipAlign 类型为ZipAlign。打包apk的任务，如果是个库项目或者APK不能被签名时可以为空。</li>
+<li>install 类型为DefaultTask，安装任务，可以为空。</li>
+<li>unstall 类型为DefaultTask，卸载任务。<br/>
+LibraryVariant类添加了一下内容：</li>
+<li>buildType 类型为BuildType，版本的构建类型。</li>
+<li>mergedFlavor 类型为ProductFlavor，默认配置值。</li>
+<li>testVariant 类型为BuildVariant，要测试的构建版本。</li>
+<li>packageLibrary 类型为Zip，打包库AAR压缩包的任务，如果不是库项目则为空。<br/>
+TestVariant类添加了如下内容：</li>
+<li>buildType 类型为BuildType，版本的构建类型。</li>
+<li>productFlavors 类型为List&lt;ProductFlavor&gt;,版本的产品渠道可以不设置但是永远不为空。</li>
+<li>mergedFlavor 类型为ProductFlavor,android.defaultConfig和variant.productFlavors的合并。</li>
+<li>signingConfig 类型为SigningConfig,该版本的签名配置。</li>
+<li>isSigningReady 类型为boolean。为真时该版本拥有签名的所有必需信息。</li>
+<li>testVariant 类型为BuildVariant。TestVariant会测试该版本。</li>
+<li>dex 类型为Dex，编译代码的任务。如果是个库项目可以为空。</li>
+<li>packageApplication 类型为PackageApplication，构建最终APK的任务。如果是个库项目可以为空。</li>
+<li>zipAlign 类型为ZipAlign。打包apk的任务，如果是个库项目或者APK不能被签名时可以为空。</li>
+<li>install 类型为DefaultTask，安装任务，可以为空。</li>
+<li>unstall 类型为DefaultTask，卸载任务。</li>
+<li>connectedAndroidTest 类型为DefaultTask，在连接设备上运行Android测试的任务。</li>
+<li>providerAndroidTest 类型为DefaultTask，使用扩展API运行Android测试的任务。<br/>
+Android特定任务类型API：</li>
+<li>ProcessManifest
+<ul>
+<li>文件 manifestOutputFile</li>
+</ul></li>
+<li>AidlCompile
+<ul>
+<li>文件 sourceOutputDir</li>
+</ul></li>
+<li>RenderscriptCompile
+<ul>
+<li>文件 sourceOutputDir</li>
+<li>文件 resOutputDir</li>
+</ul></li>
+<li>MergeResources
+<ul>
+<li>文件 outputDir</li>
+</ul></li>
+<li>MergeAssets
+<ul>
+<li>文件 outputDir</li>
+</ul></li>
+<li>ProcessAndroidResources
+<ul>
+<li>文件 manifestFile</li>
+<li>文件 resDir</li>
+<li>文件 assetsDir</li>
+<li>文件 sourceOutputDir</li>
+<li>文件 textSymbolOutputDir</li>
+<li>文件 packageOutputFile</li>
+<li>文件 proguardOutputFile</li>
+</ul></li>
+<li>GenerateBuildConfig
+<ul>
+<li>文件 sourceOutputDir</li>
+</ul></li>
+<li>Dex
+<ul>
+<li>文件 outputFolder</li>
+</ul></li>
+<li>PackageApplication
+<ul>
+<li>文件 resourceFile</li>
+<li>文件 dexFile</li>
+</ul></li>
+<li>File javaResourceDir
+<ul>
+<li>文件 jniDir</li>
+<li>文件 outputFile
+<ul>
+<li>在版本对象直接使用”outputFile”改变最终输出文件</li>
+</ul></li>
+</ul></li>
+<li>ZipAlign
+<ul>
+<li>文件 inputFile</li>
+<li>文件 outputFile
+<ul>
+<li>在版本对象直接使用”outputFile”改变最终输出文件</li>
+</ul></li>
+</ul></li>
+</ol>
+
+<p>每一个任务类型的APK是有限的，这是由于Gradle的工作方式以及Android插件是如何建立的。<br/>
+首先，Gradle的任务仅仅配置了输入输出的位置以及可能的选项。因此，任务仅仅定义了输入输出。<br/>
+其次，大多数任务的输入并不是无关紧要的，通常来自于资源集和构建类型以及产品渠道的混合。为了保持构建文件易于阅读和理解，开发者通过领域特定语言对这些对象进行微调就能够进行构建，而不是深入改变项目的输入和选项。<br/>
+另外也需要注意到的是，除了ZipAlign任务类型，所有的任务需要设置私有的数据才能工作。这意味着不可能手动创建这些类型的新任务。<br/>
+主观上API是能够修改的。通常情况下当前的API是围绕着给定的输入输出（当任务能够添加额外必须的处理时）。反馈是很重要的，特别是一些需求不可见时。<br/>
+关于Gradle的其他任务（DefaultTask, JavaCompile, Copy, Zip），请参考Gradle文档。</p>
+
+<h2 id="toc_50">6.3设置Java语言等级</h2>
+
+<p>你可以使用<code>compileOptions</code>代码块选择编译器的语言等级，默认情况下是基于<code>compileSdkVersion</code>的值。</p>
+
+<pre><code class="language-groovy">android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_6
+        targetCompatibility JavaVersion.VERSION_1_6
+    }
+}
+</code></pre>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2017-11-10T16:24:33+08:00" itemprop="datePublished">2017/11/10 16:24 下午</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15103022735229.html" itemprop="url">
+		【翻译】安卓架构组件(4)-LiveData</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>相关文章：</p>
+
+<ul>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(1)-App%E6%9E%B6%E6%9E%84%E6%8C%87%E5%AF%BC.html">【翻译】安卓架构组件(1)-App架构指导</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(2)-%E6%B7%BB%E5%8A%A0%E7%BB%84%E4%BB%B6%E5%88%B0%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B8%AD.html">【翻译】安卓架构组件(2)-添加组件到你的项目中</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(3)-%E5%A4%84%E7%90%86%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">【翻译】安卓架构组件(3)-处理生命周期</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(5)-ViewModel.html">【翻译】安卓架构组件(5)-ViewModel</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(6)-Room%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%BA%93.html">【翻译】安卓架构组件(6)-Room持久化类库</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(7)-%E5%88%86%E9%A1%B5%E5%BA%93.html">【翻译】安卓架构组件(7)-分页库</a></li>
+</ul>
+
+<p><code>LiveData</code>是一个数据持有类，保存了数据值以及允许该值被观察。并不像常规的被观察者，<code>LiveData</code>遵循app组件的生命周期，例如<code>Observer</code>可以指定要观察的<code>Lifecyle</code>。</p>
+
+<p>如果<code>Observer</code>的<code>Lifecycle</code>是<code>STARTED</code>或者<code>RESUMED</code>状态，则<code>LiveData</code>认为其处在激活状态。</p>
+
+<pre><code class="language-java">public class LocationLiveData extends LiveData&lt;Location&gt; {
+    private LocationManager locationManager;
+
+    private SimpleLocationListener listener = new SimpleLocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            setValue(location);
+        }
+    };
+
+    public LocationLiveData(Context context) {
+        locationManager = (LocationManager) context.getSystemService(
+                Context.LOCATION_SERVICE);
+    }
+
+    @Override
+    protected void onActive() {
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
+    }
+
+    @Override
+    protected void onInactive() {
+        locationManager.removeUpdates(listener);
+    }
+}
+</code></pre>
+
+<p>在<code>Location</code>监听器的实现中有三个重要的地方： </p>
+
+<ul>
+<li><code>onActive()</code>：当<code>LiveData</code>拥有一个处在激活状态的观察者时会调用这个方法。这意味着我们需要开始观察位置信息的更新</li>
+<li><code>onInactive()</code>：当<code>LiveData</code>并不拥有任何处在激活状态时这个方法被调用。既然没有任何观察者进行监听，那么没有理由继续保持对<code>LocationManager</code>服务的连接</li>
+<li><code>setValue()</code>：调用该方法更新<code>LiveData</code>实例的值，并通知处在激活状态的观察者该变化</li>
+</ul>
+
+<p>我们可以这样使用新的<code>LocationLiveData</code>：</p>
+
+<pre><code class="language-java">public class MyFragment extends LifecycleFragment {
+    public void onActivityCreated (Bundle savedInstanceState) {
+        LiveData&lt;Location&gt; myLocationListener = ...;
+        Util.checkUserStatus(result -&gt; {
+            if (result) {
+                myLocationListener.observer(this, location -&gt; {
+                    // 更新 UI
+                });
+            }
+        });
+    }
+}
+</code></pre>
+
+<p>注意到<code>addObserver()</code>方法传递的第一个参数是<code>LifecycleOwner</code>，这表示观察者必然绑定至<code>Lifecycle</code>，这意味着：</p>
+
+<ul>
+<li>如果<code>Lifecycle</code>并不处在激活状态，即使值发生变化，观察者也不会被响应</li>
+<li>如果<code>Lifecycle</code>被销毁，观察者会被自动清除</li>
+</ul>
+
+<p><code>LiveData</code>是生命周期敏感的，这提供给了我们一个新的机会：我们可以在多个<code>Activity</code>、多个<code>Fragment</code>间共享。为了保持我们样例代码的简洁，我们将它变成单例：</p>
+
+<pre><code class="language-java">public class LocationLiveData extends LiveData&lt;Location&gt; {
+    private static LocationLiveData sInstance;
+    private LocationManager locationManager;
+
+    @MainThread
+    public static LocationLiveData get(Context context) {
+        if (sInstance == null) {
+            sInstance = new LocationLiveData(context.getApplicationContext());
+        }
+        return sInstance;
+    }
+
+    private SimpleLocationListener listener = new SimpleLocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            setValue(location);
+        }
+    };
+
+    private LocationLiveData(Context context) {
+        locationManager = (LocationManager) context.getSystemService(
+                Context.LOCATION_SERVICE);
+    }
+
+    @Override
+    protected void onActive() {
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
+    }
+
+    @Override
+    protected void onInactive() {
+        locationManager.removeUpdates(listener);
+    }
+}
+</code></pre>
+
+<p>现在<code>Fragment</code>可以这样用：</p>
+
+<pre><code class="language-java">public class MyFragment extends LifecycleFragment {
+    public void onActivityCreated (Bundle savedInstanceState) {
+        Util.checkUserStatus(result -&gt; {
+            if (result) {
+                LocationLiveData.get(getActivity()).observe(this, location -&gt; {
+                   // 更新 UI
+                });
+            }
+        });
+  }
+}
+</code></pre>
+
+<p>可能会有多个<code>Fragment</code>和多个<code>Activity</code>观察我们的<code>MyLocationListener</code>实例，并且只要它们处在激活状态，我们的<code>LiveData</code>可以优雅地进行管理。</p>
+
+<p><code>LiveData</code>类具有如下的优点：</p>
+
+<ul>
+<li>没有内存泄漏：因为<code>Obeserver</code>们被绑定在自己的<code>Lifecycle</code>对象，当<code>Lifecycle</code>被销毁的时候，它们会被自动清除</li>
+<li>停止<code>Activity</code>的时候不会发生崩溃：如果<code>Obeserver</code>们的<code>Lifecycle</code>对象处在非激活状态（如<code>Activity</code>在后台），它们将不会接收任何变化事件</li>
+<li>总是更新数据：如果<code>Lifecycle</code>再次启动（例如一个<code>Activity</code>从后台回到前台），它将会收到最新的本地数据</li>
+<li>正确的配置变化：如果一个<code>Activity</code>或一个<code>Fragment</code>由于配置的变化（如屏幕旋转）重新创建，它将会立刻收到最新的<code>Location</code>数据</li>
+<li>共享资源：现在我们可以持有一个单独的<code>MyLocationListener</code>实例，只需要连接到系统服务一次，并且可以正确地支持app里的所有观察者</li>
+<li>不需要手动处理生命周期：你应该注意到，我们的<code>Fragment</code>仅仅当想要的时候观察数据，不需要关心如何停止，以及在停止后的再次开启。<code>LiveData</code>会自动管理所有的情况，因为<code>Fragment</code>提供了其<code>Lifecycle</code>。</li>
+</ul>
+
+<h2 id="toc_0"><code>LiveData</code>转换</h2>
+
+<p>有些时候，你可能想要在分发<code>LiveData</code>至观察者之前做一些变化，或者需要基于当前值返回另一个<code>LiveData</code>实例。</p>
+
+<p><code>Lifecycle</code>包提供了一个<code>Transformations</code>类，包含这些操作的辅助方法。</p>
+
+<h4 id="toc_1"><code>Transformations.map()</code></h4>
+
+<p>对<code>LiveData</code>值应用一个函数，传递结果至下流。</p>
+
+<pre><code class="language-java">LiveData&lt;User&gt; userLiveData = ...;
+LiveData&lt;String&gt; userName = Transformations.map(userLiveData, user -&gt; {
+    user.name + &quot; &quot; + user.lastName
+});
+</code></pre>
+
+<h4 id="toc_2"><code>Transformations.switchMap()</code></h4>
+
+<p>和<code>map()</code>相似，传递至<code>switchMap()</code>的函数必须返回一个<code>Lifecycle</code>。</p>
+
+<pre><code class="language-java">private LiveData&lt;User&gt; getUser(String id) {
+  ...;
+}
+
+
+LiveData&lt;String&gt; userId = ...; LiveData&lt;User&gt; user = Transformations.switchMap(userId, id -&gt; getUser(id) );
+</code></pre>
+
+<p>使用这些转化允许通过链继续观察<code>Lifecycle</code>信息，例如这些信息只有当一个观察者观察返回<code>LiveData</code>的时才进行计算。这种惰性计算的特性允许在转化过程中隐式地传递生命周期，而不需要添加额外的调用或依赖。</p>
+
+<p>当你在<code>ViewModel</code>里需要一个Lifecycle时，一个转化可能是一种解决方案。</p>
+
+<p>例如，假设我们有一个UI界面，用户输入地址并接收地址的邮政编码。UI界面原始的<code>ViewModel</code>是这样的：</p>
+
+<pre><code class="language-java">class MyViewModel extends ViewModel {
+    private final PostalCodeRepository repository;
+    public MyViewModel(PostalCodeRepository repository) {
+       this.repository = repository;
+    }
+
+    private LiveData&lt;String&gt; getPostalCode(String address) {
+       // 不要这样做！
+       return repository.getPostCode(address);
+    }
+}
+</code></pre>
+
+<p>实现如上，UI可能需要从之前的<code>LiveData</code>反注销并在每次调用<code>getPostalCode()</code>新的实例时重新注册。此外，如果UI是重新创建的，它出发了另一个调用<code>repository.getPostCode()</code>，而不是之前的结果。</p>
+
+<p>作为上述方法的替换，你可以将邮政编码信息作为地址信息输入的转换：</p>
+
+<pre><code class="language-java">class MyViewModel extends ViewModel {
+    private final PostalCodeRepository repository;
+    private final MutableLiveData&lt;String&gt; addressInput = new MutableLiveData();
+    public final LiveData&lt;String&gt; postalCode =
+            Transformations.switchMap(addressInput, (address) -&gt; {
+                return repository.getPostCode(address);
+             });
+
+  public MyViewModel(PostalCodeRepository repository) {
+      this.repository = repository
+  }
+
+  private void setInput(String address) {
+      addressInput.setValue(address);
+  }
+}
+</code></pre>
+
+<p>注意到我们将<code>postalCode</code>设为<code>public final</code>，因为它永远不会改变。它被定义为<code>addressInput</code>的转化，因此当<code>addressInput</code>变化的时候，如果有一个激活的观察者，<code>repository.getPostCode()</code>会被调用。如果没有激活的观察者，则不会有任何计算发生，直到添加了一个观察者。</p>
+
+<p>这种机制允许下层的应用创建<code>LiveData</code>对象，在需要的时候才计算。<code>ViewModel</code>可以轻易地获取它们并在上层定义转化规则。</p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2017-11-10T16:24:02+08:00" itemprop="datePublished">2017/11/10 16:24 下午</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15103022423936.html" itemprop="url">
+		【翻译】安卓架构组件(3)-处理生命周期</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>相关文章：</p>
+
+<ul>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(1)-App%E6%9E%B6%E6%9E%84%E6%8C%87%E5%AF%BC.html">【翻译】安卓架构组件(1)-App架构指导</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(2)-%E6%B7%BB%E5%8A%A0%E7%BB%84%E4%BB%B6%E5%88%B0%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B8%AD.html">【翻译】安卓架构组件(2)-添加组件到你的项目中</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(4)-LiveData.html">【翻译】安卓架构组件(4)-LiveData</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(5)-ViewModel.html">【翻译】安卓架构组件(5)-ViewModel</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(6)-Room%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%BA%93.html">【翻译】安卓架构组件(6)-Room持久化类库</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(7)-%E5%88%86%E9%A1%B5%E5%BA%93.html">【翻译】安卓架构组件(7)-分页库</a></li>
+</ul>
+
+<p><code>android.arch.lifecycle</code>包提供了类和接口，使得你可以构建“生命周期敏感的组件”——自动适应当前<code>Fragment</code>或者<code>Activity</code>的组件。</p>
+
+<blockquote>
+<p>如何引入<code>android.arch.lifecycle</code>到你的安卓项目中，详见[adding components to your project]。</p>
+</blockquote>
+
+<p>安卓框架所定义的大多数组件都有相关的生命周期。生命周期被操作系统或运行在你程序中的框架代码所管理。它们是安卓运行的核心，你的应用必须遵守它们，不要做触发内存泄漏或应用崩溃的事情。</p>
+
+<p>想象一下我们有一个在屏幕上显示位置的<code>Activity</code>，一个常见的实现大概像这样：</p>
+
+<pre><code class="language-java">class MyLocationListener {
+    public MyLocationListener(Context context, Callback callback) {
+        // ...
+    }
+
+    void start() {
+        //连接至系统位置服务
+    }
+
+    void stop() {
+        // 从系统位置服务断开
+    }
+}
+
+class MyActivity extends AppCompatActivity {
+    private MyLocationListener myLocationListener;
+
+    public void onCreate(...) {
+        myLocationListener = new MyLocationListener(this, (location) -&gt; {
+            // 更新UI
+        });
+  }
+
+    public void onStart() {
+        super.onStart();
+        myLocationListener.start();
+    }
+
+    public void onStop() {
+        super.onStop();
+        myLocationListener.stop();
+    }
+}
+</code></pre>
+
+<p>即使这个样例代码看起来还不错，但是在实际的app中，由于拥有过多的<code>start()</code>和<code>stop</code>而导致<code>onStart()</code>和<code>onStop()</code>非常巨大。</p>
+
+<p>此外，一些组件不能只在<code>onStart()</code>中开始。如果我们需要在开始位置观察前检查一些配置怎么办？某种情况下很可能检查会在<code>Activity</code>停止后结束，这意味着<code>myLocationListener.start()</code>会在<code>myLocationListener.stop()</code>之后调用，基本上会一直保持连接。</p>
+
+<pre><code class="language-java">class MyActivity extends AppCompatActivity {
+    private MyLocationListener myLocationListener;
+
+    public void onCreate(...) {
+        myLocationListener = new MyLocationListener(this, location -&gt; {
+            // 更新UI
+        });
+    }
+
+    public void onStart() {
+        super.onStart();
+        Util.checkUserStatus(result -&gt; {
+            //如果回调在activity停止后调用呢？
+            if (result) {
+                myLocationListener.start();
+            }
+        });
+    }
+
+    public void onStop() {
+        super.onStop();
+        myLocationListener.stop();
+    }
+}
+</code></pre>
+
+<p><code>android.arch.lifecycle</code>包提供了类和接口，帮助你解决这个问题。</p>
+
+<h2 id="toc_0">Lifecycle类</h2>
+
+<p><code>Lifecycle</code>是一个持有某组件生命周期状态的类，并允许其他对象观察这一状态。</p>
+
+<p><code>Lifecycle</code>使用两个枚举类型来跟踪相关联组件的生命周期状态。</p>
+
+<ul>
+<li>Event（事件）:生命周期事件由框架和<code>Lifecycle</code>类分发。这些事件映射到<code>Activity</code>和<code>Fragment</code>的回调。</li>
+<li>State（状态）：由<code>Lifecycle</code>对象所跟踪组件的当前状态。</li>
+</ul>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15102983344576.jpg" alt=""/></p>
+
+<p>请将状态想成图的节点，将事件想成两个节点的边。<br/>
+一个可以显示组件生命周期状态的类通过添加注解到其方法中来实现：</p>
+
+<pre><code class="language-java">public class MyObserver implements LifecycleObserver {
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    public void onResume() {
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    public void onPause() {
+    }
+}
+aLifecycleOwner.getLifecycle().addObserver(new MyObserver());
+</code></pre>
+
+<h2 id="toc_1">LifecycleOwner类</h2>
+
+<p><code>LifecycleOwner</code>是一个单一方法的接口，表示该类拥有一个<code>Lifecycle</code>。它只有一个方法且必须实现：<code>getLifecycle()</code>。</p>
+
+<p>这个类从各自单独的类（<code>Activity</code>和<code>Fragment</code>）抽象了<code>Lifecycle</code>的拥有者，并允许编写组件和它们共同工作。任何自定义的应用类可以实现<code>LifecycleOwner</code>接口。</p>
+
+<blockquote>
+<p>由于架构组件当前处在非正式版中，我们无法从一个稳定的组件中添加一个不稳定的API，因此<code>Fragment</code>和<code>AppCompatActivity</code>类暂时无法实现这些接口。目前可以使用<code>LifecycleActivity</code>和<code>LifecycleFragment</code>，当Lifecycles稳定以后，<code>Fragment</code>和<code>AppCompatActivity</code>将实现<code>LifecycleOwner</code>；<code>LifecycleActivity</code>和<code>LifecycleFragment</code>将会被弃用。</p>
+</blockquote>
+
+<p>对于上述的例子我们可以使我们的<code>MyLocationListener</code>类扩展自<code>LifecycleObserver</code>，之后使用<code>onCreate</code>中的Lifecycle初始化它。这使得<code>MyLocationListener</code>类是自足的，意味着当必要的时候可以使用自己的清除（cleanup）方法。</p>
+
+<pre><code class="language-java">class MyActivity extends LifecycleActivity {
+    private MyLocationListener myLocationListener;
+
+    public void onCreate(...) {
+        myLocationListener = new MyLocationListener(this, getLifecycle(), location -&gt; {
+            // 更新 UI
+        });
+        Util.checkUserStatus(result -&gt; {
+            if (result) {
+                myLocationListener.enable();
+            }
+        });
+  }
+}
+</code></pre>
+
+<p>一个常见的用例是，如果<code>Lifecycle</code>并不处在良好的状态，则立刻避免调用具体的回调。</p>
+
+<p>为了使这变的简单，<code>Lifecycle</code>类允许其他对象查询当前的状态。</p>
+
+<pre><code class="language-java">class MyLocationListener implements LifecycleObserver {
+    private boolean enabled = false;
+    public MyLocationListener(Context context, Lifecycle lifecycle, Callback callback) {
+       ...
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    void start() {
+        if (enabled) {
+           // 连接
+        }
+    }
+
+    public void enable() {
+        enabled = true;
+        if (lifecycle.getState().isAtLeast(STARTED)) {
+            // 如果未连接则连接
+        }
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    void stop() {
+        // 如果连接则断开连接
+    }
+</code></pre>
+
+<p>在这种实现下，我们的<code>LocationListener</code>类是完全生命周期敏感的，它可以做自己的初始化以及清除工作，而不需要被<code>Activity</code>管理。如果我们需要从另一个<code>Activity</code>或者<code>Fragment</code>使用自己的<code>LocationListener</code>，我们只需要初始化它就可以了。所有的搭建和拆除操作都由该类自己管理。</p>
+
+<p>可以和<code>Lifecycle</code>一同工作的类被叫做生命周期敏感的组件。需要和Android生命周期共同工作的类是值得提倡变成生命周期敏感组件的。因此它们的客户端可以轻易地整合这些类，而不需要手动管理客户端的生命周期。</p>
+
+<p><code>LiveData</code>是一个生命周期敏感组件的样例。将<code>LiveData</code>和<code>ViewModel</code>一起使用可以更轻易地构建遵循Android生命周期的app。</p>
+
+<h2 id="toc_2">Lifecycles的最佳实践</h2>
+
+<ul>
+<li>保持你的UI控制器（activities， fragments）体积尽可能地瘦小。它们不应该尝试获得自己的数据，使用<code>ViewModel</code>去做这件事，然后观察<code>LiveData</code>以响应数据的变化至UI。</li>
+<li>尝试编写数据驱动的UI，你的UI控制器仅仅负责当数据变化时更新UI，或通知至<code>ViewModel</code>。</li>
+<li>将你的数据逻辑放到你的<code>ViewModel</code>类中，<code>ViewModel</code>应该作为你的UI控制器和app剩余部分的连接器。然而请小心，<code>ViewModel</code>的职责并不在于获取数据（例如从网路中获取数据）。相反<code>ViewModel</code>应当调用正确的组件去做这件工作，之后给UI控制器提供结果。</li>
+<li>使用数据绑定在你的视图和UI控制器之间维护一个清晰的接口。这允许你在activities/fragments更新最少的代码。如果你想在Java这样做，使用[Butter Knife]这样的类库来避免模板代码，以及拥有更好的抽象。</li>
+<li>如果你的UI很复杂，考虑创建一个Presenter类来处理UI的修改。</li>
+<li>永远不要在你的<code>ViewModel</code>中引用<code>View</code>或者<code>Activity</code>的<code>Context</code>。如果<code>ViewModel</code>在<code>Activity</code>之外存活，你的<code>Activity</code>将会被泄漏并且不能正确地被回收。</li>
+</ul>
+
+<h2 id="toc_3">附加</h2>
+
+<h3 id="toc_4">在自定义Activity和Fragment中实现LifecycleOwner</h3>
+
+<p>任何自定义的<code>Fragment</code>或<code>Activity</code>都可以通过实现内置的<code>LifecycleRegistryOwner</code>变成<code>LifecycleOwner</code>（从而不需要扩展自<code>LifecycleFragment</code>或者<code>LifecycleActivity</code>）。</p>
+
+<pre><code class="language-java">public class MyFragment extends Fragment implements LifecycleRegistryOwner {
+    LifecycleRegistry lifecycleRegistry = new LifecycleRegistry(this);
+
+    @Override
+    public LifecycleRegistry getLifecycle() {
+        return lifecycleRegistry;
+    }
+}
+</code></pre>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2017-11-10T11:13:34+08:00" itemprop="datePublished">2017/11/10 11:13 上午</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15102836149647.html" itemprop="url">
+		【翻译】安卓架构组件(2)-添加组件到你的项目中</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<hr/>
+
+<p>layout: post<br/>
+title: &#39;【翻译】安卓架构组件(2)-添加组件到你的项目中&#39;<br/>
+date: 2017-06-07<br/>
+author: Chuckiefan</p>
+
+<h2 id="toc_0">tags: Android 架构</h2>
+
+<p>相关文章：</p>
+
+<ul>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(1)-App%E6%9E%B6%E6%9E%84%E6%8C%87%E5%AF%BC.html">【翻译】安卓架构组件(1)-App架构指导</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(3)-%E5%A4%84%E7%90%86%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">【翻译】安卓架构组件(3)-处理生命周期</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(4)-LiveData.html">【翻译】安卓架构组件(4)-LiveData</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(5)-ViewModel.html">【翻译】安卓架构组件(5)-ViewModel</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(6)-Room%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%BA%93.html">【翻译】安卓架构组件(6)-Room持久化类库</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(7)-%E5%88%86%E9%A1%B5%E5%BA%93.html">【翻译】安卓架构组件(7)-分页库</a></li>
+</ul>
+
+<blockquote>
+<p>架构组件仍然处在alpha阶段，直到1.0版本才会稳定。</p>
+</blockquote>
+
+<p>架构组件在谷歌的Maven仓库发布，可以通过遵循以下步骤使用它们：</p>
+
+<h2 id="toc_1">添加谷歌Maven仓库</h2>
+
+<p>Android Studio项目默认情况下并没有配置该仓库。</p>
+
+<p>为了添加其至你的项目中，打开项目的<code>build.gradle</code>（而不是模块的gradle文件），添加以下内容：</p>
+
+<pre><code class="language-groovy">allprojects {
+    repositories {
+        jcenter()
+        maven { url &#39;https://maven.google.com&#39; }//所要添加的语句
+    }
+}
+</code></pre>
+
+<h2 id="toc_2">添加架构组件</h2>
+
+<p>打开模块下的<code>build.gradle</code>文件，添加你所需要构件的依赖：</p>
+
+<p>对于<code>Lifecycles</code>，<code>LiveData</code>，<code>ViewModel</code>：</p>
+
+<ul>
+<li><code>compile &quot;android.arch.lifecycle:runtime:1.0.0-alpha1&quot;</code></li>
+<li><code>compile &quot;android.arch.lifecycle:extensions:1.0.0-alpha1&quot;</code></li>
+<li><code>annotationProcessor &quot;android.arch.lifecycle:compiler:1.0.0-alpha1&quot;</code></li>
+</ul>
+
+<p>对于Room：</p>
+
+<ul>
+<li><code>compile &quot;android.arch.persistence.room:runtime:1.0.0-alpha1&quot;</code></li>
+<li><code>annotationProcessor &quot;android.arch.persistence.room:compiler:1.0.0-alpha1&quot;</code></li>
+</ul>
+
+<p>对于Room迁移测试：</p>
+
+<ul>
+<li><code>testCompile &quot;android.arch.persistence.room:testing:1.0.0-alpha1&quot;</code></li>
+</ul>
+
+<p>对于Room RxJava支持：</p>
+
+<ul>
+<li><code>compile &quot;android.arch.persistence.room:rxjava2:1.0.0-alpha1&quot;</code></li>
+</ul>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2017-11-10T11:13:27+08:00" itemprop="datePublished">2017/11/10 11:13 上午</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15102836075267.html" itemprop="url">
+		【翻译】安卓架构组件(1)-App架构指导</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<hr/>
+
+<p>layout: post<br/>
+title: &#39;【翻译】安卓架构组件(1)-App架构指导&#39;<br/>
+date: 2017-06-07<br/>
+author: Chuckiefan</p>
+
+<h2 id="toc_0">tags: Android 架构</h2>
+
+<p>相关文章：</p>
+
+<ul>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(2)-%E6%B7%BB%E5%8A%A0%E7%BB%84%E4%BB%B6%E5%88%B0%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B8%AD.html">【翻译】安卓架构组件(2)-添加组件到你的项目中</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(3)-%E5%A4%84%E7%90%86%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">【翻译】安卓架构组件(3)-处理生命周期</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(4)-LiveData.html">【翻译】安卓架构组件(4)-LiveData</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(5)-ViewModel.html">【翻译】安卓架构组件(5)-ViewModel</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(6)-Room%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%BA%93.html">【翻译】安卓架构组件(6)-Room持久化类库</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(7)-%E5%88%86%E9%A1%B5%E5%BA%93.html">【翻译】安卓架构组件(7)-分页库</a></li>
+</ul>
+
+<blockquote>
+<p>说明：今年的Google I/O大会关于安卓的部分发布了全新的类库：Architecture Components。这个新的类库致力于从架构层面帮助你设计健壮、易于测试以及易于维护的app，其中包括UI组件生命周期的管理以及数据持久化等部分。我个人对这个类库非常感兴趣，很早就想写一些关于这方面的文章，但是由于私人事务问题近期才有时间。我会先发布这个类库相关文档的译文，在后面时间富裕的时候再聊一聊对这个类库的理解和在实际应用的经历。目前该类库还处在alpha阶段，但这并不影响我们对此的学习，当正式版放出后我相信会受到很多开发者的青睐</p>
+</blockquote>
+
+<p>这份文档用于已经掌握构建Android app基本技能，现在想要了解推荐的架构，想要实践如何构建健壮、生产级别app的开发者。</p>
+
+<blockquote>
+<p>本文档假设读者已经熟悉Android框架。如果你刚跟接触Android，请访问[这里]的训练系列，该训练包含了本文档的所有预备知识。</p>
+</blockquote>
+
+<h2 id="toc_1">app开发者所面临的常见问题</h2>
+
+<p>与之对应的传统桌面应用在大多数情况下含有一个单一的入口点（快捷图标）并运行作为一个单一的程序，这和Android应用很不同。Android app拥有更复杂的结构。一个典型的Android app往往由多种组件构建而成，包括<code>Activity</code>, <code>Fragment</code>, <code>Service</code>, <code>Content Provider</code>以及<code>Broadcast Receiver</code>。</p>
+
+<p>这些app组件大部分被声明在app清单文件（AndroidManifest）中，该清单文件被Android系统用于决定如何整合你的app到全局的用户体验中。如上文所说，传统的桌面应用通常作为一个整体运行，而一个编写良好的Android应用需要更加灵活，因为用户常常在不同的app间频繁切换。</p>
+
+<p>例如，考虑当你想在你最喜欢的社交网络上分享一张照片时会发生什么？app触发一个相机的<code>Intent</code>，Android系统启动了一个相机应用来处理请求。在这个时候，用户离开了该社交网络app，但是在体验上却是无缝衔接的。接着，相机app可能触发其他Intent来开启其他应用，例如启动文件选择器。最终，用户回到了社交网络app并分享了图片。同样地，用户可能在这一处理过程中的任何时刻被电话接听所打断，在接听完成后继续回来分享图片。</p>
+
+<p>在Android中，这种应用频繁切换的行为很常见，因此你的app必须能够正确处理这些行为。请记住，手机设备是被资源所约束的，因此在任何时候操作系统都有可能为了给新开启的app腾出空间而杀死一些app。</p>
+
+<p>关于这一切的关键点在于你的app组件可以单独启动并且是无序的，以及该组件可以在任何时候被用户或系统销毁。因为app组件是短暂的，并且它们的生命周期（例如何时创建以及何时销毁）并不受你控制。<em>你不能在你的app组件中存储任何数据或状态</em>，并且你的组件之间不应该互相依赖。</p>
+
+<h2 id="toc_2">常见架构原则</h2>
+
+<p>如果你不能使用app组件来存储应用的数据和状态，那么app该如何构建呢？</p>
+
+<p>你所该关注最重要的事情是在你的app中遵守关注点分离原则。一个常见的错误是把你所有的代码都写在<code>Activity</code>或者<code>Fragment</code>中。任何不操作UI或操作系统交互的代码都不应该放在上述这些类中。请尽量保持这些类的体积瘦小以避免许多生命周期相关的问题。不要忘记你并不拥有这些类，它们只是在你的应用和系统之间交互的粘合剂。安卓系统会在任何时候销毁它们，例如用户的交互行为或者其他因素，如可用内存过低等。为了提供一个可靠的用户体验，最好减少对它们的依赖。</p>
+
+<p>第二个最重要的原则是你应该<em>用模型驱动界面</em>，最好是持久化模型(Persistent Model)。持久化是一个理想的状态，理由如下：1.如果操作系统销毁了你的应用来释放资源，你的用户不应该因此而丢掉数据。2.甚至当网络堵塞甚至未连接时，你的应用应当继续工作。Model是负责处理应用数据的组件，它们独立于视图(View)以及其他app组件，因此Model和这些生命周期相关的问题也是隔绝的。保持UI代码的简洁以及应用逻辑的自由更易于进行管理。将你的app基于Model类构建将对数据管理有利，并使得它们易于测试。</p>
+
+<h2 id="toc_3">推荐app架构</h2>
+
+<p>在这一章节，我们致力于如何使用架构组件(Architecture Components)来构建一个app，我们将通过一个用例进行说明。</p>
+
+<blockquote>
+<p>软件工程领域没有银弹。我们不可能找到一种最佳的方法能够一劳永逸地适合所有的场景。但是我们所推荐架构的意义在于对大多数用例来说都是好的。如果你已经有一个比较好的方式来写Android应用，那么你不需要做出改变。</p>
+</blockquote>
+
+<p>想象一下我们正在构建一个显示用户资料的UI界面。该用户界面将通过REST API从我们的私有后台获取。</p>
+
+<h3 id="toc_4">构建用户界面</h3>
+
+<p>UI界面将会由一个叫做<code>UserProfileFragment.java</code>的<code>Fragment</code>和对应的布局文件<code>user_profile_layout.xml</code>组成。</p>
+
+<p>为了驱动UI界面，我们的数据模型需要持有两个数据元素：</p>
+
+<ul>
+<li>User ID:用于区分用户。通过<code>fragment</code>参数将信息传递至<code>Fragment</code>是最佳的方式。如果Android系统销毁了你的进程，这个信息将会被保存，因此当app下次重启时，该id也将是可用的</li>
+<li>User Object:一个含有用户数据的POJO类</li>
+</ul>
+
+<p>我们将会创建一个基于<code>ViewModel</code>类的<code>UserProfileViewModel</code>来保存信息。</p>
+
+<blockquote>
+<p>一个<code>ViewModel</code>提供了指定UI组件的数据，例如一个<code>fragment</code>或<code>activity</code>，并处理数据的交互，例如调用其他组件加载数据或数据的更新修改等。<code>ViewModel</code>并不知道<code>View</code>，也不受配置信息变化的影响，例如由于屏幕旋转造成的<code>Activity</code>重建。</p>
+</blockquote>
+
+<p>现在我们拥有以下三个文件：</p>
+
+<ul>
+<li><code>user_profile.xml</code>: 定义了屏幕的UI布局</li>
+<li><code>UserProfileViewModel.java</code>:准备用于UI的数据类</li>
+<li><code>UserProfileFragment.java</code>: UI控制器，在<code>ViewModel</code>中显示数据以及响应用户交互</li>
+</ul>
+
+<p>下面是我们的初步实现（布局文件比较简单直接省略）：</p>
+
+<pre><code class="language-java"> public class UserProfileViewModel extends ViewModel {
+     private String userId;
+     private User user;
+ 
+     public void init(String userId) {
+         this.userId = userId;
+     }
+     public User getUser() {
+         return user;
+     }
+ }
+
+ public class UserProfileFragment extends LifecycleFragment {
+     private static final String UID_KEY = &quot;uid&quot;;
+     private UserProfileViewModel viewModel;
+ 
+     @Override
+     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+         super.onActivityCreated(savedInstanceState);
+         String userId = getArguments().getString(UID_KEY);
+         viewModel = ViewModelProviders.of(this).get(UserProfileViewModel.class);
+         viewModel.init(userId);
+     }
+ 
+     @Override
+     public View onCreateView(LayoutInflater inflater,
+                 @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+         return inflater.inflate(R.layout.user_profile, container, false);
+     }
+ }
+</code></pre>
+
+<blockquote>
+<p>如果你已经使用了类似于<code>RxJava</code>或者<code>Agera</code>这样的库，你可以继续使用它们，而不是<code>LiveData</code>。但是如果当你使用它们，请确保正确地处理了生命周期，例如当相关的生命周期拥有者（LifecycleOwner）停止时应当暂停，当生命周期持有者销毁时也应当销毁。你也可以添加<code>android.arch.lifecycle:reactivestreams</code>，使<code>LiveData</code>和其他响应流式库共同使用，例如<code>RxJava</code>。</p>
+</blockquote>
+
+<p>现在我们将<code>UserProfileViewModel</code>中的<code>User</code>成员变量替换为<code>LiveData&lt;User&gt;</code>，使得当数据更新时，<code>Fragment</code>可以收到通知。关于<code>LiveData</code>一件很棒的事是，它能够对生命周期做出反应，并将在不再需要的时候自动清除引用。</p>
+
+<pre><code class="language-java"> public class UserProfileViewModel extends ViewModel {
+     //...
+     private LiveData&lt;User&gt; user;//替换行
+     public LiveData&lt;User&gt; getUser() {
+         return user;
+     }
+ }
+ ```
+
+现在我们修改`UserProfileFragment`，观察数据变化并更新UI。
+
+```java
+@Override
+public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    super.onActivityCreated(savedInstanceState);
+    viewModel.getUser().observe(this, user -&gt; {
+      // 此处更新 UI
+    });
+}
+</code></pre>
+
+<p>每次用户数据被更新时，<code>onChanged</code>回调函数会被调用，UI界面会被更新。</p>
+
+<p>如果你熟悉其他使用观察回调的类库，你可能会意识到我们并没有复写<code>Fragment</code>的<code>onStop()</code>方法来停止对数据的观察。这在<code>LiveData</code>中是不必要的，因为它对生命周期敏感，这意味着将不会调用回调函数，除非<code>Fragment</code>出在激活状态（接收<code>onStart()</code>但没有接受<code>onStop()</code>）。当<code>Fragment</code>接收<code>onDestroy()</code>方法时，<code>LiveData</code>将会自动清除观察者。</p>
+
+<p>我们也不会做任何特殊的事情来处理配置的变化（例如旋转屏幕）。当配置发生变化的时候，<code>ViewModel</code>将会自动保存，因此一旦新的<code>Fragment</code>到来时，它将会收到<code>ViewModel</code>的相同实例，带有当前数据的回调函数将会立即被调用。这就是<code>ViewModel</code>不应该直接引用<code>View</code>的原因，<code>ViewModel</code>会在<code>View</code>的生命周期外存活。详见：[ViewModel的生命周期]。</p>
+
+<h3 id="toc_5">获取数据</h3>
+
+<p>现在我们将ViewModel和<code>Fragment</code>关联在了一起，但是ViewModel该如何获取数据呢？在本例下，我们假设我们的后台提供了REST API。我们会用<code>Retrofit</code>库来访问我们的后台，当然你可以随意选择其他不同的类库。</p>
+
+<p>这里就是和我们后台交互的retrofit接口<code>Webservice</code>：</p>
+
+<pre><code class="language-java">public interface Webservice {
+    /**
+     * @GET 声明是一个HTTP GET请求
+     * @Path(&quot;user&quot;) 标记了userId参数来替换GET请求中的{user}路径
+     */
+    @GET(&quot;/users/{user}&quot;)
+    Call&lt;User&gt; getUser(@Path(&quot;user&quot;) String userId);
+}
+</code></pre>
+
+<blockquote>
+<p>关于Retrofit的使用请详见官方文档，这里只是简单进行了说明</p>
+</blockquote>
+
+<p><code>ViewModel</code>的原生实现可以直接调用<code>Webservice</code>来获取数据并交给用户对象。即使这样可以生效，你的app将会随着增长而难以维护。相对于我们上文所提到的关注点分离原则，这种方式给予了<code>ViewModel</code>类太多的职责。另外<code>ViewModel</code>的作用于被绑在<code>Activity</code>或<code>Fragment</code>的生命周期上，因此当生命周期结束的时候丢掉这些数据是一种很糟糕的用户体验。作为替代，我们的<code>ViewModel</code>将会把这一工作委派给新的<em>仓库（Repository）</em>模块。</p>
+
+<blockquote>
+<p>仓库模块(Repository Module)负责处理数据操作。他们提供了清晰的API，并且知道在哪获取数据以及哪种API的调用会导致数据更新。你可以考虑把它作为多种数据源的中介（持久化模型，网络服务数据，缓存等）。</p>
+</blockquote>
+
+<p>下方的<code>UserRepository</code>类将会使用<code>WebService</code>来获取数据项：</p>
+
+<pre><code class="language-java">public class UserRepository {
+    private Webservice webservice;
+    // ...
+    public LiveData&lt;User&gt; getUser(int userId) {
+        // 这并不是最佳的实现方式，我们将在下文修正它
+        final MutableLiveData&lt;User&gt; data = new MutableLiveData&lt;&gt;();
+        webservice.getUser(userId).enqueue(new Callback&lt;User&gt;() {
+            @Override
+            public void onResponse(Call&lt;User&gt; call, Response&lt;User&gt; response) {
+                // 错误情况的处理被省略了
+                data.setValue(response.body());
+            }
+        });
+        return data;
+    }
+}
+</code></pre>
+
+<p>即使仓库模型看起来并不需要，但是它完成了一个重要的目标：它将app中的数据源抽象了出来。现在我们的<code>ViewModel</code>不知道数据是由<code>Webservice</code>获取而来的，这意味着在需要其他实现的时候我们可以进行替换。</p>
+
+<h3 id="toc_6">管理组件间的依赖</h3>
+
+<p>上面的<code>UserRepository</code>类需要<code>WebService</code>接口的一个实例去进行工作。我们当然可以在每个仓库模型类中简单地创建一个，不过需要知道<code>WebService</code>所依赖的具体子类。这将会显著提高代码的复杂性和冗余。另外<code>UserRepository</code>也可能不是唯一需要<code>WebService</code>的类，如果每个类都创建一个<code>WebService</code>，这将会浪费很多的资源。</p>
+
+<p>有两种模式可以解决这个问题：</p>
+
+<ul>
+<li>依赖注入：依赖注入允许类定义依赖而不用去构造他们。在运行的时候，另一个类负责提供这些依赖关系。我们推荐在安卓中使用谷歌的[Dagger 2]类库进行依赖注入。通过遍历依赖树，Dagger 2 自动构造对象并提供编译时的依赖保障。</li>
+<li>服务定位：服务定位器提供了注册器，使得类可通过依赖进行构建，而不是需要配置它们。服务定位模式相对依赖注入而言更易于实现，因此如果你并不熟悉依赖注入，可以使用服务定位来代替。</li>
+</ul>
+
+<h3 id="toc_7">连接<code>ViewModel</code>和仓库</h3>
+
+<p>现在我们修改我们的<code>UserProfileViewModel</code>以使用仓库：</p>
+
+<pre><code class="language-java">public class UserProfileViewModel extends ViewModel {
+    private LiveData&lt;User&gt; user;
+    private UserRepository userRepo;
+
+    @Inject // UserRepository 参数由Dagger 2提供
+    public UserProfileViewModel(UserRepository userRepo) {
+        this.userRepo = userRepo;
+    }
+
+    public void init(String userId) {
+        if (this.user != null) {
+            // ViewModel 由每个fragment创建，因此我们知道并不会发生改变
+            return;
+        }
+        user = userRepo.getUser(userId);
+    }
+
+    public LiveData&lt;User&gt; getUser() {
+        return this.user;
+    }
+}
+</code></pre>
+
+<h3 id="toc_8">缓存数据</h3>
+
+<p>上述仓库的实现易于抽象了调用网络服务的过程，但是因为它仅仅依赖于一个单一的数据源，因此并不是很实用。</p>
+
+<p><code>UserRepository</code>实现的问题在于在获取数据以后，并没有在任何地方保存它。如果用户离开了<code>UserProfileFragment</code>并再次回来，app会重新获取数据。这很糟糕，有以下两个原因：1.浪费了宝贵的网络带宽；2.强迫用户等待新的请求完成。为了解决这个问题，我们将在<code>UserRepository</code>添加一个新的数据源在内存中缓存我们的<code>User</code>对象。</p>
+
+<pre><code class="language-java">@Singleton  // 通知 Dagger 该类应该只构建一次
+public class UserRepository {
+    private Webservice webservice;
+    // 简单缓存在内存中，忽略实现细节
+    private UserCache userCache;
+    public LiveData&lt;User&gt; getUser(String userId) {
+        LiveData&lt;User&gt; cached = userCache.get(userId);
+        if (cached != null) {
+            return cached;
+        }
+
+        final MutableLiveData&lt;User&gt; data = new MutableLiveData&lt;&gt;();
+        userCache.put(userId, data);
+        // 这仍然不是最优的代码，但是要比之前的代码好
+        // 一个完整的实现必须处理错误情况
+        webservice.getUser(userId).enqueue(new Callback&lt;User&gt;() {
+            @Override
+            public void onResponse(Call&lt;User&gt; call, Response&lt;User&gt; response) {
+                data.setValue(response.body());
+            }
+        });
+        return data;
+    }
+}
+</code></pre>
+
+<h3 id="toc_9">数据持久化</h3>
+
+<p>在我们当前的实现中，如果用户旋转了屏幕或者离开并返回app，当前UI界面将立刻可见，这是因为仓库从内存中获取了数据。但是如果用户离开app很久，在Android系统杀掉进程后再回来呢？</p>
+
+<p>在当前的实现中，我们需要从网络重新获取数据。这并不仅是一个很糟糕的用户习惯，并且很浪费，因为我们要重新获取相同的数据。你可以仅仅通过缓存网络请求来修复它，但是这也创造了新的问题。如果相同的数据类型在另一个请求中发生（如获取一组好友列表）呢？如果是这样，你的app可能会显示不正确的数据。</p>
+
+<p>正确解决这个问题的关键在于使用一个持久化模型。这正是<code>Room</code>持久化类库所解决的问题。</p>
+
+<blockquote>
+<p><code>Room</code>是一个以最小化模板代码提供本地数据持久化的对象关系映射类库。在编译时间，它会验证每个查询语句，因此错误的SQL会导致编译时报错，而不是在运行时报错。<code>Room</code>抽象了一些原生SQL表和查询的底层实现细节。它也允许观察数据库数据的变化，通过<code>LiveData</code>对象进行展现。此外，它显式地定义线程约束以解决一些常见的问题，如在主线程访问存储。</p>
+
+<p>如果你对另一些持久化解决方案很熟悉，你并不需要进行替换，除非<code>Room</code>的功能集和你的用例更符合。</p>
+</blockquote>
+
+<p>为了使用<code>Room</code>，我们需要定义我们的本地表。首先使用<code>@Entity</code>去注解<code>User</code>类，标记该类作为数据库中的表。</p>
+
+<pre><code class="language-java">@Entity
+class User {
+  @PrimaryKey
+  private int id;
+  private String name;
+  private String lastName;
+  // getters/setters
+}
+</code></pre>
+
+<p>之后，通过扩展<code>RoomDatabase</code>类创建一个数据库类：</p>
+
+<pre><code class="language-java">@Database(entities = {User.class}, version = 1)
+public abstract class MyDatabase extends RoomDatabase {
+}
+</code></pre>
+
+<p>注意，<code>MyDatabase</code>类是抽象的，<code>Room</code>会自动提供实现。详情请参见<code>Room</code>文档。</p>
+
+<p>现在我们需要一个方式将用户数据插入到数据库中，为此我们需要创建一个数据访问对象(DAO)：</p>
+
+<pre><code class="language-java">@Dao
+public interface UserDao {
+    @Insert(onConflict = REPLACE)
+    void save(User user);
+    @Query(&quot;SELECT * FROM user WHERE id = :userId&quot;)
+    LiveData&lt;User&gt; load(String userId);
+}
+</code></pre>
+
+<p>之后，从我们的数据库类中引用DAO：</p>
+
+<pre><code class="language-java">@Database(entities = {User.class}, version = 1)
+public abstract class MyDatabase extends RoomDatabase {
+    public abstract UserDao userDao();
+}
+</code></pre>
+
+<p>请注意<code>load</code>方法返回了一个<code>LiveData&lt;User&gt;</code>。<code>Room</code>知道数据库什么时候被修改并将在数据变化时自动通知所有已激活的观察者。使用了<code>LiveData</code>是很高效的，因为只有在至少含有一个处在激活状态的观察者时才会更新。</p>
+
+<blockquote>
+<p>目前处在alpha 1版本中，<code>Room</code>会检查基于表修改的错误信息，也就是说会分发假阳性的通知。假阳性是指分发的通知是正确的，但是并非是由数据变化所造成的。</p>
+</blockquote>
+
+<p>现在我们修改<code>UserRepository</code>类，将<code>Room</code>数据源包含在内。</p>
+
+<pre><code class="language-java">@Singleton
+public class UserRepository {
+    private final Webservice webservice;
+    private final UserDao userDao;
+    private final Executor executor;
+
+    @Inject
+    public UserRepository(Webservice webservice, UserDao userDao, Executor executor) {
+        this.webservice = webservice;
+        this.userDao = userDao;
+        this.executor = executor;
+    }
+
+    public LiveData&lt;User&gt; getUser(String userId) {
+        refreshUser(userId);
+        //直接从数据库返回数据
+        return userDao.load(userId);
+    }
+
+    private void refreshUser(final String userId) {
+        executor.execute(() -&gt; {
+            // 运行在后台线程
+            // 检查用户最新是否获取更新
+            boolean userExists = userDao.hasUser(FRESH_TIMEOUT);
+            if (!userExists) {
+                // 刷新数据
+                Response response = webservice.getUser(userId).execute();
+                // TODO 错误情况监测处理（省略）
+                // 更新数据库，LiveData会自动更新，因此只需要更新数据库就可以了
+                userDao.save(response.body());
+            }
+        });
+    }
+}
+</code></pre>
+
+<p>请注意，即使我们在<code>UserRepository</code>中改变了数据源，我们仍然不需要改变<code>UserProfileViewModel</code>或者<code>UserProfileFragment</code>。这种灵活性是由抽象所提供的。这对于测试来说也是很棒的，因为你可以在测试<code>UserProfileViewModel</code>的时候提供一个假的<code>UserRepository</code>。</p>
+
+<p>现在我们的代码完成了。如果用户稍后再次回到相同的UI，将会立即看到用户信息，因为我们进行了持久化。同时，如果数据过时了，我们的仓库会在后台更新数据它们。当然这取决于你的具体用例，你可以选择在数据过时的时候不显示它们。</p>
+
+<p>在一些用例中，例如pull-to-refresh，对于UI来说如果当前在进行网络请求，对用户显示该进度是很重要的。将UI的行为和实际数据分离是一种很好的实践，因为数据可能因为多种原因被更新（例如如果我们拉取一组朋友列表，已存在的数据可能会被再次获取，从而触发了<code>LiveData&lt;User&gt;</code>更新）。从UI的角度来看，事实上是另一个数据端。</p>
+
+<p>该用例有两个常见的方案：</p>
+
+<ul>
+<li>修改<code>getUser()</code>方法，返回带有网络操作状态的<code>LiveData</code>，例如下文中的“显示网络状态”章节。</li>
+<li>在仓库类中提供另一个公共方法，返回<code>User</code>类的刷新状态。这种方式更好，如果你想要仅仅在响应显式地用户操作（如pull-to-refresh）时显示网络状态。</li>
+</ul>
+
+<h3 id="toc_10">真正单一数据源</h3>
+
+<p>对于不同的REST API返回相同的数据是很常见的，例如，如果我们的后台有另一个接口用于返回朋友列表，相同的<code>User</code>对象会从两个API返回。如果<code>UserRepository</code>也要去返回<code>Webservice</code>请求的结果，我们的UI界面可能会显示不正常数据，因为数据可能会因这两个请求接口而改变。这也就是为什么在<code>UserRepository</code>实现中，网络服务仅仅存储数据到数据库的原因。之后，数据库信息的改变会触发<code>LiveData</code>的更新。</p>
+
+<p>在这种模型下，数据库作为单一数据源，而app的其他部分通过仓库进行访问。不论你是否使用持久化存储，我们推荐你的仓库指定一个数据源作为app的单一数据源。</p>
+
+<h3 id="toc_11">测试</h3>
+
+<p>关注点分离原则一个很重要的受益处在于可测试性。让我们看看每个模块代码的测试。</p>
+
+<ul>
+<li>UI&amp;交互：这是唯一需要[Android UI Instrumentation test]的时刻。测试UI的最佳方式是创建一个[Espresso]特使。你可以创建<code>Fragment</code>并提供一个虚拟的<code>ViewModel</code>。因为<code>Fragment</code>仅仅和<code>ViewModel</code>对话，模拟<code>ViewModel</code>对于测试来说就已经足够了。</li>
+<li>ViewModel：<code>ViewModel</code>可以使用[JUnit测试]。你仅仅需要模拟<code>UserRepository</code>。</li>
+<li>UserRepository：你也可以使用<code>JUnit</code>测试<code>UserRepository</code>。你需要模拟<code>Webservice</code>和DAO。你可以测试网络请求调用，在数据库中保存结果，以及如果数据被缓存并更新后不需要进行请求。因为<code>Webservice</code>和<code>UserDao</code>都是接口，你可以模拟它们。</li>
+<li>UserDao：测试DAO类的推荐方法是使用测试工具。因为这些测试工具并不需要任何的UI并运行速度很快。对每个测试来说，你可以创建一个内存数据库来保证测试并不会造成双边效应（如改变磁盘上数据库的已有数据）。</li>
+<li>WebService：独立于外部世界的测试是很重要的，甚至你的<code>Webservice</code>测试应该避免调用后台的网络服务。有大量的类库可以帮助做到这一点，例如：[MockWebServer]。</li>
+<li>测试构件：架构组件提供一个Maven构件来控制后台线程。在<code>android.arch.core:core-testing</code>中，有两个<code>JUnit</code>规则：
+<ul>
+<li>任务立即执行规则：这个规则可用于强制架构组件在调用线程里立即执行任何后台操作</li>
+<li>这个规则可用于工具测试，以等待架构组件的后台操作或者连接至<code>Espresso</code>作为闲置资源。</li>
+</ul></li>
+</ul>
+
+<h3 id="toc_12">最终架构</h3>
+
+<p>下图显示了我们所推荐架构的所有模块，以及相互间的交互情况：</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15102855272199.jpg" alt=""/></p>
+
+<h2 id="toc_13">指导原则</h2>
+
+<p>以下的建议并不是强制性的，而是根据我们的经验得知，遵循这些建议会使你的代码更健壮，易于测试和易于维护。</p>
+
+<ul>
+<li>你在清单文件中所定义的入口点——Activity，Service，Broadcast Receiver等并不应该是数据源。相反，他们应该仅仅是和入库点相关的数据源子集。因为每个app的组件的存活时间都是短暂的、取决于用户的交互行为以及运行时整体上的健康度。</li>
+<li>残忍坚决地创建良好的模块分界。例如，不要将从网络读取数据的代码扩展到多个类/包中。相似地，也不要将不相关职责的代码添加进来，如数据缓存等。（高内聚，低耦合）</li>
+<li>模块间交互暴露的接口应该尽可能的少。不要尝试创建“仅仅用一次”的捷径，导致暴露一个模块的内部实现细节。你可能在短期会获益，但是在代码的演进过程中会耗费数倍的技术负担。</li>
+<li>当你定义了模块间的交互时，考虑每个模块的单独可测试性。例如，有一个定义良好的用于从网络获取数据的API会更易于测试本地数据库持久化的模块。相反，如果你搞乱了两个模块间的逻辑，或将你网络请求的代码铺满了所有的地方，那么这将很难进行测试。</li>
+<li>你app的核心是如何在其他app中变得突出。不要花费时间重复造轮子或一遍一遍地写相同的模板代码。相反，将你的心思花在如何使你的app独一无二，让Android架构组件以及其他推荐类库处理重复的部分。</li>
+<li>持久化尽可能多和尽可能新鲜的数据，这样在离线模式下你的app也是可用的。你可能很享受高速的网络连接，可你的用户并不一定这样认为。</li>
+<li>你的仓库应当指定单一数据源。当你的app需要访问数据时，应该永远来自于这个单一的数据源。</li>
+</ul>
+
+<h2 id="toc_14">附加：显示网络状态</h2>
+
+<p>在“推荐app架构”一节中，我们故意忽略了网络错误和加载状态，以使样例代码更简单。在本节中，我们致力于使用<code>Resource</code>类显示网络状态以及数据本身。</p>
+
+<p>下面是样例的实现：</p>
+
+<pre><code class="language-java">//一个描述数据以及其状态的泛型类
+public class Resource&lt;T&gt; {
+    @NonNull public final Status status;
+    @Nullable public final T data;
+    @Nullable public final String message;
+    private Resource(@NonNull Status status, @Nullable T data, @Nullable String message) {
+        this.status = status;
+        this.data = data;
+        this.message = message;
+    }
+
+    public static &lt;T&gt; Resource&lt;T&gt; success(@NonNull T data) {
+        return new Resource&lt;&gt;(SUCCESS, data, null);
+    }
+
+    public static &lt;T&gt; Resource&lt;T&gt; error(String msg, @Nullable T data) {
+        return new Resource&lt;&gt;(ERROR, data, msg);
+    }
+
+    public static &lt;T&gt; Resource&lt;T&gt; loading(@Nullable T data) {
+        return new Resource&lt;&gt;(LOADING, data, null);
+    }
+}
+</code></pre>
+
+<p>因为从网络加载数据并进行显示是一个常见的用例，我们创建了一个帮助类<code>NetworkBoundResource</code>可以在多个地方复用。下图是<code>NetworkBoundResource</code>的决策树：</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15102855610485.jpg" alt=""/></p>
+
+<p>起点从观察数据源（数据库）开始。当入口被数据库第一次加载时，<code>NetworkBoundResource</code>检查结果是否足够良好以至于可以分发，并且/或应该从网络进行获取。注意，这二者可以同时发生，因为你可能想要显示缓存，同时从网络更新数据。</p>
+
+<p>如果网络调用完全成功，保存结果至数据库并重新初始化数据流。如果网络请求失败，我们直接分发一个错误。</p>
+
+<blockquote>
+<p>将新的数据存储到磁盘以后，我们从数据库重新初始化数据流，但是通常我们并不需要这样做，因为数据库会分发这次变化。另一方面，依赖数据库去分发变化会是一把双刃剑，如果数据并没有变化，我们实际上可以避免这次分发。我们也不分发网络请求得到的数据，因为这违反了单一数据源的原则。</p>
+</blockquote>
+
+<p>以下是<code>NetworkBoundResource</code>所提供的API：</p>
+
+<pre><code class="language-java">// ResultType: 数据源类型
+// RequestType: API返回的类型
+public abstract class NetworkBoundResource&lt;ResultType, RequestType&gt; {
+    // 被调用保存API返回的结果至数据库
+    @WorkerThread
+    protected abstract void saveCallResult(@NonNull RequestType item);
+
+    // 被调用去判断是否应该从网络获取数据
+    @MainThread
+    protected abstract boolean shouldFetch(@Nullable ResultType data);
+
+    // 被调用从数据库获取缓存数据
+    @NonNull @MainThread
+    protected abstract LiveData&lt;ResultType&gt; loadFromDb();
+
+    // 被调用创建API请求
+    @NonNull @MainThread
+    protected abstract LiveData&lt;ApiResponse&lt;RequestType&gt;&gt; createCall();
+
+    // 当获取数据失败时候调用
+    @MainThread
+    protected void onFetchFailed() {
+    }
+
+    // 返回代表数据源的LiveData
+    public final LiveData&lt;Resource&lt;ResultType&gt;&gt; getAsLiveData() {
+        return result;
+    }
+}
+</code></pre>
+
+<p>注意，上面的类定义了两种类型的参数（<code>ResultType</code>和<code>RequestType</code>），因为从API返回的数据类型可能和本地的数据类型并不匹配。</p>
+
+<p>同样也请注意，上面的代码使用了<code>ApiResponse</code>用于网络请求。<code>ApiResponse</code>是<code>Retrofit2.Call</code>类的简单包装，用于将返回结果转化为<code>LiveData</code>。</p>
+
+<p>下面的<code>NetworkBoundResource</code>的其余实现：</p>
+
+<pre><code class="language-java">public abstract class NetworkBoundResource&lt;ResultType, RequestType&gt; {
+    private final MediatorLiveData&lt;Resource&lt;ResultType&gt;&gt; result = new MediatorLiveData&lt;&gt;();
+
+    @MainThread
+    NetworkBoundResource() {
+        result.setValue(Resource.loading(null));
+        LiveData&lt;ResultType&gt; dbSource = loadFromDb();
+        result.addSource(dbSource, data -&gt; {
+            result.removeSource(dbSource);
+            if (shouldFetch(data)) {
+                fetchFromNetwork(dbSource);
+            } else {
+                result.addSource(dbSource,
+                        newData -&gt; result.setValue(Resource.success(newData)));
+            }
+        });
+    }
+
+    private void fetchFromNetwork(final LiveData&lt;ResultType&gt; dbSource) {
+        LiveData&lt;ApiResponse&lt;RequestType&gt;&gt; apiResponse = createCall();
+        // 重新连接dbSource作为新的源,
+        //这样会快速分发最新的数据
+        result.addSource(dbSource,
+                newData -&gt; result.setValue(Resource.loading(newData)));
+        result.addSource(apiResponse, response -&gt; {
+            result.removeSource(apiResponse);
+            result.removeSource(dbSource);
+            if (response.isSuccessful()) {
+                saveResultAndReInit(response);
+            } else {
+                onFetchFailed();
+                result.addSource(dbSource,
+                        newData -&gt; result.setValue(
+                                Resource.error(response.errorMessage, newData)));
+            }
+        });
+    }
+
+    @MainThread
+    private void saveResultAndReInit(ApiResponse&lt;RequestType&gt; response) {
+        new AsyncTask&lt;Void, Void, Void&gt;() {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                saveCallResult(response.body);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                // 我们专门请求一个新的LiveData
+                // 另一方面获取最新的缓存数据，可能并不是网络请求得到的最新数据
+                result.addSource(loadFromDb(),
+                        newData -&gt; result.setValue(Resource.success(newData)));
+            }
+        }.execute();
+    }
+}
+</code></pre>
+
+<p>现在，我们使用<code>NetworkBoundResource</code>来重写<code>UserRepository</code>：</p>
+
+<pre><code class="language-java">class UserRepository {
+    Webservice webservice;
+    UserDao userDao;
+
+    public LiveData&lt;Resource&lt;User&gt;&gt; loadUser(final String userId) {
+        return new NetworkBoundResource&lt;User,User&gt;() {
+            @Override
+            protected void saveCallResult(@NonNull User item) {
+                userDao.insert(item);
+            }
+
+            @Override
+            protected boolean shouldFetch(@Nullable User data) {
+                return rateLimiter.canFetch(userId) &amp;&amp; (data == null || !isFresh(data));
+            }
+
+            @NonNull @Override
+            protected LiveData&lt;User&gt; loadFromDb() {
+                return userDao.load(userId);
+            }
+
+            @NonNull @Override
+            protected LiveData&lt;ApiResponse&lt;User&gt;&gt; createCall() {
+                return webservice.getUser(userId);
+            }
+        }.getAsLiveData();
+    }
+}
+</code></pre>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2017-11-10T11:13:15+08:00" itemprop="datePublished">2017/11/10 11:13 上午</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15102835954696.html" itemprop="url">
+		【翻译】安卓架构组件(6)-Room持久化类库</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<hr/>
+
+<p>layout: post<br/>
+title: &#39;【翻译】安卓架构组件(6)-Room持久化类库&#39;<br/>
+date: 2017-06-07<br/>
+author: Chuckiefan</p>
+
+<h2 id="toc_0">tags: Android 架构</h2>
+
+<p>相关文章：</p>
+
+<ul>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(1)-App%E6%9E%B6%E6%9E%84%E6%8C%87%E5%AF%BC.html">【翻译】安卓架构组件(1)-App架构指导</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(2)-%E6%B7%BB%E5%8A%A0%E7%BB%84%E4%BB%B6%E5%88%B0%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B8%AD.html">【翻译】安卓架构组件(2)-添加组件到你的项目中</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(3)-%E5%A4%84%E7%90%86%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">【翻译】安卓架构组件(3)-处理生命周期</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(4)-LiveData.html">【翻译】安卓架构组件(4)-LiveData</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(5)-ViewModel.html">【翻译】安卓架构组件(5)-ViewModel</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(7)-%E5%88%86%E9%A1%B5%E5%BA%93.html">【翻译】安卓架构组件(7)-分页库</a></li>
+</ul>
+
+<p>Room为SQLite提供了一个抽象层，使得可以流畅使用SQLite的所有功能。</p>
+
+<p>处理大量结构化数据的app可以从本地数据持久化中获取巨大利益。最常见的用例是缓存相关的数据。在这种情况下，当设备无法访问网络的时候，用户仍然可以在离线时浏览内容。任何用户原始数据的变化都会在连接网络后同步。</p>
+
+<p>核心框架提供了原生SQL的支持。尽管这些API很强大，但是比较底层并且需要花费大量的时间和努力去使用：</p>
+
+<ul>
+<li>没有原生SQL查询语句的编译时验证。当你的数据结构变化时，你需要手动更新受影响的SQL。这个过程会花费大量的时间并且很容易错误频出。</li>
+</ul>
+
+<p>Room考虑到了这些，提供了SQLite的抽象层。</p>
+
+<p>Room有三个主要的组件：</p>
+
+<ul>
+<li>数据库（Database）：你可以使用该组件创建数据库的持有者。该注解定义了实体列表，该类的内容定义了数据库中的DAO列表。这也是访问底层连接的主要入口点。注解类应该是抽象的并且扩展自<code>RoomDatabase</code>。在运行时，你可以通过调用<code>Room.databaseBuilder()</code>或者<code>Room.inMemoryDatabaseBuilder()</code>获取实例。</li>
+<li>实体（Entity）：这个组件代表了持有数据库表记录的类。对每种实体来说，创建了一个数据库表来持有所有项。你必须通过<code>Database</code>中的<code>entities</code>数组来引用实体类。实体的每个成员变量都被持久化在数据库中，除非你注解其为<code>@Ignore</code>。</li>
+</ul>
+
+<blockquote>
+<p>实体类可以拥有无参数构造函数（如果DAO类可以访问每个持久化成员变量）或者拥有和实体类成员变量匹配参数的构造函数。Room也可以使用全部或者部分构造函数，例如只接收部分成员变量的构造函数。</p>
+
+<ul>
+<li>数据访问对象（DAO）：这个组件代表了作为DAO的类或者接口。DAO是Room的主要组件，负责定义访问数据库的方法。被注解<code>@Database</code>的类必须包含一个无参数的抽象方法并返回被<code>@Dao</code>注解的类型。当编译时生成代码时，Room会创建该类的实现。</li>
+</ul>
+
+<p>通过使用DAO类访问数据库而不是查询构建器或直接查询，你可以将数据库架构的不同组件分离。此外，DAO允许你在测试时很容易地模拟数据访问。</p>
+</blockquote>
+
+<p>这些组件和app的其他部分关系图如下：</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15102992714076.png" alt=""/><br/>
+(img)</p>
+
+<p>下面的代码片段包含了简单的数据库配置，含有1个实体和一个DAO:</p>
+
+<pre><code class="language-java">//User.java
+@Entity
+public class User {
+    @PrimaryKey
+    private int uid;
+
+    @ColumnInfo(name = &quot;first_name&quot;)
+    private String firstName;
+
+    @ColumnInfo(name = &quot;last_name&quot;)
+    private String lastName;
+
+    // 省略Getters Setters（实际代码中不可省略）
+   }
+
+//UserDao.java
+@Dao
+public interface UserDao {
+    @Query(&quot;SELECT * FROM user&quot;)
+    List&lt;User&gt; getAll();
+
+    @Query(&quot;SELECT * FROM user WHERE uid IN (:userIds)&quot;)
+    List&lt;User&gt; loadAllByIds(int[] userIds);
+
+    @Query(&quot;SELECT * FROM user WHERE first_name LIKE :first AND &quot;
+           + &quot;last_name LIKE :last LIMIT 1&quot;)
+    User findByName(String first, String last);
+
+    @Insert
+    void insertAll(User... users);
+
+    @Delete
+    void delete(User user);
+}
+
+//AppDatabase.java
+@Database(entities = {User.class}, version = 1)
+public abstract class AppDatabase extends RoomDatabase {
+    public abstract UserDao userDao();
+}
+</code></pre>
+
+<p>创建上面的文件以后，你可以使用以下代码获取已创建数据库实例：</p>
+
+<pre><code class="language-java">AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+        AppDatabase.class, &quot;database-name&quot;).build();
+</code></pre>
+
+<blockquote>
+<p>当实例化<code>AppDatabase</code>对象时，你可以遵循单例设计模式，因为每个<code>RoomDatabase</code>实例代价是非常昂贵的，并且你几乎不需要访问多个实例。</p>
+</blockquote>
+
+<h2 id="toc_1">实体</h2>
+
+<p>当一个类被<code>@Entity</code>注解，并被<code>@Database</code>注解的<code>entities</code>属性引用时，Room为这个实体在数据库中创建一个表。</p>
+
+<p>默认情况，Room为实体类的每个成员变量创建一个列。如果一个实体类的某个成员变量不想被持久化，你可以使用<code>Ignore</code>注解标记，如：</p>
+
+<pre><code class="language-java">@Entity
+class User {
+    @PrimaryKey
+    public int id;
+
+    public String firstName;
+    public String lastName;
+
+    @Ignore
+    Bitmap picture;//不进行持久化
+}
+</code></pre>
+
+<p>为了持久化成员变量，Room必须可以访问它。你可以使成员变量是公共的，或者提供getter和setter方法。如果你使用getter/setter方法，请记住它们在Room中遵循Java Beans的概念。</p>
+
+<h3 id="toc_2">主键</h3>
+
+<p>每个实体必须至少定义一个成员变量作为主键。甚至仅仅有一个成员变量，也要标记其为<code>@PrimaryKey</code>。同时，如果你想要Room指定ID自增，你可以设置<code>@Primary</code>的<code>autoGenerate</code>属性。如果实体的主键是综合的，你可以使用<code>@Entity</code>的<code>primaryKeys</code>属性，如：</p>
+
+<pre><code class="language-java">@Entity(primaryKeys = {&quot;firstName&quot;, &quot;lastName&quot;})
+class User {
+    public String firstName;
+    public String lastName;
+
+    @Ignore
+    Bitmap picture;
+}
+</code></pre>
+
+<p>默认情况下，Room使用类名作为数据库表的表名。如果你想要数据库表有一个其他的名字，设置<code>@Entity</code>注解的<code>tableName</code>属性即可：</p>
+
+<pre><code class="language-java">@Entity(tableName = &quot;users&quot;)
+class User {
+    ...
+}
+</code></pre>
+
+<blockquote>
+<p>注意：SQLite中的表名是大小写敏感的。</p>
+</blockquote>
+
+<p>和<code>tablename</code>属性相似，Room使用成员名作为列名，如果你想要改变类名，在成员上添加<code>@ColumnInfo</code>注解即可：</p>
+
+<pre><code class="language-java">@Entity(tableName = &quot;users&quot;)
+class User {
+    @PrimaryKey
+    public int id;
+
+    @ColumnInfo(name = &quot;first_name&quot;)
+    public String firstName;
+
+    @ColumnInfo(name = &quot;last_name&quot;)
+    public String lastName;
+
+    @Ignore
+    Bitmap picture;
+}
+</code></pre>
+
+<h3 id="toc_3">索引与唯一</h3>
+
+<p>取决于你如何访问数据，你可能想要索引确切的字段以加速数据的查询。为了向实体添加索引，在<code>@Entity</code>中添加<code>indices</code>属性，列出你想要包括的字段名或者字段名组：</p>
+
+<pre><code class="language-java">@Entity(indices = {@Index(&quot;name&quot;), @Index(&quot;last_name&quot;, &quot;address&quot;)})
+class User {
+    @PrimaryKey
+    public int id;
+
+    public String firstName;
+    public String address;
+
+    @ColumnInfo(name = &quot;last_name&quot;)
+    public String lastName;
+
+    @Ignore
+    Bitmap picture;
+}
+</code></pre>
+
+<p>有些时候具体的成员或成员组必须是独一无二的。你可以设置<code>@Index</code>的属性<code>unique</code>为<code>true</code>：</p>
+
+<pre><code class="language-java">@Entity(indices = {@Index(value = {&quot;first_name&quot;, &quot;last_name&quot;},
+        unique = true)})
+class User {
+    @PrimaryKey
+    public int id;
+
+    @ColumnInfo(name = &quot;first_name&quot;)
+    public String firstName;
+
+    @ColumnInfo(name = &quot;last_name&quot;)
+    public String lastName;
+
+    @Ignore
+    Bitmap picture;
+}
+</code></pre>
+
+<h3 id="toc_4">关系</h3>
+
+<p>因为SQLite是一个关系型数据库，你可以指定对象间的关系。即使大多数ORM类库允许实体对象互相引用，Room则显式地禁止了这一点。</p>
+
+<p>即使你不能直接使用关系映射，Room仍然允许你去定义实体键的外键约束。</p>
+
+<p>例如，有另一个叫做<code>Book</code>的实体，你可以通过使用<code>@ForeignKey</code>注解定义其和<code>User</code>实体的关系，如：</p>
+
+<pre><code class="language-java">@Entity(foreignKeys = @ForeignKey(entity = User.class,
+                                  parentColumns = &quot;id&quot;,
+                                  childColumns = &quot;user_id&quot;))
+class Book {
+    @PrimaryKey
+    public int bookId;
+
+    public String title;
+
+    @ColumnInfo(name = &quot;user_id&quot;)
+    public int userId;
+}
+</code></pre>
+
+<p>外键是非常强大的，因为它们允许你指定引用实体更新时会发生什么、例如，你可以告诉SQLite去删除所有的书籍，如果这些书所对应的<code>User</code>被删除并且指定了<code>@ForeignKey</code>的属性<code>onDelete=CASCADE</code>。</p>
+
+<blockquote>
+<p>SQLite将<code>@Insert(OnConfilct=REPLACE)</code>处理为<code>REMOVE</code>和<code>REPLACE</code>的集合而不仅仅是更新操作。这个替换冲突值的方法可能会对你的外键约束起作用。</p>
+</blockquote>
+
+<h3 id="toc_5">内嵌对象</h3>
+
+<p>有些时候你想要一个实体类或POJO类作为数据库逻辑的一部分。这种情况下，你可以使用<code>@Embedded</code>注解来。你可以查询内嵌成员，就像你可能查询其他字段一样。</p>
+
+<p>例如，我们的<code>User</code>类包含一个<code>Address</code>类型的成员，代表了<code>street</code>、<code>city</code>、<code>state</code>和<code>postCode</code>。为了分别存储这些字段，在<code>User</code>类中包含一个<code>Address</code>成员并标记为<code>@Embedded</code>，如：</p>
+
+<pre><code class="language-java">class Address {
+    public String street;
+    public String state;
+    public String city;
+
+    @ColumnInfo(name = &quot;post_code&quot;)
+    public int postCode;
+}
+
+@Entity
+class User {
+    @PrimaryKey
+    public int id;
+
+    public String firstName;
+
+    @Embedded
+    public Address address;
+}
+</code></pre>
+
+<p>这个表代表了一个<code>User</code>对象包含了以下字段：<code>id</code>，<code>firstName</code>，<code>street</code>，<code>state</code>，<code>city</code>和<code>post_code</code>。</p>
+
+<blockquote>
+<p>内嵌成员也可以含有其他内嵌成员</p>
+</blockquote>
+
+<p>如果一个实体含有多种相同类型的内嵌成员，你可以通过设置<code>prefix</code>属性保持每个字段的唯一性。Room之后添加提供的值到每个内嵌对象的起始位置。</p>
+
+<h2 id="toc_6">数据访问对象(DAO)</h2>
+
+<p>Room的主要组件是<code>Dao</code>类。DAO以清晰的方式抽象除了访问数据库的行为。</p>
+
+<blockquote>
+<p>Room不允许在主线程方位数据库，除非你在Builder调用<code>allowMainThreadQueries()</code>，因为这可能会导致UI被锁住。而异步查询则不受此约束，因为异步调用在后台线程运行查询工作。</p>
+</blockquote>
+
+<h3 id="toc_7">便捷方法</h3>
+
+<p>有很多可以使用DAO类的便捷查询方法，例如：</p>
+
+<h4 id="toc_8">Insert</h4>
+
+<p>当你创建一个DAO方法并标记其为<code>@Insert</code>，Room会生成在单一事务中将所有参数存入数据库的实现:</p>
+
+<pre><code class="language-java">@Dao
+public interface MyDao {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    public void insertUsers(User... users);
+
+    @Insert
+    public void insertBothUsers(User user1, User user2);
+
+    @Insert
+    public void insertUsersAndFriends(User user, List&lt;User&gt; friends);
+}
+</code></pre>
+
+<p>如果@Insert方法只接收一个参数，它会返回long，表示新插入项的row Id。如果参数是数组或集合，它会返回<code>long[]</code>或者<code>List&lt;Long&gt;</code>。</p>
+
+<h4 id="toc_9">Update</h4>
+
+<p>Update是更新一组实体的便捷方法。它查询匹配主键的记录然后更新。如：</p>
+
+<pre><code class="language-java">@Dao
+public interface MyDao {
+    @Update
+    public void updateUsers(User... users);
+}
+</code></pre>
+
+<p>尽管通常并不需要如此，你可以让该方法返回一个<code>int</code>值，表示更新至数据库的行号。</p>
+
+<h4 id="toc_10">Delete</h4>
+
+<p>Delete是删除一组实体的便捷方法。它使用主键去寻找记录并删除：</p>
+
+<pre><code class="language-java">@Dao
+public interface MyDao {
+    @Delete
+    public void deleteUsers(User... users);
+}
+</code></pre>
+
+<p>同上，你可以让该方法返回一个<code>int</code>值表示被删除的行号。</p>
+
+<h3 id="toc_11">使用@Query</h3>
+
+<p><code>@Query</code>是用于DAO类的主要注解。它允许你在数据库上执行读写操作。每个<code>Query</code>方法都会在编译时验证，因此如果查询语句有问题，那么编译时就会报错，而不是在运行时发生。</p>
+
+<p>Room同样验证查询的返回值，如果返回对象的成员名和字段名不一致，Room会以以下两种方式警告：</p>
+
+<ul>
+<li>如果仅仅部分成员名相符，则发出警告</li>
+<li>如果没有成员名相符，则发出错误</li>
+</ul>
+
+<h4 id="toc_12">简单查询</h4>
+
+<pre><code class="language-java">@Dao
+public interface MyDao {
+    @Query(&quot;SELECT * FROM user&quot;)
+    public User[] loadAllUsers();
+}
+</code></pre>
+
+<p>这是一个加载所有用户的简单查询。在编译时，Room知道这是查询用户表的所有字段。如果查询语句含有语法错误，或者用户表在数据库中并不存在，Room会显示相应的错误。</p>
+
+<h4 id="toc_13">查询中传递参数</h4>
+
+<p>大多数时候，你需要在查询中传递参数来执行过滤操作，例如仅仅显示具体年龄的用户。为了完成这个任务，在你的Room注解中使用方法参数，如：</p>
+
+<pre><code class="language-java">@Dao
+public interface MyDao {
+    @Query(&quot;SELECT * FROM user WHERE age &gt; :minAge&quot;)
+    public User[] loadAllUsersOlderThan(int minAge);
+}
+</code></pre>
+
+<p>当编译时处理这个查询时，，Room将<code>:minAge</code>和<code>minAge</code>匹配在一起。Room使用参数名进行匹配，如果匹配不成功，会在编译时报错。</p>
+
+<p>你也可以传递多个参数或引用多次，如：</p>
+
+<pre><code class="language-java">@Dao
+public interface MyDao {
+    @Query(&quot;SELECT * FROM user WHERE age BETWEEN :minAge AND :maxAge&quot;)
+    public User[] loadAllUsersBetweenAges(int minAge, int maxAge);
+
+    @Query(&quot;SELECT * FROM user WHERE first_name LIKE :search &quot;
+           + &quot;OR last_name LIKE :search&quot;)
+    public List&lt;User&gt; findUserWithName(String search);
+}
+</code></pre>
+
+<h4 id="toc_14">返回所有字段的子集</h4>
+
+<p>大多数时候，你可能需要一个实体的一部分成员变量，例如你的UI可能只显示用户的名和姓，而不是用户的所有细节。通过仅仅获取出现在你UI中的字段，你可以存储很多资源，并且你的查询完成地更快。</p>
+
+<p>Room允许你从查询中返回任何对象，只要结果字段集可以被映射到返回的对象上。例如，你可以创建下面的POJO类来获取用户的姓和名：</p>
+
+<pre><code class="language-java">public class NameTuple {
+    @ColumnInfo(name=&quot;first_name&quot;)
+    public String firstName;
+
+    @ColumnInfo(name=&quot;last_name&quot;)
+    public String lastName;
+}
+</code></pre>
+
+<p>现在你可以在你的查询方法中这样使用POJO类：</p>
+
+<pre><code class="language-java">@Dao
+public interface MyDao {
+    @Query(&quot;SELECT first_name, last_name FROM user&quot;)
+    public List&lt;NameTuple&gt; loadFullName();
+}
+</code></pre>
+
+<p>Room理解这次返回<code>first_name</code>和<code>last_name</code>字段的查询，并可以映射到<code>NameTuple</code>类。这样，Room就能生成正确的代码。如果查询返回太多的字段，或者某个字段并不存在于<code>NameTuple</code>中，Room会显示一个警告。</p>
+
+<h4 id="toc_15">传递参数集合</h4>
+
+<p>你的某些查询可能会传递大量的参数，而且直到运行时才知道具体的参数。例如，你可能会获取关于用户所属区域的信息。当参数为集合时，Room能够理解并自动根据当前提供的参数进行扩展：</p>
+
+<pre><code class="language-java">@Dao
+public interface MyDao {
+    @Query(&quot;SELECT first_name, last_name FROM user WHERE region IN (:regions)&quot;)
+    public List&lt;NameTuple&gt; loadUsersFromRegions(List&lt;String&gt; regions);
+}
+</code></pre>
+
+<h4 id="toc_16">可观察查询</h4>
+
+<p>当运行查询时，你通常想要在数据变化的时候你的app界面自动更新。为了做到这一点，在查询方法中使用<code>LiveData</code>类型的返回值。Room会生成所有必要的代码，当数据更新时，会自动更新<code>LiveData</code>。</p>
+
+<pre><code class="language-java">@Dao
+public interface MyDao {
+    @Query(&quot;SELECT first_name, last_name FROM user WHERE region IN (:regions)&quot;)
+    public LiveData&lt;List&lt;User&gt;&gt; loadUsersFromRegionsSync(List&lt;String&gt; regions);
+}
+</code></pre>
+
+<h4 id="toc_17">RxJava</h4>
+
+<p>Room也可以从你定义的查询中直接返回RxJava2的<code>Publisher</code>和<code>Flowable</code>对象。为了使用这个功能，添加<code>android.arch.persistence.room:rxjava2</code>到你的Gradle构建依赖。你可以随后返回RxJava2定义的类型，如：</p>
+
+<pre><code class="language-java">@Dao
+public interface MyDao {
+    @Query(&quot;SELECT * from user where id = :id LIMIT 1&quot;)
+    public Flowable&lt;User&gt; loadUserById(int id);
+}
+</code></pre>
+
+<h4 id="toc_18">查询多张表</h4>
+
+<p>你的一些查询可能需要访问多张表来计算结果。Room允许你写任何的查询，因此你可以使用连接表。另外，如果结果是可观察数据类型，例如<code>Flowable</code>或者<code>LiveData</code>，Room会验证所有SQL查询语句。</p>
+
+<p>下面的代码片段展示了如何连接两张表，一张表是包含用户借书的信息，另一张包含当前借出的信息:</p>
+
+<pre><code class="language-java">@Dao
+public interface MyDao {
+    @Query(&quot;SELECT * FROM book &quot;
+           + &quot;INNER JOIN loan ON loan.book_id = book.id &quot;
+           + &quot;INNER JOIN user ON user.id = loan.user_id &quot;
+           + &quot;WHERE user.name LIKE :userName&quot;)
+   public List&lt;Book&gt; findBooksBorrowedByNameSync(String userName);
+}
+</code></pre>
+
+<p>你也可以从这些查询中返回POJO类。例如你可以这样写一个用户和其宠物姓名的查询语句：</p>
+
+<pre><code class="language-java">@Dao
+public interface MyDao {
+   @Query(&quot;SELECT user.name AS userName, pet.name AS petName &quot;
+          + &quot;FROM user, pet &quot;
+          + &quot;WHERE user.id = pet.user_id&quot;)
+   public LiveData&lt;List&lt;UserPet&gt;&gt; loadUserAndPetNames();
+
+   // 你也可以在单独的文件中定义该类，只要你添加了public修饰符
+     static class UserPet {
+       public String userName;
+       public String petName;
+   }
+}
+</code></pre>
+
+<h2 id="toc_19">使用类型转换</h2>
+
+<p>Room提供内置工具用于基本类型和其封装类型的装换。但是有些时候你可能使用了使用了自定义数据类型，而想在数据库表中始终单个字段。为了添加这类自定义类型支持，你需要提供一个<code>TypeConverter</code>，将自定义类转换到Room已知可以持久化的类型。</p>
+
+<p>例如，如果我们想要持久化<code>Date</code>实例，我们可以这样写：</p>
+
+<pre><code class="language-java">public class Converters {
+    @TypeConverter
+    public static Date fromTimestamp(Long value) {
+        return value == null ? null : new Date(value);
+    }
+
+    @TypeConverter
+    public static Long dateToTimestamp(Date date) {
+        return date == null ? null : date.getTime();
+    }
+}
+</code></pre>
+
+<p>上面的例子定义了两个函数，一个将<code>Date</code>类型转换为<code>Long</code>类型，另一个进行相反的转换。</p>
+
+<p>接下来，在<code>AppDataBase</code>添加<code>@TypeConverters</code>注解，使得Room可以使用你定义的转换器：</p>
+
+<pre><code class="language-java">@Database(entities = {User.java}, version = 1)
+@TypeConverters({Converter.class})
+public abstract class AppDatabase extends RoomDatabase {
+    public abstract UserDao userDao();
+}
+</code></pre>
+
+<p>使用了这些转换器以后，你可以在其他查询中使用你的自定义类型，就像基本类型一样：</p>
+
+<pre><code class="language-java">//User.java
+@Entity
+public class User {
+    ...
+    private Date birthday;
+}
+
+//UserDao.java
+@Dao
+public interface UserDao {
+    ...
+    @Query(&quot;SELECT * FROM user WHERE birthday BETWEEN :from AND :to&quot;)
+    List&lt;User&gt; findUsersBornBetweenDates(Date from, Date to);
+}
+</code></pre>
+
+<p>你可以限制<code>@TypeConverters</code>的作用范围，包括单独实体，DAO以及DAO方法。</p>
+
+<h2 id="toc_20">数据库迁移</h2>
+
+<p>当你在app添加以及修改功能时，你需要修改你的实体类以响应这些变化。当一个用户更新到最新版本的app时，你不想让他们丢掉所有已经存在的数据，特别是不能再从远程服务器获取的数据。</p>
+
+<p>Room允许你编写<code>Migration</code>类来保护用户数据。每个<code>Migration</code>类指定一个<code>startVersion</code>和<code>endVersion</code>。在运行时，Room运行每个<code>Migration</code>类的<code>migrate()</code>方法，使用正确的顺序迁移至数据库的更新版本。</p>
+
+<blockquote>
+<p>如果你没有提供必要的迁移，Room会重新构建数据库，这意味着你将丢失所有数据库中的数据。</p>
+</blockquote>
+
+<pre><code class="language-java">Room.databaseBuilder(getApplicationContext(), MyDb.class, &quot;database-name&quot;)
+        .addMigrations(MIGRATION_1_2, MIGRATION_2_3).build();
+
+static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+    @Override
+    public void migrate(SupportSQLiteDatabase database) {
+        database.execSQL(&quot;CREATE TABLE `Fruit` (`id` INTEGER, &quot;
+                + &quot;`name` TEXT, PRIMARY KEY(`id`))&quot;);
+    }
+};
+
+static final Migration MIGRATION_2_3 = new Migration(2, 3) {
+    @Override
+    public void migrate(SupportSQLiteDatabase database) {
+        database.execSQL(&quot;ALTER TABLE Book &quot;
+                + &quot; ADD COLUMN pub_year INTEGER&quot;);
+    }
+};
+</code></pre>
+
+<blockquote>
+<p>为了保持你的迁移功能的正确性，使用完整的查询语句而不是询而不是引用表示查询的常量。</p>
+</blockquote>
+
+<p>在迁移过程完成后，Room验证当前的表以确保迁移的正确性。如果Room找到问题，会抛出未匹配的异常信息。</p>
+
+<h3 id="toc_21">测试迁移</h3>
+
+<p>迁移是很重要的事情，错误的编写会导致你app的崩溃循环。为了保证app的稳定性，你应该测试你的迁移工作。Room提供了一个测试的Maven构件来帮助测试。但是，为了该构件可以工作，你需要导出你的数据库表。</p>
+
+<h3 id="toc_22">导出数据库表</h3>
+
+<pre><code class="language-groovy">//build.gradle
+android {
+    ...
+    defaultConfig {
+        ...
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [&quot;room.schemaLocation&quot;:
+                             &quot;$projectDir/schemas&quot;.toString()]
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>Room会将你数据库的表信息导出为一个json文件。你应该在版本控制系统中保存该文件，该文件代表了你的数据库表历史记录，这样允许Room创建旧版本的数据库用于测试。</p>
+
+<p>为了测试迁移，添加<code>android.arch.persistence.room:testing</code>到你的测试依赖，以及添加模式表的位置至asset文件夹，如：</p>
+
+<pre><code class="language-groovy">//build.gradle
+android {
+    ...
+    sourceSets {
+        androidTest.assets.srcDirs += files(&quot;$projectDir/schemas&quot;.toString())
+    }
+}
+</code></pre>
+
+<p>测试包提供了一个<code>MigrationTestHelper</code>类，可以读取这些模式表文件。</p>
+
+<pre><code class="language-java">@RunWith(AndroidJUnit4.class)
+public class MigrationTest {
+    private static final String TEST_DB = &quot;migration-test&quot;;
+
+    @Rule
+    public MigrationTestHelper helper;
+
+    public MigrationTest() {
+        helper = new MigrationTestHelper(InstrumentationRegistry.getContext(),
+                MigrationDb.class.getCanonicalName(),
+                new FrameworkSQLiteOpenHelperFactory());
+    }
+
+    @Test
+    public void migrate1To2() throws IOException {
+        SupportSQLiteDatabase db = helper.createDatabase(TEST_DB, 1);
+
+        // db 版本为1. 使用SQL添加一些数据
+        // 你不能使用DAO，因为它表示的是最新的数据库
+        db.execSQL(...);
+
+        // 准备下个版本
+        db.close();
+
+        // 重新打开数据库版本2
+        db = helper.runMigrationsAndValidate(TEST_DB, 2, true, MIGRATION_1_2);
+
+         }
+}
+</code></pre>
+
+<h2 id="toc_23">测试你的数据库</h2>
+
+<p>当运行测试你的app时，如果没有测试数据库本身，你不需要创建全部的数据库。Room允许在你的测试中模拟数据访问层。这个过程是可能的，因为你的DAO并没有泄漏任何数据库的细节。当测试剩下的app部分时，你应该创建模拟你的DAP类。</p>
+
+<p>这里有两种测试数据库的方式：</p>
+
+<ul>
+<li>在你的开发主机上</li>
+<li>在Android设备上</li>
+</ul>
+
+<h3 id="toc_24">在你的主机上测试</h3>
+
+<p>Room使用SQLite支持库，提供了匹配安卓框架类的接口。这种支持允许你传递支持类库的自定义实现以测试你的数据库。</p>
+
+<p>即使这种方案允许你测试非常快捷，但是并不值得推荐，这是因为你设备上以及你用户设备上运行的SQLite版本可能和你主机上运行的版本并不匹配。</p>
+
+<h3 id="toc_25">在Android设备上测试</h3>
+
+<p>这种推荐的测试数据库方法是编写运行在安卓设备上的JUnit测试。因为这些测试并不需要创建<code>Activity</code>，它们应该会比在UI上测试要快。</p>
+
+<p>当设置你的测试时，你应该创建一个数据库的内存版本来使得测试更密闭，如：</p>
+
+<pre><code class="language-java">@RunWith(AndroidJUnit4.class)
+public class SimpleEntityReadWriteTest {
+    private UserDao mUserDao;
+    private TestDatabase mDb;
+
+    @Before
+    public void createDb() {
+        Context context = InstrumentationRegistry.getTargetContext();
+        mDb = Room.inMemoryDatabaseBuilder(context, TestDatabase.class).build();
+        mUserDao = mDb.getUserDao();
+    }
+
+    @After
+    public void closeDb() throws IOException {
+        mDb.close();
+    }
+
+    @Test
+    public void writeUserAndReadInList() throws Exception {
+        User user = TestUtil.createUser(3);
+        user.setName(&quot;george&quot;);
+        mUserDao.insert(user);
+        List&lt;User&gt; byName = mUserDao.findUsersByName(&quot;george&quot;);
+        assertThat(byName.get(0), equalTo(user));
+    }
+}
+</code></pre>
+
+<h2 id="toc_26">附加:：没有实体键的对象引用</h2>
+
+<p>从数据库到对象间关系的映射是一个很常见的实践，并且在服务端运行良好，在它们被访问的时候进行高性能的惰性加载。</p>
+
+<p>但是在客户端，惰性加载并不可行，这是因为很有可能发生在主线程，在主线程查询磁盘信息会导致很严重的性能问题。主线程有大概16ms来计算并绘制一个<code>Activity</code>的界面更新，因此甚至一个查询仅仅耗费5ms，你的app仍然会耗光绘制画面的时间，导致显著的Jank问题。更糟的是，如果有个并发运行的数据库事务，或者如果设备正忙于处理其他磁盘相关的繁重工作，查询会花费更多的时间完成。如果你不使用惰性加载的方式，app会获取多余其所需要的数据，从而导致内存消耗的问题。</p>
+
+<p>ORM通常将该问题交给开发者决定，使得他们可以根据自己的用例选择最佳的方式。不幸地是，开发者通常终止模型和UI之间的共享。当UI变更超时时，问题随之发生并且很难预感和解决。</p>
+
+<p>举个例子，UI界面读取一组<code>Book</code>列表，每本书拥有一个<code>Author</code>对象。你可能开始会设计你的查询去使用惰性加载，从而<code>Book</code>实例使用<code>getAuthor()</code>方法查询数据库。过了一些时间，你意识到你需要在app的UI界面显示作者名。你可以添加以下方法：</p>
+
+<p><code>authorNameTextView.setText(user.getAuthor().getName());</code></p>
+
+<p>但是这种看似没有问题的代码会导致<code>Author</code>表在主线程被查询。</p>
+
+<p>如果你急于查询作者信息，这会变得很难去改变数据是如何加载的，如果你不再需要这个数据的话，例如当你app的UI不再需要显示关于特定作者信息的时候。于是你的app必须继续加载不再显示的信息。这种方式更为糟糕，如果<code>Author</code>类引用了其他表，例如<code>getBooks()</code>方法。</p>
+
+<p>由于这些原因，Room禁止实体间的对象引用。作为替换，你必须显式地请求你所需要的数据。</p>
+
+<blockquote>
+<p>简单通俗地解释一下Jank：第2帧画面同步信号已经到来，由于第2帧数据还没有准备就绪，显示的还是第1帧。这种情况被Android开发组命名为“Jank”</p>
+</blockquote>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2017-11-10T11:13:04+08:00" itemprop="datePublished">2017/11/10 11:13 上午</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15102835841803.html" itemprop="url">
+		【翻译】安卓架构组件(5)-ViewModel</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<hr/>
+
+<p>layout: post<br/>
+title: &#39;【翻译】安卓架构组件(5)-ViewModel&#39;<br/>
+date: 2017-06-07<br/>
+author: Chuckiefan</p>
+
+<h2 id="toc_0">tags: Android 架构</h2>
+
+<p>相关文章：</p>
+
+<ul>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(1)-App%E6%9E%B6%E6%9E%84%E6%8C%87%E5%AF%BC.html">【翻译】安卓架构组件(1)-App架构指导</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(2)-%E6%B7%BB%E5%8A%A0%E7%BB%84%E4%BB%B6%E5%88%B0%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B8%AD.html">【翻译】安卓架构组件(2)-添加组件到你的项目中</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(3)-%E5%A4%84%E7%90%86%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">【翻译】安卓架构组件(3)-处理生命周期</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(4)-LiveData.html">【翻译】安卓架构组件(4)-LiveData</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(6)-Room%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%BA%93.html">【翻译】安卓架构组件(6)-Room持久化类库</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(7)-%E5%88%86%E9%A1%B5%E5%BA%93.html">【翻译】安卓架构组件(7)-分页库</a></li>
+</ul>
+
+<p><code>ViewModel</code>被设计用于存储并管理UI相关的数据，因此可以在配置变化时存活下来，例如当屏幕旋转的时候。</p>
+
+<p>app组件，例如<code>Activity</code>和<code>Fragment</code>拥有可以被安卓框架所管理的生命周期。框架可以决定销毁或创建它们，这是基于一些用户的行为或者设备的事件，而这一切都在你的控制范围外。</p>
+
+<p>因为一些对象可能会被操作系统销毁或重新创建，任何你所持有的数据都会丢失。例如，你的<code>Activity</code>拥有一组用户列表，当<code>Activity</code>由于配置变化而重新创建时，新的<code>Activity</code>不得不重新获取用户列表。对于简单的数据，<code>Activity</code>可以使用<code>onSaveInstanceState()</code>方法并从<code>onCreate()</code>的<code>bundle</code>里恢复数据，但是这种方法仅仅适合于少量数据，例如UI状态，不适用于大量数据，例如一组用户列表。</p>
+
+<p>另一个问题是，这些UI控制器（<code>Activity</code>、<code>Fragment</code>等）需要频繁地异步调用，可能会需要一些时间返回。UI控制器需要管理这些调用，并当被销毁的时候清除它们，以避免潜在的内存泄漏。这需要很多的代码维护，并且在由于配置变化而重新创建的情况下是很浪费资源的，因为需要重新进行相同的调用。</p>
+
+<p>另外，这些UI控制器已经响应用户行为或处理操作系统交互。当它们也需要手动处理资源的时候，会使得类急速膨胀。上帝的Activity或上帝的Fragment，是指一个试图处理所有app工作的单独类，而不是分派到其他类去完成。这样也会使得测试工作很难进行。</p>
+
+<p>将我们的UI和控制逻辑分离变得越来越容易和高效了。<code>Lifecycle</code>提供了一个新类叫做<code>ViewModel</code>，一个负责为UI准备数据的帮助类。<code>ViewModel</code>会在配置发生变化的时候自动保存，所以其所持有的数据会在新的<code>Activity</code>或新的<code>Fragment</code>立即可用。在上面我们所提及的例子中，应当是<code>ViewModel</code>的职责来获取并保持用户列表，而不是<code>Activity</code>或<code>Fragment</code>。</p>
+
+<pre><code class="language-java">public class MyViewModel extends ViewModel {
+    private MutableLiveData&lt;List&lt;User&gt;&gt; users;
+    public LiveData&lt;List&lt;User&gt;&gt; getUsers() {
+        if (users == null) {
+            users = new MutableLiveData&lt;List&lt;Users&gt;&gt;();
+            loadUsers();
+        }
+        return users;
+    }
+
+    private void loadUsers() {
+        // 异步调用获取用户列表
+    }
+}
+</code></pre>
+
+<p>现在新的<code>Activity</code>如下：</p>
+
+<pre><code class="language-java">public class MyActivity extends AppCompatActivity {
+    public void onCreate(Bundle savedInstanceState) {
+        MyViewModel model = ViewModelProviders.of(this).get(MyViewModel.class);
+        model.getUsers().observe(this, users -&gt; {
+            // 更新 UI
+        });
+    }
+}
+</code></pre>
+
+<p>如果<code>Activity</code>被重新创建了，它会收到被之前<code>Activity</code>创建的相同<code>MyViewModel</code>实例。当所属<code>Activity</code>终止后，框架调用<code>ViewModel</code>的<code>onCleared()</code>方法清除资源。</p>
+
+<blockquote>
+<p>因为<code>ViewModel</code>在指定的<code>Activity</code>或<code>Fragment</code>实例外存活，它应该永远不能引用一个View，或持有任何包含<code>Activity context</code>引用的类。如果<code>ViewModel</code>需要<code>Application</code>的context（如获取系统服务），可以扩展<code>AndroidViewmodel</code>，并拥有一个构造器接收<code>Application</code>。</p>
+</blockquote>
+
+<h2 id="toc_1">在<code>Fragment</code>间共享数据</h2>
+
+<p>一个<code>Activity</code>中的多个<code>Fragment</code>相互通讯是很常见的。每个<code>Fragment</code>需要定义接口描述，所属<code>Activity</code>将二者捆绑在一起。此外，每个<code>Fragment</code>必须处理其他<code>Fragment</code>未创建或不可见的情况</p>
+
+<p>通过使用<code>ViewModel</code>可以解决这个痛点。想象一种情况，一个<code>Fragment</code>从列表项中选择一项，在另一个<code>Fragment</code>显示被选中项的内容。</p>
+
+<p>这些<code>Fragment</code>可以使用它们的<code>Activity</code>共享<code>ViewModel</code>来处理通讯：</p>
+
+<pre><code class="language-java">public class SharedViewModel extends ViewModel {
+    private final MutableLiveData&lt;Item&gt; selected = new MutableLiveData&lt;Item&gt;();
+
+    public void select(Item item) {
+        selected.setValue(item);
+    }
+
+    public LiveData&lt;Item&gt; getSelected() {
+        return selected;
+    }
+}
+
+public class MasterFragment extends Fragment {
+    private SharedViewModel model;
+    public void onActivityCreated() {
+        model = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
+        itemSelector.setOnClickListener(item -&gt; {
+            model.select(item);
+        });
+    }
+}
+
+public class DetailFragment extends LifecycleFragment {
+    public void onActivityCreated() {
+        SharedViewModel model = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
+        model.getSelected().observe(this, { item -&gt;
+           // update UI
+        });
+    }
+}
+</code></pre>
+
+<p>请注意，两个<code>Fragment</code>都使用了<code>getActivity()</code>，以通过<code>ViewModelProviders</code>获取<code>SharedViewModel</code>。</p>
+
+<p>这种方式的好处包括：</p>
+
+<ul>
+<li><code>Activity</code>不需要做任何事情，也不需要知道通讯的事情</li>
+<li><code>Fragment</code>不需要知道彼此，除了<code>SharedViewModel</code>进行联系。如果它们(<code>Fragment</code>)其中一个消失了，其余的仍然能够像往常一样工作</li>
+<li>每个<code>Fragment</code>有自己的生命周期，而且不会受其它<code>Fragment</code>生命周期的影响。事实上，一个<code>Fragment</code>替换另一个<code>Fragment</code>，UI的工作也不会受到任何影响。</li>
+</ul>
+
+<h2 id="toc_2">ViewModel的生命周期</h2>
+
+<p><code>ViewModel</code>对象的范围由获取<code>ViewModel</code>时传递至<code>ViewModelProvider</code>的<code>Lifecycle</code>所决定。<code>ViewModel</code>始终处在内存中，直到<code>Lifecycle</code>永久地离开—对于<code>Activity</code>来说，是当它终止（finish）的时候，对于<code>Fragment</code>来说，是当它分离（detached）的时候。</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15102988359764.png" alt=""/></p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2017-11-10T09:54:58+08:00" itemprop="datePublished">2017/11/10 9:54 上午</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15102788985276.html" itemprop="url">
+		【翻译】安卓架构组件(7)-分页库</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>相关文章：</p>
+
+<ul>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(1)-App%E6%9E%B6%E6%9E%84%E6%8C%87%E5%AF%BC.html">【翻译】安卓架构组件(1)-App架构指导</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(2)-%E6%B7%BB%E5%8A%A0%E7%BB%84%E4%BB%B6%E5%88%B0%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B8%AD.html">【翻译】安卓架构组件(2)-添加组件到你的项目中</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(3)-%E5%A4%84%E7%90%86%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">【翻译】安卓架构组件(3)-处理生命周期</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(4)-LiveData.html">【翻译】安卓架构组件(4)-LiveData</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(5)-ViewModel.html">【翻译】安卓架构组件(5)-ViewModel</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(6)-Room%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%BA%93.html">【翻译】安卓架构组件(6)-Room持久化类库</a></li>
+</ul>
+
+<p>分页库使你的app能够在需要从一个数据源逐步加载数据时更为轻松，避免了过度加载以及为了一个大型数据的查询等待太多时间。</p>
+
+<h2 id="toc_0">综述</h2>
+
+<p>许多app伴随着大量的数据，但是在任意时刻往往只需要加载和显示其中的一小部分。一个app可能存在数以万计的数据以供显示，但在某一时刻仅仅需要访问其中的几十条。如果app没有认真处理这个这个问题，会请求实际上并不需要的数据，并导致不必要的性能负担和网络带宽。如果数据并没有被存储起来或同步到远程数据库，这同样会减慢app的运行速度以及浪费用户的流量。</p>
+
+<p>当然现有的安卓API允许对内容进行分页，它们伴有明显的约束和缺点：</p>
+
+<ul>
+<li><code>CursorAdapter</code>使得将数据库查询结果映射到<code>ListView</code>列表项更为轻松，但它会在UI线程执行数据库查询，并且使用<code>Cursor</code>的分页并不高效。对于使用<code>CursorAdapter</code>的更多缺陷，请查询<a href="https://medium.com/google-developers/large-database-queries-on-android-cb043ae626e8">这里</a>。</li>
+<li><code>AsyncListUtil</code>允许将基于位置的分页数据加载至<code>RecyclerView</code>，但是并不允许无位置的分页，而且它会强迫使用空白占用位。</li>
+</ul>
+
+<p>新的分页库致力于解决这些问题。这个类库包含一些类，以流水线的方式处理你所需数据的请求过程。这些类也可以和已经存在的架构类组件无缝结合，如<code>Room</code>。</p>
+
+<h2 id="toc_1">类</h2>
+
+<p>分页库提供以下的类以及额外的支持类：</p>
+
+<h3 id="toc_2"><code>DataSource</code></h3>
+
+<p>使用这个类定义一个你用来分页拉取的数据源。根据如何访问你的数据，你可以集成以下两个子类之一：</p>
+
+<ul>
+<li><code>KeyedDataSource</code> 如果你需要从第N个数据项获取第N+1个数据项。例如，如果你的线程在一个讨论的app获取评论，你可能需要传递一个评论的id来获取下一个评论。</li>
+<li><code>TiledDataSource</code> 如果你需要从你的数据源中获取任意指定位置的分页数据。这个类支持从你选择的任何位置请求数据，例如：“返回从位置1200开始的20条数据”。</li>
+</ul>
+
+<p>如果你使用<code>Room</code>来管理你的数据，它会自动创建一个<code>TiledDataSource</code>，例如：</p>
+
+<pre><code class="language-java">@Query(&quot;select * from users WHERE age &gt; :age order by name DESC, id ASC&quot;)
+TiledDataSource&lt;User&gt; usersOlderThan(int age);
+</code></pre>
+
+<h3 id="toc_3"><code>PagedList</code></h3>
+
+<p>这个类从<code>DataSource</code>加载数据。你可以配置在任何时刻该获取多少数据，以及需要预加载多少数据，以最小化用户等待数据被加载时等待的时间。这个类可以给其他类提供更新信号，例如<code>RecyclerView.Adapter</code>，允许当数据分页加载时更新你的<code>RecyclerView</code>。</p>
+
+<h3 id="toc_4"><code>PagedListAdapter</code></h3>
+
+<p>这个类是<code>RecyclerView.Adapter</code>的子类，使得数据从<code>PagedList</code>中展现。例如，当新的一页数据被加载时，<code>PagedListAdapter</code>通知<code>RecyclerView</code>数据已经到达，这让<code>RecyclerView</code>替换任何占位项，并展示合适的动画效果。</p>
+
+<p><code>PagedListAdapter</code>使用后台线程计算从一个<code>PagedList</code>到另一个的变化（例如，当数据库的变更导致数据的更新），并调用<code>notifyItem...()</code>方法，并在需要时更新列表数据内容。之后<code>RecyclerView</code>展现必要的变化。例如，当一个数据项在不同的<code>PagedList</code>版本间变更位置时，<code>RecyclerView</code>动画会展示数据项移动到新的位置。</p>
+
+<h3 id="toc_5"><code>LivePagedListProvider</code></h3>
+
+<p>这个生成从你提供的<code>DataSource</code>生成一个<code>LiveData&lt;PagedList&gt;</code>。此外，如果你使用<code>Room</code>持久化类库来管理你的数据库，DAO可以使用<code>TiledDataSource</code>生成<code>LivePagedListProvider</code>，例如：</p>
+
+<pre><code class="language-java">@Query(&quot;SELECT * from users order WHERE age &gt; :age order by name DESC, id ASC&quot;)
+public abstract LivePagedListProvider&lt;Integer, User&gt; usersOlderThan(int age);
+</code></pre>
+
+<blockquote>
+<p><code>Integer</code>参数告知Room基于位置加载的<code>TiledDataSource</code>。</p>
+</blockquote>
+
+<p>分页库组件在后台线程组织了数据流，并在UI线程展示。例如：当一个新的数据项被插入到你的数据库时，<code>DataSource</code>会失效， 后台线程产生一个新的<code>PagedList</code>。</p>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15102822354339.gif" alt="图1 分页库组件在后台线程执行大部分工作，因此并不会影响UI线程"/></p>
+
+<p>新创建的<code>PagedList</code>在UI线程被发送到<code>PagedListAdapter</code>。之后<code>PagedListAdapter</code>使用<code>DiffUtil</code>在后台线程计算当前列表和新列表的不同。当比较结束时，<code>PagedListAdapter</code>使用比较得到的差异信息适当地调用<code>RecyclerView.Adapter.notifyItemInserted()</code>来通知新的数据项被插入。</p>
+
+<p><code>RecyclerView</code>在UI线程知道仅仅需要绑定一个新的数据项，并使用动画展示在屏幕上。</p>
+
+<p>下面的代码示例显示了所有相关部分的工作。当数据库添加、删除或者更新时，<code>RecyclerView</code>的内容自动且高效地更新：</p>
+
+<pre><code class="language-java">@Dao
+interface UserDao {
+    @Query(&quot;SELECT * FROM user ORDER BY lastName ASC&quot;)
+    public abstract LivePagedListProvider&lt;Integer, User&gt; usersByLastName();
+}
+
+class MyViewModel extends ViewModel {
+    public final LiveData&lt;PagedList&lt;User&gt;&gt; usersList;
+    public MyViewModel(UserDao userDao) {
+        usersList = userDao.usersByLastName().create(
+                /* 初始化加载位置 */ 0,
+                new PagedList.Config.Builder()
+                        .setPageSize(50)
+                        .setPrefetchDistance(50)
+                        .build());
+    }
+}
+
+class MyActivity extends AppCompatActivity {
+    @Override
+    public void onCreate(Bundle savedState) {
+        super.onCreate(savedState);
+        MyViewModel viewModel = ViewModelProviders.of(this).get(MyViewModel.class);
+        RecyclerView recyclerView = findViewById(R.id.user_list);
+        UserAdapter&lt;User&gt; adapter = new UserAdapter();
+        viewModel.usersList.observe(this, pagedList -&gt; adapter.setList(pagedList));
+        recyclerView.setAdapter(adapter);
+    }
+}
+
+class UserAdapter extends PagedListAdapter&lt;User, UserViewHolder&gt; {
+    public UserAdapter() {
+        super(DIFF_CALLBACK);
+    }
+    @Override
+    public void onBindViewHolder(UserViewHolder holder, int position) {
+        User user = getItem(position);
+        if (user != null) {
+            holder.bindTo(user);
+        } else {
+            // NULL时定义了一个占位项——当实际的对象被从数据库加载时，PagedListAdapter会自动失效该行
+            holder.clear();
+        }
+    }
+    public static final DiffCallback&lt;User&gt; DIFF_CALLBACK = new DiffCallback&lt;User&gt;() {
+        @Override
+        public boolean areItemsTheSame(@NonNull User oldUser, @NonNull User newUser) {
+            // 用户属性可能会在重新加载时变化，但id是固定的。
+            return oldUser.getId() == newUser.getId();
+        }
+        @Override
+        public boolean areContentsTheSame(@NonNull User oldUser, @NonNull User newUser) {
+            // 注意：如果你使用equals，你的对象会重载Object.equals()方法
+            // 如果不正确地返回false会导致许多动画效果
+            return oldUser.equals(newUser);
+        }
+    }
+}
+</code></pre>
+
+
+			
+			
+		</div>
+
+	</article>
+  
+
+</div>
+<nav id="pagenavi">
+	 
+	 <a class="next" href="all_1.html">Next</a> 
+	<div class="center"><a href="archives.html">Blog Archives</a></div>
+
+</nav>
+
+</div>
+
+
+
+        </div>
+			<footer id="footer" class="inner">Copyright &copy; 2014
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; 
+Theme by <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a>
+      </footer>
+		</div>
+	</div>
+
+  
+    
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+</body>
+</html>

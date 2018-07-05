@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>  
+	  
+  	【翻译】安卓架构组件(2)-添加组件到你的项目中 - Chuckiefan's Blog
+  	
+	</title>
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="Chuckiefan's Blog" type="application/atom+xml">
+
+	<link href="asset/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="asset/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<script src="asset/javascripts/jquery.min.js"></script>
+	<script src="asset/highlightjs/highlight.pack.js"></script>
+	<link href="asset/highlightjs/styles/solarized_dark.css" media="screen, projection" rel="stylesheet" type="text/css">
+<script>hljs.initHighlightingOnLoad();</script>
+
+	<!--[if lt IE 9]><script src="asset/javascripts/html5.js"></script><![endif]-->
+	<!-- <link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'> -->
+	<style type="text/css">
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Nunito-Light'), url(asset/font/1TiHc9yag0wq3lDO9cw0voX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nunito-Regular'), url(asset/font/6TbRXKWJjpj6V2v_WyRbMX-_kf6ByYO6CLYdB4HQE-Y.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Nunito-Bold'), url(asset/font/TttUCfJ272GBgSKaOaD7KoX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+	</style>
+	
+	<style type="text/css">
+	.container .left-col{ opacity: 1;}
+	#pagenavi a{ font-size: 1.3em;}
+	#pagenavi .next:before{ top: 3px;}
+	#pagenavi .prev:before{ top: 3px;}
+	.container .mid-col .mid-col-container #content .archives .title{ font-size: 1.5em;}
+	.container .mid-col .mid-col-container #content article{ padding: 15px 0px;}
+	#header .subtitle {
+		line-height: 1.2em;
+		padding-top: 8px;
+	}
+	article pre{ background: none; border: none; padding: 0;}
+	article .entry-content{text-align: left;}
+	.share-comment{ padding: 25px 0px; clear: both;}
+	hr{ margin: 20px 0px;border: 0; border-top:solid 1px #ddd;}
+	</style>
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+				<header id="header" class="inner">
+				 
+					
+					<h1><a href="index.html">Chuckiefan's Blog</a></h1>
+					<p class="subtitle"></p>
+					<nav id="main-nav">
+						<ul class="main">
+						
+						  <li id=""><a target="self" href="index.html">Home</a></li>
+						
+						  <li id=""><a target="_self" href="archives.html">Archives</a></li>
+						
+						</ul>
+					</nav>
+
+					<nav id="sub-nav">
+						<div class="social">
+
+
+
+
+
+
+
+
+
+
+
+
+
+								
+
+								<a class="rss" href="atom.xml" title="RSS">RSS</a>
+							
+						</div>
+					</nav>
+				</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			<div class="mid-col-container"> <div id="content" class="inner">
+
+	<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+		<h1 class="title" itemprop="name">【翻译】安卓架构组件(2)-添加组件到你的项目中</h1>
+		<div class="entry-content" itemprop="articleBody">
+			<hr/>
+
+<p>layout: post<br/>
+title: &#39;【翻译】安卓架构组件(2)-添加组件到你的项目中&#39;<br/>
+date: 2017-06-07<br/>
+author: Chuckiefan</p>
+
+<h2 id="toc_0">tags: Android 架构</h2>
+
+<p>相关文章：</p>
+
+<ul>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(1)-App%E6%9E%B6%E6%9E%84%E6%8C%87%E5%AF%BC.html">【翻译】安卓架构组件(1)-App架构指导</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(3)-%E5%A4%84%E7%90%86%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">【翻译】安卓架构组件(3)-处理生命周期</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(4)-LiveData.html">【翻译】安卓架构组件(4)-LiveData</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(5)-ViewModel.html">【翻译】安卓架构组件(5)-ViewModel</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(6)-Room%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%BA%93.html">【翻译】安卓架构组件(6)-Room持久化类库</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(7)-%E5%88%86%E9%A1%B5%E5%BA%93.html">【翻译】安卓架构组件(7)-分页库</a></li>
+</ul>
+
+<blockquote>
+<p>架构组件仍然处在alpha阶段，直到1.0版本才会稳定。</p>
+</blockquote>
+
+<p>架构组件在谷歌的Maven仓库发布，可以通过遵循以下步骤使用它们：</p>
+
+<h2 id="toc_1">添加谷歌Maven仓库</h2>
+
+<p>Android Studio项目默认情况下并没有配置该仓库。</p>
+
+<p>为了添加其至你的项目中，打开项目的<code>build.gradle</code>（而不是模块的gradle文件），添加以下内容：</p>
+
+<pre><code class="language-groovy">allprojects {
+    repositories {
+        jcenter()
+        maven { url &#39;https://maven.google.com&#39; }//所要添加的语句
+    }
+}
+</code></pre>
+
+<h2 id="toc_2">添加架构组件</h2>
+
+<p>打开模块下的<code>build.gradle</code>文件，添加你所需要构件的依赖：</p>
+
+<p>对于<code>Lifecycles</code>，<code>LiveData</code>，<code>ViewModel</code>：</p>
+
+<ul>
+<li><code>compile &quot;android.arch.lifecycle:runtime:1.0.0-alpha1&quot;</code></li>
+<li><code>compile &quot;android.arch.lifecycle:extensions:1.0.0-alpha1&quot;</code></li>
+<li><code>annotationProcessor &quot;android.arch.lifecycle:compiler:1.0.0-alpha1&quot;</code></li>
+</ul>
+
+<p>对于Room：</p>
+
+<ul>
+<li><code>compile &quot;android.arch.persistence.room:runtime:1.0.0-alpha1&quot;</code></li>
+<li><code>annotationProcessor &quot;android.arch.persistence.room:compiler:1.0.0-alpha1&quot;</code></li>
+</ul>
+
+<p>对于Room迁移测试：</p>
+
+<ul>
+<li><code>testCompile &quot;android.arch.persistence.room:testing:1.0.0-alpha1&quot;</code></li>
+</ul>
+
+<p>对于Room RxJava支持：</p>
+
+<ul>
+<li><code>compile &quot;android.arch.persistence.room:rxjava2:1.0.0-alpha1&quot;</code></li>
+</ul>
+
+		</div>
+	</article>
+	<div class="share-comment">
+	 
+
+	  
+
+	  
+
+	</div>
+</div>        </div>
+			<footer id="footer" class="inner">Copyright &copy; 2014
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; 
+Theme by <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a>
+      </footer>
+		</div>
+	</div>
+
+  
+    
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>  
+	  
+  	【翻译】安卓架构组件(3)-处理生命周期 - Chuckiefan's Blog
+  	
+	</title>
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="Chuckiefan's Blog" type="application/atom+xml">
+
+	<link href="asset/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="asset/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<script src="asset/javascripts/jquery.min.js"></script>
+	<script src="asset/highlightjs/highlight.pack.js"></script>
+	<link href="asset/highlightjs/styles/solarized_dark.css" media="screen, projection" rel="stylesheet" type="text/css">
+<script>hljs.initHighlightingOnLoad();</script>
+
+	<!--[if lt IE 9]><script src="asset/javascripts/html5.js"></script><![endif]-->
+	<!-- <link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'> -->
+	<style type="text/css">
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Nunito-Light'), url(asset/font/1TiHc9yag0wq3lDO9cw0voX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nunito-Regular'), url(asset/font/6TbRXKWJjpj6V2v_WyRbMX-_kf6ByYO6CLYdB4HQE-Y.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Nunito-Bold'), url(asset/font/TttUCfJ272GBgSKaOaD7KoX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+	</style>
+	
+	<style type="text/css">
+	.container .left-col{ opacity: 1;}
+	#pagenavi a{ font-size: 1.3em;}
+	#pagenavi .next:before{ top: 3px;}
+	#pagenavi .prev:before{ top: 3px;}
+	.container .mid-col .mid-col-container #content .archives .title{ font-size: 1.5em;}
+	.container .mid-col .mid-col-container #content article{ padding: 15px 0px;}
+	#header .subtitle {
+		line-height: 1.2em;
+		padding-top: 8px;
+	}
+	article pre{ background: none; border: none; padding: 0;}
+	article .entry-content{text-align: left;}
+	.share-comment{ padding: 25px 0px; clear: both;}
+	hr{ margin: 20px 0px;border: 0; border-top:solid 1px #ddd;}
+	</style>
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+				<header id="header" class="inner">
+				 
+					
+					<h1><a href="index.html">Chuckiefan's Blog</a></h1>
+					<p class="subtitle"></p>
+					<nav id="main-nav">
+						<ul class="main">
+						
+						  <li id=""><a target="self" href="index.html">Home</a></li>
+						
+						  <li id=""><a target="_self" href="archives.html">Archives</a></li>
+						
+						</ul>
+					</nav>
+
+					<nav id="sub-nav">
+						<div class="social">
+
+
+
+
+
+
+
+
+
+
+
+
+
+								
+
+								<a class="rss" href="atom.xml" title="RSS">RSS</a>
+							
+						</div>
+					</nav>
+				</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			<div class="mid-col-container"> <div id="content" class="inner">
+
+	<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+		<h1 class="title" itemprop="name">【翻译】安卓架构组件(3)-处理生命周期</h1>
+		<div class="entry-content" itemprop="articleBody">
+			<p>相关文章：</p>
+
+<ul>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(1)-App%E6%9E%B6%E6%9E%84%E6%8C%87%E5%AF%BC.html">【翻译】安卓架构组件(1)-App架构指导</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(2)-%E6%B7%BB%E5%8A%A0%E7%BB%84%E4%BB%B6%E5%88%B0%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B8%AD.html">【翻译】安卓架构组件(2)-添加组件到你的项目中</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(4)-LiveData.html">【翻译】安卓架构组件(4)-LiveData</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(5)-ViewModel.html">【翻译】安卓架构组件(5)-ViewModel</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(6)-Room%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%BA%93.html">【翻译】安卓架构组件(6)-Room持久化类库</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(7)-%E5%88%86%E9%A1%B5%E5%BA%93.html">【翻译】安卓架构组件(7)-分页库</a></li>
+</ul>
+
+<p><code>android.arch.lifecycle</code>包提供了类和接口，使得你可以构建“生命周期敏感的组件”——自动适应当前<code>Fragment</code>或者<code>Activity</code>的组件。</p>
+
+<blockquote>
+<p>如何引入<code>android.arch.lifecycle</code>到你的安卓项目中，详见[adding components to your project]。</p>
+</blockquote>
+
+<p>安卓框架所定义的大多数组件都有相关的生命周期。生命周期被操作系统或运行在你程序中的框架代码所管理。它们是安卓运行的核心，你的应用必须遵守它们，不要做触发内存泄漏或应用崩溃的事情。</p>
+
+<p>想象一下我们有一个在屏幕上显示位置的<code>Activity</code>，一个常见的实现大概像这样：</p>
+
+<pre><code class="language-java">class MyLocationListener {
+    public MyLocationListener(Context context, Callback callback) {
+        // ...
+    }
+
+    void start() {
+        //连接至系统位置服务
+    }
+
+    void stop() {
+        // 从系统位置服务断开
+    }
+}
+
+class MyActivity extends AppCompatActivity {
+    private MyLocationListener myLocationListener;
+
+    public void onCreate(...) {
+        myLocationListener = new MyLocationListener(this, (location) -&gt; {
+            // 更新UI
+        });
+  }
+
+    public void onStart() {
+        super.onStart();
+        myLocationListener.start();
+    }
+
+    public void onStop() {
+        super.onStop();
+        myLocationListener.stop();
+    }
+}
+</code></pre>
+
+<p>即使这个样例代码看起来还不错，但是在实际的app中，由于拥有过多的<code>start()</code>和<code>stop</code>而导致<code>onStart()</code>和<code>onStop()</code>非常巨大。</p>
+
+<p>此外，一些组件不能只在<code>onStart()</code>中开始。如果我们需要在开始位置观察前检查一些配置怎么办？某种情况下很可能检查会在<code>Activity</code>停止后结束，这意味着<code>myLocationListener.start()</code>会在<code>myLocationListener.stop()</code>之后调用，基本上会一直保持连接。</p>
+
+<pre><code class="language-java">class MyActivity extends AppCompatActivity {
+    private MyLocationListener myLocationListener;
+
+    public void onCreate(...) {
+        myLocationListener = new MyLocationListener(this, location -&gt; {
+            // 更新UI
+        });
+    }
+
+    public void onStart() {
+        super.onStart();
+        Util.checkUserStatus(result -&gt; {
+            //如果回调在activity停止后调用呢？
+            if (result) {
+                myLocationListener.start();
+            }
+        });
+    }
+
+    public void onStop() {
+        super.onStop();
+        myLocationListener.stop();
+    }
+}
+</code></pre>
+
+<p><code>android.arch.lifecycle</code>包提供了类和接口，帮助你解决这个问题。</p>
+
+<h2 id="toc_0">Lifecycle类</h2>
+
+<p><code>Lifecycle</code>是一个持有某组件生命周期状态的类，并允许其他对象观察这一状态。</p>
+
+<p><code>Lifecycle</code>使用两个枚举类型来跟踪相关联组件的生命周期状态。</p>
+
+<ul>
+<li>Event（事件）:生命周期事件由框架和<code>Lifecycle</code>类分发。这些事件映射到<code>Activity</code>和<code>Fragment</code>的回调。</li>
+<li>State（状态）：由<code>Lifecycle</code>对象所跟踪组件的当前状态。</li>
+</ul>
+
+<p><img src="http://ourmc2t8i.bkt.clouddn.com/15102983344576.jpg" alt=""/></p>
+
+<p>请将状态想成图的节点，将事件想成两个节点的边。<br/>
+一个可以显示组件生命周期状态的类通过添加注解到其方法中来实现：</p>
+
+<pre><code class="language-java">public class MyObserver implements LifecycleObserver {
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    public void onResume() {
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    public void onPause() {
+    }
+}
+aLifecycleOwner.getLifecycle().addObserver(new MyObserver());
+</code></pre>
+
+<h2 id="toc_1">LifecycleOwner类</h2>
+
+<p><code>LifecycleOwner</code>是一个单一方法的接口，表示该类拥有一个<code>Lifecycle</code>。它只有一个方法且必须实现：<code>getLifecycle()</code>。</p>
+
+<p>这个类从各自单独的类（<code>Activity</code>和<code>Fragment</code>）抽象了<code>Lifecycle</code>的拥有者，并允许编写组件和它们共同工作。任何自定义的应用类可以实现<code>LifecycleOwner</code>接口。</p>
+
+<blockquote>
+<p>由于架构组件当前处在非正式版中，我们无法从一个稳定的组件中添加一个不稳定的API，因此<code>Fragment</code>和<code>AppCompatActivity</code>类暂时无法实现这些接口。目前可以使用<code>LifecycleActivity</code>和<code>LifecycleFragment</code>，当Lifecycles稳定以后，<code>Fragment</code>和<code>AppCompatActivity</code>将实现<code>LifecycleOwner</code>；<code>LifecycleActivity</code>和<code>LifecycleFragment</code>将会被弃用。</p>
+</blockquote>
+
+<p>对于上述的例子我们可以使我们的<code>MyLocationListener</code>类扩展自<code>LifecycleObserver</code>，之后使用<code>onCreate</code>中的Lifecycle初始化它。这使得<code>MyLocationListener</code>类是自足的，意味着当必要的时候可以使用自己的清除（cleanup）方法。</p>
+
+<pre><code class="language-java">class MyActivity extends LifecycleActivity {
+    private MyLocationListener myLocationListener;
+
+    public void onCreate(...) {
+        myLocationListener = new MyLocationListener(this, getLifecycle(), location -&gt; {
+            // 更新 UI
+        });
+        Util.checkUserStatus(result -&gt; {
+            if (result) {
+                myLocationListener.enable();
+            }
+        });
+  }
+}
+</code></pre>
+
+<p>一个常见的用例是，如果<code>Lifecycle</code>并不处在良好的状态，则立刻避免调用具体的回调。</p>
+
+<p>为了使这变的简单，<code>Lifecycle</code>类允许其他对象查询当前的状态。</p>
+
+<pre><code class="language-java">class MyLocationListener implements LifecycleObserver {
+    private boolean enabled = false;
+    public MyLocationListener(Context context, Lifecycle lifecycle, Callback callback) {
+       ...
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    void start() {
+        if (enabled) {
+           // 连接
+        }
+    }
+
+    public void enable() {
+        enabled = true;
+        if (lifecycle.getState().isAtLeast(STARTED)) {
+            // 如果未连接则连接
+        }
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    void stop() {
+        // 如果连接则断开连接
+    }
+</code></pre>
+
+<p>在这种实现下，我们的<code>LocationListener</code>类是完全生命周期敏感的，它可以做自己的初始化以及清除工作，而不需要被<code>Activity</code>管理。如果我们需要从另一个<code>Activity</code>或者<code>Fragment</code>使用自己的<code>LocationListener</code>，我们只需要初始化它就可以了。所有的搭建和拆除操作都由该类自己管理。</p>
+
+<p>可以和<code>Lifecycle</code>一同工作的类被叫做生命周期敏感的组件。需要和Android生命周期共同工作的类是值得提倡变成生命周期敏感组件的。因此它们的客户端可以轻易地整合这些类，而不需要手动管理客户端的生命周期。</p>
+
+<p><code>LiveData</code>是一个生命周期敏感组件的样例。将<code>LiveData</code>和<code>ViewModel</code>一起使用可以更轻易地构建遵循Android生命周期的app。</p>
+
+<h2 id="toc_2">Lifecycles的最佳实践</h2>
+
+<ul>
+<li>保持你的UI控制器（activities， fragments）体积尽可能地瘦小。它们不应该尝试获得自己的数据，使用<code>ViewModel</code>去做这件事，然后观察<code>LiveData</code>以响应数据的变化至UI。</li>
+<li>尝试编写数据驱动的UI，你的UI控制器仅仅负责当数据变化时更新UI，或通知至<code>ViewModel</code>。</li>
+<li>将你的数据逻辑放到你的<code>ViewModel</code>类中，<code>ViewModel</code>应该作为你的UI控制器和app剩余部分的连接器。然而请小心，<code>ViewModel</code>的职责并不在于获取数据（例如从网路中获取数据）。相反<code>ViewModel</code>应当调用正确的组件去做这件工作，之后给UI控制器提供结果。</li>
+<li>使用数据绑定在你的视图和UI控制器之间维护一个清晰的接口。这允许你在activities/fragments更新最少的代码。如果你想在Java这样做，使用[Butter Knife]这样的类库来避免模板代码，以及拥有更好的抽象。</li>
+<li>如果你的UI很复杂，考虑创建一个Presenter类来处理UI的修改。</li>
+<li>永远不要在你的<code>ViewModel</code>中引用<code>View</code>或者<code>Activity</code>的<code>Context</code>。如果<code>ViewModel</code>在<code>Activity</code>之外存活，你的<code>Activity</code>将会被泄漏并且不能正确地被回收。</li>
+</ul>
+
+<h2 id="toc_3">附加</h2>
+
+<h3 id="toc_4">在自定义Activity和Fragment中实现LifecycleOwner</h3>
+
+<p>任何自定义的<code>Fragment</code>或<code>Activity</code>都可以通过实现内置的<code>LifecycleRegistryOwner</code>变成<code>LifecycleOwner</code>（从而不需要扩展自<code>LifecycleFragment</code>或者<code>LifecycleActivity</code>）。</p>
+
+<pre><code class="language-java">public class MyFragment extends Fragment implements LifecycleRegistryOwner {
+    LifecycleRegistry lifecycleRegistry = new LifecycleRegistry(this);
+
+    @Override
+    public LifecycleRegistry getLifecycle() {
+        return lifecycleRegistry;
+    }
+}
+</code></pre>
+
+		</div>
+	</article>
+	<div class="share-comment">
+	 
+
+	  
+
+	  
+
+	</div>
+</div>        </div>
+			<footer id="footer" class="inner">Copyright &copy; 2014
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; 
+Theme by <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a>
+      </footer>
+		</div>
+	</div>
+
+  
+    
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+</body>
+</html>

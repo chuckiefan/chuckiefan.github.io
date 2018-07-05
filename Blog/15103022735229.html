@@ -1,0 +1,359 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>  
+	  
+  	【翻译】安卓架构组件(4)-LiveData - Chuckiefan's Blog
+  	
+	</title>
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="Chuckiefan's Blog" type="application/atom+xml">
+
+	<link href="asset/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="asset/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<script src="asset/javascripts/jquery.min.js"></script>
+	<script src="asset/highlightjs/highlight.pack.js"></script>
+	<link href="asset/highlightjs/styles/solarized_dark.css" media="screen, projection" rel="stylesheet" type="text/css">
+<script>hljs.initHighlightingOnLoad();</script>
+
+	<!--[if lt IE 9]><script src="asset/javascripts/html5.js"></script><![endif]-->
+	<!-- <link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'> -->
+	<style type="text/css">
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Nunito-Light'), url(asset/font/1TiHc9yag0wq3lDO9cw0voX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nunito-Regular'), url(asset/font/6TbRXKWJjpj6V2v_WyRbMX-_kf6ByYO6CLYdB4HQE-Y.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Nunito-Bold'), url(asset/font/TttUCfJ272GBgSKaOaD7KoX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+	</style>
+	
+	<style type="text/css">
+	.container .left-col{ opacity: 1;}
+	#pagenavi a{ font-size: 1.3em;}
+	#pagenavi .next:before{ top: 3px;}
+	#pagenavi .prev:before{ top: 3px;}
+	.container .mid-col .mid-col-container #content .archives .title{ font-size: 1.5em;}
+	.container .mid-col .mid-col-container #content article{ padding: 15px 0px;}
+	#header .subtitle {
+		line-height: 1.2em;
+		padding-top: 8px;
+	}
+	article pre{ background: none; border: none; padding: 0;}
+	article .entry-content{text-align: left;}
+	.share-comment{ padding: 25px 0px; clear: both;}
+	hr{ margin: 20px 0px;border: 0; border-top:solid 1px #ddd;}
+	</style>
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+				<header id="header" class="inner">
+				 
+					
+					<h1><a href="index.html">Chuckiefan's Blog</a></h1>
+					<p class="subtitle"></p>
+					<nav id="main-nav">
+						<ul class="main">
+						
+						  <li id=""><a target="self" href="index.html">Home</a></li>
+						
+						  <li id=""><a target="_self" href="archives.html">Archives</a></li>
+						
+						</ul>
+					</nav>
+
+					<nav id="sub-nav">
+						<div class="social">
+
+
+
+
+
+
+
+
+
+
+
+
+
+								
+
+								<a class="rss" href="atom.xml" title="RSS">RSS</a>
+							
+						</div>
+					</nav>
+				</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			<div class="mid-col-container"> <div id="content" class="inner">
+
+	<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+		<h1 class="title" itemprop="name">【翻译】安卓架构组件(4)-LiveData</h1>
+		<div class="entry-content" itemprop="articleBody">
+			<p>相关文章：</p>
+
+<ul>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(1)-App%E6%9E%B6%E6%9E%84%E6%8C%87%E5%AF%BC.html">【翻译】安卓架构组件(1)-App架构指导</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(2)-%E6%B7%BB%E5%8A%A0%E7%BB%84%E4%BB%B6%E5%88%B0%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B8%AD.html">【翻译】安卓架构组件(2)-添加组件到你的项目中</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(3)-%E5%A4%84%E7%90%86%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">【翻译】安卓架构组件(3)-处理生命周期</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(5)-ViewModel.html">【翻译】安卓架构组件(5)-ViewModel</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(6)-Room%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%BA%93.html">【翻译】安卓架构组件(6)-Room持久化类库</a></li>
+<li><a href="http://chuckiefan.com/2017/06/07/%E7%BF%BB%E8%AF%91-%E5%AE%89%E5%8D%93%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6(7)-%E5%88%86%E9%A1%B5%E5%BA%93.html">【翻译】安卓架构组件(7)-分页库</a></li>
+</ul>
+
+<p><code>LiveData</code>是一个数据持有类，保存了数据值以及允许该值被观察。并不像常规的被观察者，<code>LiveData</code>遵循app组件的生命周期，例如<code>Observer</code>可以指定要观察的<code>Lifecyle</code>。</p>
+
+<p>如果<code>Observer</code>的<code>Lifecycle</code>是<code>STARTED</code>或者<code>RESUMED</code>状态，则<code>LiveData</code>认为其处在激活状态。</p>
+
+<pre><code class="language-java">public class LocationLiveData extends LiveData&lt;Location&gt; {
+    private LocationManager locationManager;
+
+    private SimpleLocationListener listener = new SimpleLocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            setValue(location);
+        }
+    };
+
+    public LocationLiveData(Context context) {
+        locationManager = (LocationManager) context.getSystemService(
+                Context.LOCATION_SERVICE);
+    }
+
+    @Override
+    protected void onActive() {
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
+    }
+
+    @Override
+    protected void onInactive() {
+        locationManager.removeUpdates(listener);
+    }
+}
+</code></pre>
+
+<p>在<code>Location</code>监听器的实现中有三个重要的地方： </p>
+
+<ul>
+<li><code>onActive()</code>：当<code>LiveData</code>拥有一个处在激活状态的观察者时会调用这个方法。这意味着我们需要开始观察位置信息的更新</li>
+<li><code>onInactive()</code>：当<code>LiveData</code>并不拥有任何处在激活状态时这个方法被调用。既然没有任何观察者进行监听，那么没有理由继续保持对<code>LocationManager</code>服务的连接</li>
+<li><code>setValue()</code>：调用该方法更新<code>LiveData</code>实例的值，并通知处在激活状态的观察者该变化</li>
+</ul>
+
+<p>我们可以这样使用新的<code>LocationLiveData</code>：</p>
+
+<pre><code class="language-java">public class MyFragment extends LifecycleFragment {
+    public void onActivityCreated (Bundle savedInstanceState) {
+        LiveData&lt;Location&gt; myLocationListener = ...;
+        Util.checkUserStatus(result -&gt; {
+            if (result) {
+                myLocationListener.observer(this, location -&gt; {
+                    // 更新 UI
+                });
+            }
+        });
+    }
+}
+</code></pre>
+
+<p>注意到<code>addObserver()</code>方法传递的第一个参数是<code>LifecycleOwner</code>，这表示观察者必然绑定至<code>Lifecycle</code>，这意味着：</p>
+
+<ul>
+<li>如果<code>Lifecycle</code>并不处在激活状态，即使值发生变化，观察者也不会被响应</li>
+<li>如果<code>Lifecycle</code>被销毁，观察者会被自动清除</li>
+</ul>
+
+<p><code>LiveData</code>是生命周期敏感的，这提供给了我们一个新的机会：我们可以在多个<code>Activity</code>、多个<code>Fragment</code>间共享。为了保持我们样例代码的简洁，我们将它变成单例：</p>
+
+<pre><code class="language-java">public class LocationLiveData extends LiveData&lt;Location&gt; {
+    private static LocationLiveData sInstance;
+    private LocationManager locationManager;
+
+    @MainThread
+    public static LocationLiveData get(Context context) {
+        if (sInstance == null) {
+            sInstance = new LocationLiveData(context.getApplicationContext());
+        }
+        return sInstance;
+    }
+
+    private SimpleLocationListener listener = new SimpleLocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            setValue(location);
+        }
+    };
+
+    private LocationLiveData(Context context) {
+        locationManager = (LocationManager) context.getSystemService(
+                Context.LOCATION_SERVICE);
+    }
+
+    @Override
+    protected void onActive() {
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
+    }
+
+    @Override
+    protected void onInactive() {
+        locationManager.removeUpdates(listener);
+    }
+}
+</code></pre>
+
+<p>现在<code>Fragment</code>可以这样用：</p>
+
+<pre><code class="language-java">public class MyFragment extends LifecycleFragment {
+    public void onActivityCreated (Bundle savedInstanceState) {
+        Util.checkUserStatus(result -&gt; {
+            if (result) {
+                LocationLiveData.get(getActivity()).observe(this, location -&gt; {
+                   // 更新 UI
+                });
+            }
+        });
+  }
+}
+</code></pre>
+
+<p>可能会有多个<code>Fragment</code>和多个<code>Activity</code>观察我们的<code>MyLocationListener</code>实例，并且只要它们处在激活状态，我们的<code>LiveData</code>可以优雅地进行管理。</p>
+
+<p><code>LiveData</code>类具有如下的优点：</p>
+
+<ul>
+<li>没有内存泄漏：因为<code>Obeserver</code>们被绑定在自己的<code>Lifecycle</code>对象，当<code>Lifecycle</code>被销毁的时候，它们会被自动清除</li>
+<li>停止<code>Activity</code>的时候不会发生崩溃：如果<code>Obeserver</code>们的<code>Lifecycle</code>对象处在非激活状态（如<code>Activity</code>在后台），它们将不会接收任何变化事件</li>
+<li>总是更新数据：如果<code>Lifecycle</code>再次启动（例如一个<code>Activity</code>从后台回到前台），它将会收到最新的本地数据</li>
+<li>正确的配置变化：如果一个<code>Activity</code>或一个<code>Fragment</code>由于配置的变化（如屏幕旋转）重新创建，它将会立刻收到最新的<code>Location</code>数据</li>
+<li>共享资源：现在我们可以持有一个单独的<code>MyLocationListener</code>实例，只需要连接到系统服务一次，并且可以正确地支持app里的所有观察者</li>
+<li>不需要手动处理生命周期：你应该注意到，我们的<code>Fragment</code>仅仅当想要的时候观察数据，不需要关心如何停止，以及在停止后的再次开启。<code>LiveData</code>会自动管理所有的情况，因为<code>Fragment</code>提供了其<code>Lifecycle</code>。</li>
+</ul>
+
+<h2 id="toc_0"><code>LiveData</code>转换</h2>
+
+<p>有些时候，你可能想要在分发<code>LiveData</code>至观察者之前做一些变化，或者需要基于当前值返回另一个<code>LiveData</code>实例。</p>
+
+<p><code>Lifecycle</code>包提供了一个<code>Transformations</code>类，包含这些操作的辅助方法。</p>
+
+<h4 id="toc_1"><code>Transformations.map()</code></h4>
+
+<p>对<code>LiveData</code>值应用一个函数，传递结果至下流。</p>
+
+<pre><code class="language-java">LiveData&lt;User&gt; userLiveData = ...;
+LiveData&lt;String&gt; userName = Transformations.map(userLiveData, user -&gt; {
+    user.name + &quot; &quot; + user.lastName
+});
+</code></pre>
+
+<h4 id="toc_2"><code>Transformations.switchMap()</code></h4>
+
+<p>和<code>map()</code>相似，传递至<code>switchMap()</code>的函数必须返回一个<code>Lifecycle</code>。</p>
+
+<pre><code class="language-java">private LiveData&lt;User&gt; getUser(String id) {
+  ...;
+}
+
+
+LiveData&lt;String&gt; userId = ...; LiveData&lt;User&gt; user = Transformations.switchMap(userId, id -&gt; getUser(id) );
+</code></pre>
+
+<p>使用这些转化允许通过链继续观察<code>Lifecycle</code>信息，例如这些信息只有当一个观察者观察返回<code>LiveData</code>的时才进行计算。这种惰性计算的特性允许在转化过程中隐式地传递生命周期，而不需要添加额外的调用或依赖。</p>
+
+<p>当你在<code>ViewModel</code>里需要一个Lifecycle时，一个转化可能是一种解决方案。</p>
+
+<p>例如，假设我们有一个UI界面，用户输入地址并接收地址的邮政编码。UI界面原始的<code>ViewModel</code>是这样的：</p>
+
+<pre><code class="language-java">class MyViewModel extends ViewModel {
+    private final PostalCodeRepository repository;
+    public MyViewModel(PostalCodeRepository repository) {
+       this.repository = repository;
+    }
+
+    private LiveData&lt;String&gt; getPostalCode(String address) {
+       // 不要这样做！
+       return repository.getPostCode(address);
+    }
+}
+</code></pre>
+
+<p>实现如上，UI可能需要从之前的<code>LiveData</code>反注销并在每次调用<code>getPostalCode()</code>新的实例时重新注册。此外，如果UI是重新创建的，它出发了另一个调用<code>repository.getPostCode()</code>，而不是之前的结果。</p>
+
+<p>作为上述方法的替换，你可以将邮政编码信息作为地址信息输入的转换：</p>
+
+<pre><code class="language-java">class MyViewModel extends ViewModel {
+    private final PostalCodeRepository repository;
+    private final MutableLiveData&lt;String&gt; addressInput = new MutableLiveData();
+    public final LiveData&lt;String&gt; postalCode =
+            Transformations.switchMap(addressInput, (address) -&gt; {
+                return repository.getPostCode(address);
+             });
+
+  public MyViewModel(PostalCodeRepository repository) {
+      this.repository = repository
+  }
+
+  private void setInput(String address) {
+      addressInput.setValue(address);
+  }
+}
+</code></pre>
+
+<p>注意到我们将<code>postalCode</code>设为<code>public final</code>，因为它永远不会改变。它被定义为<code>addressInput</code>的转化，因此当<code>addressInput</code>变化的时候，如果有一个激活的观察者，<code>repository.getPostCode()</code>会被调用。如果没有激活的观察者，则不会有任何计算发生，直到添加了一个观察者。</p>
+
+<p>这种机制允许下层的应用创建<code>LiveData</code>对象，在需要的时候才计算。<code>ViewModel</code>可以轻易地获取它们并在上层定义转化规则。</p>
+
+		</div>
+	</article>
+	<div class="share-comment">
+	 
+
+	  
+
+	  
+
+	</div>
+</div>        </div>
+			<footer id="footer" class="inner">Copyright &copy; 2014
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; 
+Theme by <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a>
+      </footer>
+		</div>
+	</div>
+
+  
+    
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+</body>
+</html>

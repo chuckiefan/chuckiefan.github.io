@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>  
+	  
+  	RxJava之旅(3)：RxJava入门基础(2) - Chuckiefan's Blog
+  	
+	</title>
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="Chuckiefan's Blog" type="application/atom+xml">
+
+	<link href="asset/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="asset/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<script src="asset/javascripts/jquery.min.js"></script>
+	<script src="asset/highlightjs/highlight.pack.js"></script>
+	<link href="asset/highlightjs/styles/solarized_dark.css" media="screen, projection" rel="stylesheet" type="text/css">
+<script>hljs.initHighlightingOnLoad();</script>
+
+	<!--[if lt IE 9]><script src="asset/javascripts/html5.js"></script><![endif]-->
+	<!-- <link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'> -->
+	<style type="text/css">
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Nunito-Light'), url(asset/font/1TiHc9yag0wq3lDO9cw0voX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nunito-Regular'), url(asset/font/6TbRXKWJjpj6V2v_WyRbMX-_kf6ByYO6CLYdB4HQE-Y.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Nunito-Bold'), url(asset/font/TttUCfJ272GBgSKaOaD7KoX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+	</style>
+	
+	<style type="text/css">
+	.container .left-col{ opacity: 1;}
+	#pagenavi a{ font-size: 1.3em;}
+	#pagenavi .next:before{ top: 3px;}
+	#pagenavi .prev:before{ top: 3px;}
+	.container .mid-col .mid-col-container #content .archives .title{ font-size: 1.5em;}
+	.container .mid-col .mid-col-container #content article{ padding: 15px 0px;}
+	#header .subtitle {
+		line-height: 1.2em;
+		padding-top: 8px;
+	}
+	article pre{ background: none; border: none; padding: 0;}
+	article .entry-content{text-align: left;}
+	.share-comment{ padding: 25px 0px; clear: both;}
+	hr{ margin: 20px 0px;border: 0; border-top:solid 1px #ddd;}
+	</style>
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+				<header id="header" class="inner">
+				 
+					
+					<h1><a href="index.html">Chuckiefan's Blog</a></h1>
+					<p class="subtitle"></p>
+					<nav id="main-nav">
+						<ul class="main">
+						
+						  <li id=""><a target="self" href="index.html">Home</a></li>
+						
+						  <li id=""><a target="_self" href="archives.html">Archives</a></li>
+						
+						</ul>
+					</nav>
+
+					<nav id="sub-nav">
+						<div class="social">
+
+
+
+
+
+
+
+
+
+
+
+
+
+								
+
+								<a class="rss" href="atom.xml" title="RSS">RSS</a>
+							
+						</div>
+					</nav>
+				</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			<div class="mid-col-container"> <div id="content" class="inner">
+
+	<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+		<h1 class="title" itemprop="name">RxJava之旅(3)：RxJava入门基础(2)</h1>
+		<div class="entry-content" itemprop="articleBody">
+			<hr/>
+
+<p>layout: post<br/>
+title: &#39;RxJava之旅(3)：RxJava入门基础(2)&#39;<br/>
+date: 2017-08-18<br/>
+author: Chuckiefan</p>
+
+<h2 id="toc_0">tags: RxJava Android</h2>
+
+<h1 id="toc_1">0.前言</h1>
+
+<p><a href="#%204.%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8%E4%B8%8E%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90">点击跳转</a></p>
+
+<p>在<a href="http://chuckiefan.com/2017/08/17/RxJava%E4%B9%8B%E6%97%85(2)-RxJava%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80(1).html">上一篇文章</a>中我们对RxJava有了一个初步的认识,在这一篇中我们将对RxJva1的基本用法进行详细地介绍，并对源码层面进行分析</p>
+
+<h1 id="toc_2">1.订阅者和观察者</h1>
+
+<p>根据上一篇的内容我们已经知道，在Rx的世界，是由被观察者来订阅观察者的，当然这只是写法上的差异，Rx终究还是在遵循观察者模式。</p>
+
+<p>在RxJava中，观察者和被观察者分别用<code>Observer</code>和<code>Observable</code>来表示。</p>
+
+<h2 id="toc_3">1.1 Observer</h2>
+
+<p><code>Observer</code>实际上是一个接口，其中定义了<code>onNext</code>、<code>onCompleted</code>以及<code>onError</code>三个方法。完整代码如下：</p>
+
+<pre><code class="language-java">public interface Observer&lt;T&gt; {
+
+    void onCompleted();
+
+   
+    void onError(Throwable e);
+    
+
+    void onNext(T t);
+
+}
+</code></pre>
+
+<p><code>void onNext(T t)</code>方法用于给观察者（即实现此接口的类对象）提供一条新数据进行观察（处理），被观察者可调用该方法0到N次。</p>
+
+<p><code>void onError(Throwable e)</code>方法用于被观察遇到异常情况时，交给<code>Observer</code>处理。当调用该方法之后，<em>将不会再调用onNext方法以及onNext方法</em>，该方法可被调用0-1次。</p>
+
+<p><code>void onCompleted()</code>，用于通知观察者：该被观察者已经结束数据流的推送，该方法可被调用0-1次。</p>
+
+<h2 id="toc_4">1.2 Observable</h2>
+
+<p><code>Observable</code>是RxJava中一个非常重要的类，关于我们后面要说的很多内容都和它有关，作为开始我们无法进行细致地介绍，但是会随着内容的深入逐步进行介绍。</p>
+
+<h1 id="toc_5">2.创建</h1>
+
+<p>让我们从一段简单的代码开始认识RxJava中被观察者的创建过程：</p>
+
+<pre><code class="language-java">final int[] nums = {1,2,3,4,5,6};
+
+rx.Observable.create(new rx.Observable.OnSubscribe&lt;Integer&gt;() {
+            @Override
+            public void call(Subscriber&lt;? super Integer&gt; subscriber) {
+                try{
+                    for (int item : nums){
+                        subscriber.onNext(item);
+                    }
+                }catch (Exception e){
+                    subscriber.onError(e);
+                    return;
+                }
+
+                subscriber.onCompleted();
+            }
+        }).subscribe(new rx.Observer&lt;Integer&gt;() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+
+            }
+        });
+</code></pre>
+
+<p>我们可以看到这里实现了一个基本的创建-&gt;订阅流程。</p>
+
+<p>首先让我们看一下创建的源码：</p>
+
+<pre><code class="language-java">//Observable
+public static &lt;T&gt; Observable&lt;T&gt; create(OnSubscribe&lt;T&gt; f) {
+    return new Observable&lt;T&gt;(RxJavaHooks.onCreate(f));
+}
+    
+protected Observable(OnSubscribe&lt;T&gt; f) {
+    this.onSubscribe = f;
+}
+</code></pre>
+
+<p>这个静态方法调用构造函数创建了一个Observable对象，参数为OnSubscribe，而构造函数的参数也为OnSubscribe。</p>
+
+<p>我们先来看一下OnSubscribe是什么：</p>
+
+<pre><code class="language-java">/**
+     * Invoked when Observable.subscribe is called.
+     * @param &lt;T&gt; the output value type
+     */
+public interface OnSubscribe&lt;T&gt; extends Action1&lt;Subscriber&lt;? super T&gt;&gt; {
+        // cover for generics insanity
+}
+</code></pre>
+
+<p>OnSubscribe是一个继承自Action1的接口，根据源码注释可知，该接口在Observable.subscribe时调用。那么Action1是什么呢？继续追踪下去：</p>
+
+<pre><code class="language-java">public interface Action1&lt;T&gt; extends Action {
+    void call(T t);
+}
+</code></pre>
+
+<pre><code class="language-java">public interface Action extends Function {
+
+}
+</code></pre>
+
+<pre><code class="language-java">public interface Function {
+
+}
+</code></pre>
+
+<p>我们将相关的源码都贴出来，可以看到OnSubscribe实际上是一个接口，该接口中含有一个call方法。可以看到OnSubscribe中call函数参数类型为Subscriber，为了避免干扰，我们暂时不去介绍Subscriber。</p>
+
+<p>好了，让我们回到create方法的实现过程，来看一下调用构造函数相关的部分：</p>
+
+<pre><code class="language-java">//RxJavaHooks.onCreate(f)方法源码
+@SuppressWarnings({ &quot;rawtypes&quot;, &quot;unchecked&quot; })
+public static &lt;T&gt; Observable.OnSubscribe&lt;T&gt; onCreate(Observable.OnSubscribe&lt;T&gt; onSubscribe) {
+    Func1&lt;Observable.OnSubscribe, Observable.OnSubscribe&gt; f = onObservableCreate;
+    if (f != null) {
+        return f.call(onSubscribe);
+    }
+    return onSubscribe;
+}
+</code></pre>
+
+<h1 id="toc_6">3.操作符初探</h1>
+
+<h1 id="toc_7">4.链式调用与源码分析</h1>
+
+<p><span id="jump"></span></p>
+
+		</div>
+	</article>
+	<div class="share-comment">
+	 
+
+	  
+
+	  
+
+	</div>
+</div>        </div>
+			<footer id="footer" class="inner">Copyright &copy; 2014
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; 
+Theme by <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a>
+      </footer>
+		</div>
+	</div>
+
+  
+    
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+</body>
+</html>
